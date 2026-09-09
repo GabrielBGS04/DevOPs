@@ -1,3 +1,0 @@
-# DevOPs
-
-Primeiro test Red
