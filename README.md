@@ -1,49 +1,69 @@
-# AC1 DevOps — recompensa por conclusão de curso
+# Trabalho de DevOps
 
-Um aluno do plano básico ganha **3 cursos gratuitos** ao concluir um curso com nota **igual ou superior a 8,5**. Notas inferiores a 8,5 não liberam cursos extras.
+A ideia do projeto é que o aluno do plano básico ganhe 3 cursos grátis quando termina um curso com nota 8,5 ou maior. Se tirar menos que 8,5, ele não ganha esses cursos.
 
-## BDD 1 — nota 8,5 libera três cursos
+## BDD 1
 
-**Dado** um aluno do plano básico com um curso em andamento, **quando** ele conclui o curso com nota 8,5, **então** a conclusão é registrada no histórico e três cursos extras são liberados.
+O João termina um curso com nota 8,5. A nota precisa ficar salva no histórico e ele deve ganhar mais 3 cursos.
 
-### 1. Red — cenário BDD 1
+### Red da BDD 1
 
-O teste `bdd1_deveLiberarTresCursosComNotaOitoVirgulaCinco` falhou com **3 cursos esperados e 0 obtidos**. A regra de bônus ainda estava incorreta, comprovando que o cenário detecta a ausência do resultado exigido.
+No começo deu erro: o teste esperava 3 cursos, mas o aluno ficou com 0.
 
-![BDD 1 em Red: esperado 3, obtido 0](docs/evidencias/bdd1/red-bdd1.png)
+![Red da BDD 1: esperava 3 cursos e recebeu 0](docs/evidencias/bdd1/red-bdd1.png)
 
-### 2. Green — TDD 1 da BDD 1
+### Green do TDD 1
 
-O teste `deveAtualizarHistoricoAoConcluirCurso` passou: a nota 8,5 foi registrada no histórico do aluno.
+Esse teste vê se a nota do curso ficou salva no histórico.
 
-![TDD 1 da BDD 1 em Green: teste do histórico aprovado](docs/evidencias/bdd1/green-tdd1.png)
+![Green do TDD 1 da BDD 1](docs/evidencias/bdd1/green-tdd1.png)
 
-### 3. Green — TDD 2 da BDD 1
+### Green do TDD 2
 
-O teste `deveDarDireitoABonusComNotaMinimaDeOitoVirgulaCinco` passou: a nota mínima 8,5 dá direito ao bônus.
+Aqui testamos se a nota 8,5 dá direito ao bônus.
 
-![TDD 2 da BDD 1 em Green: direito ao bônus aprovado](docs/evidencias/bdd1/green-tdd2.png)
+![Green do TDD 2 da BDD 1](docs/evidencias/bdd1/green-tdd2.png)
 
-### 4. Green — TDD 3 da BDD 1
+### Green do TDD 3
 
-O teste `deveLiberarTresCursosComNotaMinimaDeOitoVirgulaCinco` valida que a conclusão com nota 8,5 libera exatamente três cursos extras.
+Aqui testamos se os 3 cursos foram liberados.
 
-![TDD 3 da BDD 1 em Green: três cursos extras liberados](docs/evidencias/bdd1/green-tdd3.png)
+![Green do TDD 3 da BDD 1](docs/evidencias/bdd1/green-tdd3.png)
 
-## Como reproduzir
+## BDD 2
 
-O print Red registra o estado anterior à implementação da regra. Para reproduzi-lo temporariamente, substitua o retorno de `temDireitoABonus` por `return false;` e execute somente o BDD 1:
+Nessa parte, o aluno não pode ganhar cursos extras com nota 7,0 ou menor.
 
-```powershell
-.\mvnw.cmd "-Dtest=AlunoTest#bdd1_deveLiberarTresCursosComNotaOitoVirgulaCinco" test
-```
+### Red da BDD 2
 
-Restaure `return plano == Plano.BASICO && nota >= NOTA_MINIMA_PARA_BONUS;` e execute os testes da BDD 1 para obter o Green:
+No começo o teste deu erro: era para ficar com 0 cursos extras, mas liberou 3.
 
-```powershell
-.\mvnw.cmd "-Dtest=AlunoTest#deveAtualizarHistoricoAoConcluirCurso" test
-.\mvnw.cmd "-Dtest=AlunoTest#deveDarDireitoABonusComNotaMinimaDeOitoVirgulaCinco" test
-.\mvnw.cmd "-Dtest=AlunoTest#deveLiberarTresCursosComNotaMinimaDeOitoVirgulaCinco" test
-```
+![Red da BDD 2: esperava 0 cursos e recebeu 3](docs/evidencias/bdd2/red-bdd2.png)
 
-A refatoração Blue separa o registro no histórico da concessão de cursos nos métodos `registrarConclusao` e `liberarCursosSeElegivel`. A regra fica centralizada em `temDireitoABonus`, e os quatro testes continuam passando.
+### Green do TDD 1
+
+Testamos a nota 7,0. Ela não deve liberar cursos extras.
+
+![Green do TDD 1 da BDD 2](docs/evidencias/bdd2/green-tdd1.png)
+
+### Green do TDD 2
+
+Aqui testamos a nota 5,5, que também não libera cursos extras.
+
+![Green do TDD 2 da BDD 2](docs/evidencias/bdd2/green-tdd2.png)
+
+### Green do TDD 3
+
+O último teste confere a média dos cursos com notas 9,0 e 4,0. No projeto, a média é mostrada como número inteiro, então o resultado é 6.
+
+![Green do TDD 3 da BDD 2](docs/evidencias/bdd2/green-tdd3.png)
+
+## Red, Green e Blue no código
+
+No Red, a linha que corrigia a nota mínima ficou como comentário. Por isso a comparação errada da linha de cima ainda era usada, e os BDDs falharam. Depois tiramos o comentário da correção e os testes Green passaram.
+
+Para mostrar o Blue, deixamos o código antigo de `temDireitoABonus` comentado em `Aluno.java` e usamos só a regra refatorada logo abaixo. O código também separa o registro no histórico da liberação dos cursos.
+
+Esse é o print do Blue: o código antigo ficou comentado e a refatoração está funcionando. Depois dessa mudança, os testes continuaram passando.
+
+![Blue: código antigo comentado e refatoração ativa](docs/evidencias/blue-refatoracao.png)
