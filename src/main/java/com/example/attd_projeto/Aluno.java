@@ -31,7 +31,17 @@ public class Aluno {
         liberarCursosSeElegivel(nota);
     }
 
+    public void concluirCurso(int codigoCurso, double nota) {
+        concluirCurso(new Curso(String.valueOf(codigoCurso)), nota);
+    }
+
     public boolean temDireitoABonus(double nota) {
+        // GREEN — código antes da refatoração Blue:
+        // boolean notaElegivel = nota < NOTA_MINIMA_PARA_BONUS;
+        // notaElegivel = nota >= NOTA_MINIMA_PARA_BONUS;
+        // return plano == Plano.BASICO && notaElegivel;
+
+        // BLUE — mesma regra em uma linha, sem a atribuição repetida.
         return plano == Plano.BASICO && nota >= NOTA_MINIMA_PARA_BONUS;
     }
 
@@ -53,6 +63,13 @@ public class Aluno {
             throw new IllegalArgumentException("Curso não encontrado no histórico");
         }
         return nota;
+    }
+
+    public int getMediaGeral() {
+        return (int) historico.values().stream()
+                .mapToDouble(Double::doubleValue)
+                .average()
+                .orElse(0.0);
     }
 
     public int getCursosDisponiveis() {

@@ -47,4 +47,45 @@ public class AlunoTest {
 
         assertThat(aluno.getCursosDisponiveis()).isEqualTo(3);
     }
+
+    // RED — BDD 2: nota 7,0 não deve liberar cursos extras.
+    @Test
+    void bdd2_naoDeveLiberarCursosExtraSeNotaForInferiorOuIgualASete() {
+        Aluno aluno = new Aluno("Maria", Plano.BASICO);
+
+        aluno.concluirCurso(new Curso("Docker"), 7.0);
+
+        assertThat(aluno.getCursosDisponiveis()).isZero();
+    }
+
+    // GREEN — BDD 2, TDD 1: nota 7,0 não deve liberar cursos extras.
+    @Test
+    void naoDeveLiberarCursosExtrasComNotaIgualASete() {
+        Aluno aluno = new Aluno("Maria", Plano.BASICO);
+
+        aluno.concluirCurso(new Curso("Docker"), 7.0);
+
+        assertThat(aluno.getCursosDisponiveis()).isZero();
+    }
+
+    // GREEN — BDD 2, TDD 2: nota 5,5 não deve liberar cursos extras.
+    @Test
+    void naoDeveLiberarCursosExtrasComNotaAbaixoDeSete() {
+        Aluno aluno = new Aluno("Pedro", Plano.BASICO);
+
+        aluno.concluirCurso(new Curso("Linux"), 5.5);
+
+        assertThat(aluno.getCursosDisponiveis()).isZero();
+    }
+
+    // GREEN — BDD 2, TDD 3: média inteira de 9,0 e 4,0 deve ser 6.
+    @Test
+    void deveCalcularMediaGeralDosCursosConcluidos() {
+        Aluno aluno = new Aluno("Ana", Plano.BASICO);
+
+        aluno.concluirCurso(1, 9.0);
+        aluno.concluirCurso(2, 4.0);
+
+        assertThat(aluno.getMediaGeral()).isEqualTo(6);
+    }
 }
