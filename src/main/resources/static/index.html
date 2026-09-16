@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cálculo de nota</title>
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js"></script>
+    <style>
+      [v-cloak] { display: none; }
+
+      :root {
+        color: #1f2a37;
+        background: #eef1ed;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding: 32px 18px;
+      }
+
+      main {
+        width: min(900px, 100%);
+        margin: 0 auto;
+      }
+
+      header {
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        color: #17324d;
+        font-size: clamp(1.8rem, 4vw, 2.45rem);
+      }
+
+      header p { margin: 0; color: #53606d; }
+
+      .conteudo {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 18px;
+      }
+
+      section {
+        background: #ffffff;
+        border: 1px solid #d5ddd6;
+        border-radius: 10px;
+        padding: 22px;
+        box-shadow: 0 4px 14px rgb(28 49 42 / 8%);
+      }
+
+      h2 { margin-top: 0; color: #17324d; font-size: 1.25rem; }
+
+      .aviso {
+        margin: 0 0 18px;
+        padding: 10px 12px;
+        border-left: 4px solid #739572;
+        background: #f0f6ef;
+        color: #3e5a3d;
+        font-size: 0.9rem;
+      }
+
+      form { display: grid; gap: 15px; }
+
+      label { display: grid; gap: 7px; font-weight: 700; }
+
+      input {
+        width: 100%;
+        padding: 11px 12px;
+        border: 1px solid #aeb9b1;
+        border-radius: 6px;
+        font: inherit;
+      }
+
+      input:focus {
+        outline: 3px solid rgb(78 124 116 / 25%);
+        border-color: #3e7771;
+      }
+
+      small { color: #66727a; font-weight: 400; }
+
+      .acoes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+
+      button {
+        padding: 11px 15px;
+        border: 0;
+        border-radius: 6px;
+        background: #1d5f5a;
+        color: #fff;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+      }
+
+      button:hover { background: #164c48; }
+      button:disabled { cursor: wait; opacity: 0.65; }
+
+      .secundario {
+        border: 1px solid #aeb9b1;
+        background: #fff;
+        color: #354552;
+      }
+
+      .secundario:hover { background: #f2f4f2; }
+
+      .erro {
+        margin: 16px 0 0;
+        padding: 11px 12px;
+        border: 1px solid #e2a19b;
+        border-radius: 6px;
+        background: #fff0ee;
+        color: #8a2f28;
+      }
+
+      .sem-resultado { color: #66727a; line-height: 1.5; }
+
+      .resultado { border-top: 5px solid #39736b; }
+
+      .status {
+        display: inline-block;
+        margin-bottom: 14px;
+        padding: 6px 9px;
+        border-radius: 5px;
+        background: #eaf4e8;
+        color: #356136;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      dl { margin: 0; }
+      .linha {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 10px 0;
+        border-bottom: 1px solid #e3e8e4;
+      }
+
+      dt { color: #5d6871; }
+      dd { margin: 0; text-align: right; font-weight: 700; }
+
+      .regra {
+        margin: 18px 0 0;
+        color: #5d6871;
+        font-size: 0.88rem;
+        line-height: 1.45;
+      }
+
+      @media (max-width: 700px) {
+        body { padding: 22px 14px; }
+        .conteudo { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main id="app" v-cloak>
+      <header>
+        <h1>Cadastro e cálculo de nota</h1>
+        <p>Informe o aluno, a turma e a nota para registrar a conclusão do curso.</p>
+      </header>
+
+      <div class="conteudo">
+        <section>
+          <h2>Dados do aluno</h2>
+          <p class="aviso">A turma é cadastrada como curso na API. O cálculo usa o plano Básico.</p>
+
+          <form @submit.prevent="calcular">
+            <label>
+              Nome do aluno
+              <input v-model.trim="form.nome" type="text" placeholder="Ex.: Ana Souza" required maxlength="100" />
+            </label>
+
+            <label>
+              Turma / curso
+              <input v-model.trim="form.turma" type="text" placeholder="Ex.: Turma A - Java" required maxlength="100" />
+            </label>
+
+            <label>
+              Nota
+              <input v-model.number="form.nota" type="number" min="0" max="10" step="0.1" placeholder="De 0 a 10" required />
+              <small>Para alunos do plano Básico, notas a partir de 8,5 liberam 3 cursos extras.</small>
+            </label>
+
+            <div class="acoes">
+              <button type="submit" :disabled="carregando">
+                {{ carregando ? 'Calculando...' : 'Salvar e calcular' }}
+              </button>
+              <button class="secundario" type="button" @click="limpar" :disabled="carregando">Limpar</button>
+            </div>
+          </form>
+
+          <p v-if="erro" class="erro" role="alert">{{ erro }}</p>
+        </section>
+
+        <section class="resultado">
+          <h2>Resultado</h2>
+          <div v-if="resultado">
+            <span class="status">{{ resultado.cursosDisponiveis > 0 ? 'Bônus liberado' : 'Sem bônus nesta nota' }}</span>
+            <dl>
+              <div class="linha"><dt>Aluno</dt><dd>{{ resultado.nome }}</dd></div>
+              <div class="linha"><dt>Turma / curso</dt><dd>{{ formEnviado.turma }}</dd></div>
+              <div class="linha"><dt>Nota registrada</dt><dd>{{ formatarNumero(formEnviado.nota) }}</dd></div>
+              <div class="linha"><dt>Média geral</dt><dd>{{ formatarNumero(resultado.mediaGeral) }}</dd></div>
+              <div class="linha"><dt>Cursos extras</dt><dd>{{ resultado.cursosDisponiveis }}</dd></div>
+            </dl>
+          </div>
+          <p v-else class="sem-resultado">O resultado aparecerá aqui depois de salvar os dados.</p>
+          <p class="regra">Regra aplicada: aluno do plano Básico com nota maior ou igual a 8,5 recebe 3 cursos adicionais.</p>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            form: { nome: '', turma: '', nota: null },
+            formEnviado: { turma: '', nota: null },
+            resultado: null,
+            erro: '',
+            carregando: false
+          };
+        },
+        methods: {
+          async calcular() {
+            this.erro = '';
+            this.resultado = null;
+
+            if (!Number.isFinite(this.form.nota) || this.form.nota < 0 || this.form.nota > 10) {
+              this.erro = 'Informe uma nota entre 0 e 10.';
+              return;
+            }
+
+            this.carregando = true;
+            try {
+              const aluno = await this.requisitar('/api/alunos', {
+                method: 'POST',
+                body: JSON.stringify({ nome: this.form.nome, plano: 'BASICO' })
+              });
+
+              const curso = await this.requisitar('/api/cursos', {
+                method: 'POST',
+                body: JSON.stringify({ nome: this.form.turma })
+              });
+
+              this.resultado = await this.requisitar(`/api/alunos/${aluno.id}/concluir-curso`, {
+                method: 'POST',
+                body: JSON.stringify({ cursoId: curso.id, nota: this.form.nota })
+              });
+              this.formEnviado = { turma: this.form.turma, nota: this.form.nota };
+            } catch (error) {
+              this.erro = error.message || 'Não foi possível salvar os dados. Confira se a aplicação está rodando.';
+            } finally {
+              this.carregando = false;
+            }
+          },
+          async requisitar(url, opcoes) {
+            const resposta = await fetch(url, {
+              ...opcoes,
+              headers: { 'Content-Type': 'application/json' }
+            });
+            const dados = await resposta.json().catch(() => ({}));
+            if (!resposta.ok) {
+              throw new Error(dados.erro || dados.message || `Erro ao chamar ${url}.`);
+            }
+            return dados;
+          },
+          limpar() {
+            this.form = { nome: '', turma: '', nota: null };
+            this.formEnviado = { turma: '', nota: null };
+            this.resultado = null;
+            this.erro = '';
+          },
+          formatarNumero(valor) {
+            return Number(valor).toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 2 });
+          }
+        }
+      }).mount('#app');
+    </script>
+  </body>
+</html>

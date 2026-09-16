@@ -1,4 +1,16 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-ATTD projeto,com.example.attd_projeto,Plano,0,9,0,0,0,2,0,1,0,1
-ATTD projeto,com.example.attd_projeto,Curso,0,6,0,0,0,3,0,1,0,1
-ATTD projeto,com.example.attd_projeto,Aluno,11,66,4,4,3,18,5,7,1,7
+DEVOPS,com.example.devops.domain,Plano,0,15,0,0,0,3,0,1,0,1
+DEVOPS,com.example.devops.domain,Curso,5,21,2,2,1,8,2,4,0,4
+DEVOPS,com.example.devops.domain,Aluno,31,108,9,13,7,25,11,11,2,9
+DEVOPS,com.example.devops.controller,ApiExceptionHandler,15,3,0,0,3,1,2,1,2,1
+DEVOPS,com.example.devops.controller,AlunoController,35,6,0,0,5,3,4,1,4,1
+DEVOPS,com.example.devops.controller,CursoController,13,6,0,0,2,3,2,1,2,1
+DEVOPS,com.example.devops.dto,CriarAlunoDTO,17,0,0,0,7,0,5,0,5,0
+DEVOPS,com.example.devops.dto,CriarCursoDTO,10,0,0,0,4,0,3,0,3,0
+DEVOPS,com.example.devops.dto,AlunoResponseDTO,37,0,0,0,8,0,2,0,2,0
+DEVOPS,com.example.devops.dto,ConclusaoCursoDTO,0,17,0,0,0,7,0,5,0,5
+DEVOPS,com.example.devops.service,CursoService,4,15,0,0,1,4,1,2,1,2
+DEVOPS,com.example.devops.service,AlunoService,19,56,2,2,2,13,5,4,3,4
+DEVOPS,com.example.devops.service,RecursoNaoEncontradoException,4,0,0,0,2,0,1,0,1,0
+DEVOPS,com.example.devops,DevopsApplication,5,3,0,0,2,1,1,1,1,1
+DEVOPS,com.example.devops.config,OpenApiConfig,0,17,0,0,0,5,0,2,0,2

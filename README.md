@@ -1,69 +1,161 @@
-# Trabalho de DevOps
+# Projeto DevOps
 
-A ideia do projeto é que o aluno do plano básico ganhe 3 cursos grátis quando termina um curso com nota 8,5 ou maior. Se tirar menos que 8,5, ele não ganha esses cursos.
+## Sobre o caso
 
-## BDD 1
+O caso fala de uma plataforma de cursos online por assinatura. O aluno do plano básico paga uma mensalidade e tem acesso a cursos. Quando termina um curso com uma nota boa, ele ganha mais cursos. O aluno também pode ganhar curso participando do fórum. Depois de conquistar 12 cursos, passa para o plano Premium e ganha outras vantagens.
 
-O João termina um curso com nota 8,5. A nota precisa ficar salva no histórico e ele deve ganhar mais 3 cursos.
+Neste projeto, foi escolhida a parte em que o aluno do plano básico ganha 3 cursos quando tira nota maior ou igual a 8,5.
 
-### Red da BDD 1
+## User Story escolhida
 
-No começo deu erro: o teste esperava 3 cursos, mas o aluno ficou com 0.
+**Quem escreveu: Gabriel Baldi**
 
-![Red da BDD 1: esperava 3 cursos e recebeu 0](docs/evidencias/bdd1/red-bdd1.png)
+> Como aluno do plano básico, quero ganhar 3 cursos quando terminar um curso com nota maior ou igual a 8,5 para continuar estudando sem pagar mais por isso.
 
-### Green do TDD 1
+## BDDs feitos
 
-Esse teste vê se a nota do curso ficou salva no histórico.
+### BDD 1 - Gabriel Baldi
 
-![Green do TDD 1 da BDD 1](docs/evidencias/bdd1/green-tdd1.png)
+João é aluno do plano básico e termina um curso com nota 8,5. A nota precisa ficar no histórico e ele deve ganhar 3 cursos.
 
-### Green do TDD 2
+### BDD 2 - Higor Aranda
 
-Aqui testamos se a nota 8,5 dá direito ao bônus.
+Maria é aluna do plano básico e termina um curso com nota 7,0. Ela não deve ganhar cursos extras.
 
-![Green do TDD 2 da BDD 1](docs/evidencias/bdd1/green-tdd2.png)
+## TDD
 
-### Green do TDD 3
+### RED
 
-Aqui testamos se os 3 cursos foram liberados.
+No RED os testes falham porque a regra ainda não estava pronta.
 
-![Green do TDD 3 da BDD 1](docs/evidencias/bdd1/green-tdd3.png)
+**BDD 1 falhando**
 
-## BDD 2
+![BDD 1 RED](docs/evidencias/bdd1/red-bdd1.png)
 
-Nessa parte, o aluno não pode ganhar cursos extras com nota 7,0 ou menor.
+**BDD 2 falhando**
 
-### Red da BDD 2
+![BDD 2 RED](docs/evidencias/bdd2/red-bdd2.png)
 
-No começo o teste deu erro: era para ficar com 0 cursos extras, mas liberou 3.
+### GREEN
 
-![Red da BDD 2: esperava 0 cursos e recebeu 3](docs/evidencias/bdd2/red-bdd2.png)
+No GREEN a regra foi implementada e os testes passaram.
 
-### Green do TDD 1
+**BDD 1 - testes passando**
 
-Testamos a nota 7,0. Ela não deve liberar cursos extras.
+![BDD 1 GREEN 1](docs/evidencias/bdd1/green-tdd1.png)
 
-![Green do TDD 1 da BDD 2](docs/evidencias/bdd2/green-tdd1.png)
+![BDD 1 GREEN 2](docs/evidencias/bdd1/green-tdd2.png)
 
-### Green do TDD 2
+![BDD 1 GREEN 3](docs/evidencias/bdd1/green-tdd3.png)
 
-Aqui testamos a nota 5,5, que também não libera cursos extras.
+**BDD 2 - testes passando**
 
-![Green do TDD 2 da BDD 2](docs/evidencias/bdd2/green-tdd2.png)
+![BDD 2 GREEN 1](docs/evidencias/bdd2/green-tdd1.png)
 
-### Green do TDD 3
+![BDD 2 GREEN 2](docs/evidencias/bdd2/green-tdd2.png)
 
-O último teste confere a média dos cursos com notas 9,0 e 4,0. No projeto, a média é mostrada como número inteiro, então o resultado é 6.
+![BDD 2 GREEN 3](docs/evidencias/bdd2/green-tdd3.png)
 
-![Green do TDD 3 da BDD 2](docs/evidencias/bdd2/green-tdd3.png)
+### BLUE
 
-## Red, Green e Blue no código
+No BLUE o código foi organizado sem mudar o resultado dos testes. A cobertura da regra original ficou em 100%, sem partes em vermelho ou amarelo.
 
-No Red, a linha que corrigia a nota mínima ficou como comentário. Por isso a comparação errada da linha de cima ainda era usada, e os BDDs falharam. Depois tiramos o comentário da correção e os testes Green passaram.
+![BLUE](docs/evidencias/blue-refatoracao.png)
 
-Para mostrar o Blue, deixamos o código antigo de `temDireitoABonus` comentado em `Aluno.java` e usamos só a regra refatorada logo abaixo. O código também separa o registro no histórico da liberação dos cursos.
+## Organização do projeto
 
-Esse é o print do Blue: o código antigo ficou comentado e a refatoração está funcionando. Depois dessa mudança, os testes continuaram passando.
+O projeto está separado assim:
 
-![Blue: código antigo comentado e refatoração ativa](docs/evidencias/blue-refatoracao.png)
+- `controller`: recebe as requisições da API;
+- `service`: aplica as regras;
+- `repository`: conversa com o banco;
+- `domain`: classes `Aluno`, `Curso` e `Plano`;
+- `dto`: dados que entram e saem da API.
+
+## Swagger
+
+Com a aplicação rodando, abra:
+
+```text
+http://localhost:8080/swagger-ui.html
+```
+
+O JSON da documentação fica em:
+
+```text
+http://localhost:8080/v3/api-docs
+```
+
+## Endpoints
+
+| Método | Endpoint | O que faz |
+| --- | --- | --- |
+| POST | `/api/alunos` | Cria um aluno |
+| GET | `/api/alunos` | Lista alunos |
+| GET | `/api/alunos/{id}` | Busca um aluno |
+| POST | `/api/cursos` | Cria um curso |
+| GET | `/api/cursos` | Lista cursos |
+| POST | `/api/alunos/{id}/concluir-curso` | Conclui um curso e verifica o bônus |
+
+Exemplo para criar aluno:
+
+```json
+{ "nome": "João", "plano": "BASICO" }
+```
+
+Exemplo para criar curso:
+
+```json
+{ "nome": "Docker" }
+```
+
+Exemplo para concluir curso:
+
+```json
+{ "cursoId": 1, "nota": 8.5 }
+```
+
+## Banco de dados
+
+### H2
+
+Foi feito um teste de integração usando H2 em memória. Ele cria aluno e curso, salva a conclusão e verifica os 3 cursos de bônus.
+
+Resultado: teste executado com sucesso, 0 falhas e 0 erros.
+
+![Teste de integração com H2 passando](docs/evidencias/banco/h2-rodando.jpg)
+
+### PostgreSQL
+
+O PostgreSQL está configurado no `docker-compose.yml`. O banco criado é o `devops_db` e a porta é `5432`.
+
+Depois de subir o Docker, estes comandos mostram a evidência:
+
+```powershell
+docker compose ps
+docker compose logs db
+```
+
+## Rodando com Docker
+
+Abra o terminal dentro da pasta `DEVOPS` e rode:
+
+```powershell
+docker compose up --build
+```
+
+Depois abra o Swagger em `http://localhost:8080/swagger-ui.html`.
+
+Para parar tudo:
+
+```powershell
+docker compose down -v
+```
+
+## Rodando os testes
+
+Com Java 17 ou superior:
+
+```powershell
+.\mvnw.cmd test
+```
