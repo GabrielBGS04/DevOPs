@@ -157,5 +157,13 @@ docker compose down -v
 Com Java 17 ou superior:
 
 ```powershell
-.\mvnw.cmd test
+.\mvnw.cmd clean verify
 ```
+
+O comando executa os testes de domínio e de integração da API com H2, gera o
+relatório JaCoCo e exige 100% de cobertura de linhas, branches e instruções em
+cada classe. Se a cobertura ficar abaixo disso ou algum teste falhar, o build falha.
+
+Abra `target/site/jacoco/index.html` no navegador para consultar o relatório.
+Os testes verificam os limites de nota, o plano Premium, entradas inválidas,
+histórico e média, persistência, criação e consulta pela API e respostas 400/404.
