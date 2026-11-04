@@ -1,208 +1,194 @@
-# Projeto DevOps
+# Plataforma de cursos — DevOps e QA
 
-## Sobre o caso
+Projeto acadêmico desenvolvido por **Gabriel Baldi e Higor Aranda**. A implementação parte de uma regra de recompensa da AC1 e evolui, no B1 Architecture Lab, para módulos de negócio, integrações resilientes e implantação por componente.
 
-O caso fala de uma plataforma de cursos online por assinatura. O aluno do plano básico paga uma mensalidade e tem acesso a cursos. Quando termina um curso com uma nota boa, ele ganha mais cursos. O aluno também pode ganhar curso participando do fórum. Depois de conquistar 12 cursos, passa para o plano Premium e ganha outras vantagens.
+**Tecnologias:** Java 17 · Spring Boot 4.1.1 · Maven · JUnit · JaCoCo · Python/FastAPI · MQTT/Mosquitto · Jenkins · Prometheus · Grafana.
 
-Neste projeto, foi escolhida a parte em que o aluno do plano básico ganha 3 cursos quando tira nota maior ou igual a 8,5.
+[Entrega B1 em Word](docs/entrega/B1_Architecture_Lab_Final.docx) · [Decisões arquiteturais](docs/arquitetura/README.md) · [Capturas diretas](docs/evidencias/b1/telas-reais/README.md) · [Infraestrutura local](infra/README.md)
 
-## User Story escolhida
+## Regra de negócio
 
-**Quem escreveu: Gabriel Baldi**
+Um aluno do plano **Básico** recebe **três cursos de bônus** ao concluir um curso com nota **maior ou igual a 8,5**. A conclusão fica no histórico. Notas abaixo desse limite e alunos Premium não recebem esse bônus.
 
-> Como aluno do plano básico, quero ganhar 3 cursos quando terminar um curso com nota maior ou igual a 8,5 para continuar estudando sem pagar mais por isso.
+> Como aluno do plano básico, quero ganhar três cursos ao concluir um curso com nota mínima 8,5 para continuar estudando sem pagar mais por isso.
 
-## BDDs feitos
+User Story escrita por Gabriel Baldi. O cenário de nota 8,5 foi detalhado por Gabriel Baldi; o de nota 7,0, por Higor Aranda.
 
-### BDD 1 - Gabriel Baldi
+| Cenário | Resultado esperado |
+| --- | --- |
+| Básico, nota 8,5 | Registrar a conclusão e conceder três cursos |
+| Básico, nota 7,0 | Registrar a conclusão sem conceder bônus |
+| Premium | Preservar a conclusão sem aplicar o bônus do plano Básico |
+| Nota inválida | Rejeitar a entrada sem alterar o estado do aluno |
 
-João é aluno do plano básico e termina um curso com nota 8,5. A nota precisa ficar no histórico e ele deve ganhar 3 cursos.
+## Arquitetura do B1
 
-### BDD 2 - Higor Aranda
+O Core continua sendo um único executável Spring Boot. Cursos, ranking e gamificação têm fronteiras internas; a IA e as integrações são processos Python separados.
 
-Maria é aluna do plano básico e termina um curso com nota 7,0. Ela não deve ganhar cursos extras.
-
-## TDD
-
-### RED
-
-No RED os testes falham porque a regra ainda não estava pronta.
-
-**BDD 1 falhando**
-
-![BDD 1 RED](docs/evidencias/bdd1/red-bdd1.png)
-
-**BDD 2 falhando**
-
-![BDD 2 RED](docs/evidencias/bdd2/red-bdd2.png)
-
-### GREEN
-
-No GREEN a regra foi implementada e os testes passaram.
-
-**BDD 1 - testes passando**
-
-![BDD 1 GREEN 1](docs/evidencias/bdd1/green-tdd1.png)
-
-![BDD 1 GREEN 2](docs/evidencias/bdd1/green-tdd2.png)
-
-![BDD 1 GREEN 3](docs/evidencias/bdd1/green-tdd3.png)
-
-**BDD 2 - testes passando**
-
-![BDD 2 GREEN 1](docs/evidencias/bdd2/green-tdd1.png)
-
-![BDD 2 GREEN 2](docs/evidencias/bdd2/green-tdd2.png)
-
-![BDD 2 GREEN 3](docs/evidencias/bdd2/green-tdd3.png)
-
-### BLUE
-
-No BLUE o código foi organizado sem mudar o resultado dos testes. A cobertura da regra original ficou em 100%, sem partes em vermelho ou amarelo.
-
-![BLUE](docs/evidencias/blue-refatoracao.png)
-
-## Organização do projeto
-
-O projeto está separado assim:
-
-- `controller`: recebe as requisições da API;
-- `service`: aplica as regras;
-- `repository`: conversa com o banco;
-- `domain`: classes `Aluno`, `Curso` e `Plano`;
-- `dto`: dados que entram e saem da API.
-
-## Swagger
-
-Com a aplicação rodando, abra:
-
-```text
-http://localhost:8080/swagger-ui.html
-```
-
-O JSON da documentação fica em:
-
-```text
-http://localhost:8080/v3/api-docs
-```
-
-## Endpoints
-
-| Método | Endpoint | O que faz |
+| Desafio | Solução adotada | Decisão |
 | --- | --- | --- |
-| POST | `/api/alunos` | Cria um aluno |
-| GET | `/api/alunos` | Lista alunos |
-| GET | `/api/alunos/{id}` | Busca um aluno |
-| POST | `/api/cursos` | Cria um curso |
-| GET | `/api/cursos` | Lista cursos |
-| POST | `/api/alunos/{id}/concluir-curso` | Conclui um curso e verifica o bônus |
+| 1 — Evolução do Core | Monólito modular e APIs públicas entre capacidades | [ADR-001](docs/adr/ADR-001.md) |
+| 2 — Organização interna | Política em Java puro e caso de uso com Ports & Adapters | [ADR-002](docs/adr/ADR-002.md) |
+| 3 — Python e IA | HTTP/JSON, timeout e fallback | [ADR-003](docs/adr/ADR-003.md) |
+| 4 — Comunicação e eventos | Outbox transacional e entrega eventual | [ADR-004](docs/adr/ADR-004.md) |
+| 5 — IoT | MQTT QoS 1, spool persistente e inbox idempotente | [ADR-005](docs/adr/ADR-005.md) |
+| 6 — Operação | Pipelines por executável e observabilidade | [ADR-006](docs/adr/ADR-006.md) |
 
-Exemplo para criar aluno:
+Os diagramas C4 e a matriz de ASRs estão no [registro arquitetural](docs/arquitetura/README.md). Os experimentos verificam se a conclusão e a recompensa continuam funcionando durante as falhas provocadas.
 
-```json
-{ "nome": "João", "plano": "BASICO" }
+## Estrutura do projeto
+
+```text
+src/main/java/com/example/devops/
+├── curso/          API, aplicação, domínio e persistência de cursos
+├── ranking/        Consulta de ranking pela API pública de alunos
+├── gamificacao/    Política de bônus, caso de uso, porta e adapter JPA
+├── aluno/api/      Contrato público de leitura para o ranking
+├── integracao/     IA, outbox, notificações e inbox de eventos IoT
+└── ...             Controllers, entidades e serviços preservados da AC1
+
+services/
+├── ia/             Recomendação e assistente demonstrativos
+└── integracoes/    Receptor de notificações e gateway MQTT
+
+infra/              Configurações de Jenkins, MQTT e observabilidade
+scripts/b1/         Execução, implantação, parada e experimentos locais
+docs/               ADRs, diagramas, evidências e documentos de entrega
 ```
 
-Exemplo para criar curso:
+## Executar localmente
 
-```json
-{ "nome": "Docker" }
-```
+### Core e testes
 
-Exemplo para concluir curso:
-
-```json
-{ "cursoId": 1, "nota": 8.5 }
-```
-
-## Banco de dados
-
-### H2
-
-Foi feito um teste de integração usando H2 em memória. Ele cria aluno e curso, salva a conclusão e verifica os 3 cursos de bônus.
-
-Resultado: teste executado com sucesso, 0 falhas e 0 erros.
-
-![Teste de integração com H2 passando](docs/evidencias/banco/h2-rodando.jpg)
-
-### PostgreSQL
-
-O PostgreSQL está configurado no `docker-compose.yml`. O banco criado é o `devops_db` e a porta é `5432`.
-
-Depois de subir o Docker, estes comandos mostram a evidência:
-
-```powershell
-docker compose ps
-docker compose logs db
-```
-
-## Rodando com Docker
-
-Abra o terminal dentro da pasta `DEVOPS` e rode:
-
-```powershell
-docker compose up --build
-```
-
-Depois abra o Swagger em `http://localhost:8080/swagger-ui.html`.
-
-Para parar tudo:
-
-```powershell
-docker compose down -v
-```
-
-## Rodando os testes
-
-Com Java 17 ou superior:
+O Core tem alvo Java 17 e usa o Maven Wrapper do projeto. O ambiente completo validado no laboratório é Windows, com JDK 25 para executar o Jenkins.
 
 ```powershell
 .\mvnw.cmd clean verify
 ```
 
-O comando executa os testes de domínio e de integração da API com H2, gera o
-relatório JaCoCo e exige 100% de cobertura de linhas, branches e instruções em
-cada classe. Se a cobertura ficar abaixo disso ou algum teste falhar, o build falha.
+Para executar somente o Core com o perfil local:
 
-Abra `target/site/jacoco/index.html` no navegador para consultar o relatório.
-Os testes verificam os limites de nota, o plano Premium, entradas inválidas,
-histórico e média, persistência, criação e consulta pela API e respostas 400/404.
+```powershell
+.\mvnw.cmd spring-boot:run '-Dspring-boot.run.profiles=lab'
+```
 
-## B1 Architecture Lab
+Esse perfil usa H2 em arquivo. Encerre o processo com `Ctrl+C` quando terminar. Sem os serviços Python, o Core mantém o fallback da IA e conserva notificações pendentes até o receptor voltar.
 
-Os seis desafios evoluem este MVP com módulos de curso e ranking, política de
-bônus isolada, serviço Python demonstrativo, outbox de notificações, integração
-MQTT idempotente e pipelines Jenkins com Prometheus/Grafana.
+### Laboratório com os componentes preparados
 
-O laboratório foi executado com processos Windows nativos e banco H2 em arquivo.
-PostgreSQL/Docker permanecem como alternativa configurada, sem comprovação de
-execução em containers. A regra original do bônus de três cursos a partir de
-nota 8,5 foi preservada. A IA é demonstrativa, sem modelo ML/RAG completo.
+Os comandos abaixo usam ferramentas locais e artefatos previamente aprovados em `infra/.runtime/last-good`. A preparação inicial e os requisitos estão no [guia da infraestrutura](infra/README.md).
 
-- [Registro arquitetural, matriz de ASRs e seis ADRs](docs/arquitetura/README.md)
-- [Resultados reais e 18 capturas](docs/evidencias/b1/README.md)
-- [Documento Word com respostas e evidências por desafio](docs/entrega/B1_Architecture_Lab_Resolvido.docx)
-- [Preparação e execução da infraestrutura local](infra/README.md)
+```powershell
+.\scripts\b1\infra-start.ps1
+.\scripts\b1\infra-deploy.ps1 -Component core -Artifacts '.\infra\.runtime\last-good\core'
+.\scripts\b1\infra-deploy.ps1 -Component ia -Artifacts '.\infra\.runtime\last-good\ia'
+.\scripts\b1\infra-deploy.ps1 -Component integracoes -Artifacts '.\infra\.runtime\last-good\integracoes'
+```
 
-- [Especificação e decisões propostas](docs/superpowers/specs/2026-11-03-b1-design.md)
-- [Plano de implementação e critérios de conclusão](docs/superpowers/plans/2026-11-03-b1-architecture-lab.md)
-- [Guia de prints com nomes, telas e pastas de destino](docs/evidencias/b1/README.md)
+| Ferramenta | Endereço local |
+| --- | --- |
+| Swagger do Core | http://127.0.0.1:8080/swagger-ui/index.html |
+| Saúde do Core | http://127.0.0.1:8080/actuator/health |
+| Documentação da IA | http://127.0.0.1:8001/docs |
+| Documentação das integrações | http://127.0.0.1:8002/docs |
+| Jenkins | http://127.0.0.1:8081 |
+| Prometheus | http://127.0.0.1:9090 |
+| Grafana | http://127.0.0.1:3000/d/b1-operacao |
+| MQTT | `127.0.0.1:1883`, tópico `b1/atividades` |
 
-Verificação executada: 80 testes Java aprovados, com 100% de cobertura de linhas,
-branches e instruções por classe; 19 testes Python aprovados. Os experimentos
-reais dos Desafios 3, 4 e 5 aprovaram 36 verificações de integração.
+Para encerrar os componentes iniciados pelos scripts:
 
-Para repetir os experimentos depois de iniciar a infraestrutura e implantar os
-três componentes conforme o guia:
+```powershell
+.\scripts\b1\infra-component-stop.ps1 -Component core
+.\scripts\b1\infra-component-stop.ps1 -Component ia
+.\scripts\b1\infra-component-stop.ps1 -Component integracoes
+.\scripts\b1\infra-stop.ps1
+```
+
+### Alternativa com Docker
+
+Os arquivos Compose fornecem uma alternativa com PostgreSQL. Essa execução não foi comprovada no laboratório B1.
+
+```powershell
+docker compose up --build
+docker compose down
+```
+
+## API
+
+| Método | Endpoint | Função |
+| --- | --- | --- |
+| POST / GET | `/api/alunos` | Criar ou listar alunos |
+| GET | `/api/alunos/{id}` | Consultar o estado de um aluno |
+| POST / GET | `/api/cursos` | Criar ou listar cursos |
+| POST | `/api/alunos/{id}/concluir-curso` | Registrar a conclusão e aplicar a política de bônus |
+| GET | `/api/ranking` | Consultar a pontuação derivada do histórico |
+| GET | `/api/alunos/{id}/recomendacoes` | Consultar recomendações ou fallback |
+| POST | `/api/assistente` | Consultar o assistente demonstrativo |
+| GET | `/api/notificacoes/pendentes` | Consultar a quantidade de eventos pendentes |
+| POST | `/api/iot/eventos` | Receber evento IoT de forma idempotente |
+
+Exemplo de conclusão de curso:
+
+```json
+{ "cursoId": 1, "nota": 8.5 }
+```
+
+O contrato completo está no Swagger e em `/v3/api-docs`.
+
+## Testes e evidências
+
+| Verificação registrada | Resultado |
+| --- | --- |
+| Java — domínio, casos de uso e integrações | 80 testes aprovados |
+| JaCoCo — 38 classes medidas | 100% de linhas, branches e instruções |
+| Python — IA, integrações e runner | 19 testes aprovados na execução original |
+| E2E — desafios 3, 4 e 5 | 36 verificações aprovadas na execução original |
+
+O `clean verify` executa os testes, gera `target/site/jacoco/index.html` e aplica o gate de cobertura por classe. Teste reprovado ou cobertura insuficiente interrompe o build. O relatório HTML padrão dos testes pode ser gerado com:
+
+```powershell
+.\mvnw.cmd surefire-report:report-only
+```
+
+O arquivo fica em `target/reports/surefire.html`. Para os testes Python, com as dependências dos dois serviços instaladas no ambiente local:
 
 ```powershell
 services/ia/.venv/Scripts/python.exe -m pytest services/ia/tests services/integracoes/tests scripts/b1/tests -q
-services/ia/.venv/Scripts/python.exe scripts/b1/laboratorio.py --execute
-.\scripts\b1\infra-metrics.ps1
 ```
 
-O roteiro usa dados sintéticos novos, provoca indisponibilidade temporária e
-restaura os componentes a partir do último artefato aprovado. As evidências
-registram datas, respostas, identificadores e hashes dos fontes efetivamente
-executados. A entrega no GitHub deve usar a branch do B1; a cópia interna
-`DevOPs/` não faz parte desta implementação.
+As [capturas diretas](docs/evidencias/b1/telas-reais/README.md) identificam as ferramentas, os cenários e os arquivos brutos de apoio. Os [registros originais](docs/evidencias/b1/README.md) conservam os logs, JSONs e relatórios das primeiras execuções.
+
+<details>
+<summary><strong>Histórico da AC1 — BDD, TDD e integração com H2</strong></summary>
+
+### RED
+
+Testes falhando antes da implementação da regra:
+
+![BDD 1 RED](docs/evidencias/bdd1/red-bdd1.png)
+![BDD 2 RED](docs/evidencias/bdd2/red-bdd2.png)
+
+### GREEN
+
+Implementação e aprovação dos cenários:
+
+![BDD 1 GREEN 1](docs/evidencias/bdd1/green-tdd1.png)
+![BDD 1 GREEN 2](docs/evidencias/bdd1/green-tdd2.png)
+![BDD 1 GREEN 3](docs/evidencias/bdd1/green-tdd3.png)
+![BDD 2 GREEN 1](docs/evidencias/bdd2/green-tdd1.png)
+![BDD 2 GREEN 2](docs/evidencias/bdd2/green-tdd2.png)
+![BDD 2 GREEN 3](docs/evidencias/bdd2/green-tdd3.png)
+
+### Refatoração e persistência
+
+![Refatoração e cobertura](docs/evidencias/blue-refatoracao.png)
+![Integração com H2](docs/evidencias/banco/h2-rodando.jpg)
+
+</details>
+
+## Limites do laboratório
+
+A execução comprovada usa processos Windows nativos, H2 em arquivo no Core e SQLite nas integrações. Docker, PostgreSQL e implantação em nuvem não foram executados. A IA usa recomendação determinística e busca textual local, sem treinamento de ML ou RAG/LLM completo. Também não houve ensaio de carga para 100 mil usuários.
+
+Os próximos passos são medir capacidade, ampliar falhas e concorrência, definir objetivos de operação e avaliar a qualidade dos recursos de IA.

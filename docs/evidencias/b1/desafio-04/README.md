@@ -14,25 +14,19 @@ Execução `20261104-082328-241e66`: 2026-11-04T08:23:33.360-03:00 a 2026-11-04T
 
 Base Git: `bdb6943`, branch local `codex/b1-architecture-lab`, com alterações B1 no momento da execução. Os JSONs dos experimentos e os artefatos do Jenkins registram hashes dos fontes para identificar a implementação efetivamente testada.
 
-## Capturas reais
+## Capturas diretas atualizadas
 
-### 01-sincrono-falha.jpg
+As telas atuais estão reunidas na pasta `telas-reais`. Os logs e JSONs desta pasta preservam a execução original.
 
-![01-sincrono-falha.jpg](01-sincrono-falha.jpg)
+| Item | Tela | Ferramenta |
+| --- | --- | --- |
+| 4.1 | [Falha da chamada síncrona](../telas-reais/D4-1-notificacao-sincrona-falha.jpg) | Swagger das integrações |
+| 4.2a | [Conclusão confirmada](../telas-reais/D4-2a-conclusao-confirmada.jpg) | Swagger do Core |
+| 4.2b | [Evento pendente](../telas-reais/D4-2b-outbox-pendente.jpg) | Swagger do Core |
+| 4.3a | [Outbox após recuperação](../telas-reais/D4-3a-outbox-recuperada.jpg) | Swagger do Core |
+| 4.3b | [Notificação recebida](../telas-reais/D4-3b-notificacao-recebida.jpg) | Swagger das integrações |
 
-Captura: 2026-11-04T08:27:20.768930-03:00. SHA-256: `33b6312c9bbc3ee5b180fe2a295bb6bfe3843eb07f3184109cdfd41bb00eed8b`.
-
-### 02-assincrono-pendente.jpg
-
-![02-assincrono-pendente.jpg](02-assincrono-pendente.jpg)
-
-Captura: 2026-11-04T08:27:20.987866-03:00. SHA-256: `c37f8b6d27a034b006828ba835226a9c3320767c231e9175bd8f96bf25e6557e`.
-
-### 03-recuperacao.jpg
-
-![03-recuperacao.jpg](03-recuperacao.jpg)
-
-Captura: 2026-11-04T08:27:21.228792-03:00. SHA-256: `48fa4b32f9de42c19374ee4927d1c96e82a4dc60d24f997a70101ce7b3120412`.
+[Manifesto com datas e hashes](../telas-reais/capturas.json).
 
 ## Fontes e reprodução
 
@@ -46,4 +40,4 @@ Captura: 2026-11-04T08:27:21.228792-03:00. SHA-256: `48fa4b32f9de42c19374ee4927d
 
 Entrega pelo menos uma vez, com deduplicação no receptor; não há exatamente uma vez distribuído. Confirmação da notificação é eventual. Polling acrescenta latência e o dispatcher do laboratório é de instância única. Dados relacionais do laboratório ficam em H2 arquivo; configuração PostgreSQL permanece para Compose.
 
-Os prints dos Desafios 1 a 5 mostram relatórios de dados reais preservados em texto/JSON; não simulam interface de terminal, Swagger ou IDE. Os prints do Desafio 6 mostram Jenkins e Grafana diretamente.
+Os relatórios visuais antigos foram substituídos por capturas diretas das ferramentas. O print 1.1 exibe o registro histórico da estrutura; o 1.2 mostra a listagem atual dos diretórios. Os dados originais de execução permanecem preservados.

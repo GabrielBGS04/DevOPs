@@ -14,25 +14,19 @@ Execução `20261104-082328-241e66`: 2026-11-04T08:23:55.622-03:00 a 2026-11-04T
 
 Base Git: `bdb6943`, branch local `codex/b1-architecture-lab`, com alterações B1 no momento da execução. Os JSONs dos experimentos e os artefatos do Jenkins registram hashes dos fontes para identificar a implementação efetivamente testada.
 
-## Capturas reais
+## Capturas diretas atualizadas
 
-### 01-mqtt-publicacao-recepcao.jpg
+As telas atuais estão reunidas na pasta `telas-reais`. Os logs e JSONs desta pasta preservam a execução original.
 
-![01-mqtt-publicacao-recepcao.jpg](01-mqtt-publicacao-recepcao.jpg)
+| Item | Tela | Ferramenta |
+| --- | --- | --- |
+| 5.1 | [Evento MQTT entregue](../telas-reais/D5-1-evento-mqtt-entregue.jpg) | Swagger das integrações |
+| 5.2a | [Gateway desconectado](../telas-reais/D5-2a-antes-reconexao.jpg) | Swagger do Core |
+| 5.2b | [Após reconexão](../telas-reais/D5-2b-depois-reconexao.jpg) | Swagger do Core |
+| 5.3a | [Mesmo evento aceito](../telas-reais/D5-3a-evento-repetido-aceito.jpg) | Swagger do Core |
+| 5.3b | [Sem recompensa duplicada](../telas-reais/D5-3b-sem-bonus-duplicado.jpg) | Swagger do Core |
 
-Captura: 2026-11-04T08:27:21.463944-03:00. SHA-256: `cbd8f839fcfc6910a4fe583a5ea1cd8533a48a56f34db9ba4416a704bd9b0eb6`.
-
-### 02-reconexao.jpg
-
-![02-reconexao.jpg](02-reconexao.jpg)
-
-Captura: 2026-11-04T08:27:21.790200-03:00. SHA-256: `67fb249fd1e3d59cc7c82769ee2cec6c710952167f70922c56ff1305cacef340`.
-
-### 03-evento-sem-duplicacao.jpg
-
-![03-evento-sem-duplicacao.jpg](03-evento-sem-duplicacao.jpg)
-
-Captura: 2026-11-04T08:27:22.040822-03:00. SHA-256: `8d3a810f3e558525fa44b650ffe8438b429e11828aef8a1eae16afd7048eba3e`.
+[Manifesto com datas e hashes](../telas-reais/capturas.json).
 
 ## Fontes e reprodução
 
@@ -46,4 +40,4 @@ Captura: 2026-11-04T08:27:22.040822-03:00. SHA-256: `8d3a810f3e558525fa44b650ffe
 
 QoS 1 admite duplicatas e não substitui idempotência. O experimento prova a janela de desconexão/reconexão executada, não ausência absoluta de perdas em qualquer falha de disco. O gateway compartilha executável de integrações para reduzir operação, com responsabilidades separadas no código.
 
-Os prints dos Desafios 1 a 5 mostram relatórios de dados reais preservados em texto/JSON; não simulam interface de terminal, Swagger ou IDE. Os prints do Desafio 6 mostram Jenkins e Grafana diretamente.
+Os relatórios visuais antigos foram substituídos por capturas diretas das ferramentas. O print 1.1 exibe o registro histórico da estrutura; o 1.2 mostra a listagem atual dos diretórios. Os dados originais de execução permanecem preservados.

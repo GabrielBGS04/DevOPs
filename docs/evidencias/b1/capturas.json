@@ -6,7 +6,13 @@
       1013,
       998
     ],
-    "capturadoEm": "2026-11-03T20:09:21.250432-03:00"
+    "capturadoEm": "2026-11-03T20:09:21.250432-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D1-1-registro-estrutura-anterior.jpg",
+      "docs/evidencias/b1/telas-reais/D1-2-diretorios-reais.jpg",
+      "docs/evidencias/b1/telas-reais/D1-3-ranking-swagger.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-01/02-modulos-depois.jpg",
@@ -15,7 +21,13 @@
       1264,
       941
     ],
-    "capturadoEm": "2026-11-04T08:26:53.223422-03:00"
+    "capturadoEm": "2026-11-04T08:26:53.223422-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D1-1-registro-estrutura-anterior.jpg",
+      "docs/evidencias/b1/telas-reais/D1-2-diretorios-reais.jpg",
+      "docs/evidencias/b1/telas-reais/D1-3-ranking-swagger.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-01/03-ranking-funcionando.jpg",
@@ -24,7 +36,13 @@
       1280,
       720
     ],
-    "capturadoEm": "2026-11-04T08:26:53.436484-03:00"
+    "capturadoEm": "2026-11-04T08:26:53.436484-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D1-1-registro-estrutura-anterior.jpg",
+      "docs/evidencias/b1/telas-reais/D1-2-diretorios-reais.jpg",
+      "docs/evidencias/b1/telas-reais/D1-3-ranking-swagger.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-02/01-regra-isolada.jpg",
@@ -33,7 +51,14 @@
       1264,
       941
     ],
-    "capturadoEm": "2026-11-04T08:26:53.657633-03:00"
+    "capturadoEm": "2026-11-04T08:26:53.657633-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D2-1-politica-jacoco.jpg",
+      "docs/evidencias/b1/telas-reais/D2-2-testes-adapters-surefire.jpg",
+      "docs/evidencias/b1/telas-reais/D2-3a-resumo-surefire.jpg",
+      "docs/evidencias/b1/telas-reais/D2-3-cobertura-jacoco.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-02/02-adapters-testados.jpg",
@@ -42,7 +67,14 @@
       1264,
       784
     ],
-    "capturadoEm": "2026-11-04T08:26:55.032343-03:00"
+    "capturadoEm": "2026-11-04T08:26:55.032343-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D2-1-politica-jacoco.jpg",
+      "docs/evidencias/b1/telas-reais/D2-2-testes-adapters-surefire.jpg",
+      "docs/evidencias/b1/telas-reais/D2-3a-resumo-surefire.jpg",
+      "docs/evidencias/b1/telas-reais/D2-3-cobertura-jacoco.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-02/03-regressao-cobertura.jpg",
@@ -51,7 +83,14 @@
       1280,
       720
     ],
-    "capturadoEm": "2026-11-04T08:26:55.277758-03:00"
+    "capturadoEm": "2026-11-04T08:26:55.277758-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D2-1-politica-jacoco.jpg",
+      "docs/evidencias/b1/telas-reais/D2-2-testes-adapters-surefire.jpg",
+      "docs/evidencias/b1/telas-reais/D2-3a-resumo-surefire.jpg",
+      "docs/evidencias/b1/telas-reais/D2-3-cobertura-jacoco.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-03/01-ia-disponivel.jpg",
@@ -60,7 +99,13 @@
       1264,
       808
     ],
-    "capturadoEm": "2026-11-04T08:27:19.632214-03:00"
+    "capturadoEm": "2026-11-04T08:27:19.632214-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D3-1-ia-disponivel-swagger.jpg",
+      "docs/evidencias/b1/telas-reais/D3-2-ia-indisponivel-swagger.jpg",
+      "docs/evidencias/b1/telas-reais/D3-3-conclusao-sem-ia-swagger.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-03/02-ia-indisponivel.jpg",
@@ -69,7 +114,13 @@
       1264,
       984
     ],
-    "capturadoEm": "2026-11-04T08:27:20.045945-03:00"
+    "capturadoEm": "2026-11-04T08:27:20.045945-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D3-1-ia-disponivel-swagger.jpg",
+      "docs/evidencias/b1/telas-reais/D3-2-ia-indisponivel-swagger.jpg",
+      "docs/evidencias/b1/telas-reais/D3-3-conclusao-sem-ia-swagger.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-03/03-core-sem-ia.jpg",
@@ -78,7 +129,13 @@
       1280,
       720
     ],
-    "capturadoEm": "2026-11-04T08:27:20.396261-03:00"
+    "capturadoEm": "2026-11-04T08:27:20.396261-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D3-1-ia-disponivel-swagger.jpg",
+      "docs/evidencias/b1/telas-reais/D3-2-ia-indisponivel-swagger.jpg",
+      "docs/evidencias/b1/telas-reais/D3-3-conclusao-sem-ia-swagger.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-04/01-sincrono-falha.jpg",
@@ -87,7 +144,15 @@
       1280,
       720
     ],
-    "capturadoEm": "2026-11-04T08:27:20.768930-03:00"
+    "capturadoEm": "2026-11-04T08:27:20.76893-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D4-1-notificacao-sincrona-falha.jpg",
+      "docs/evidencias/b1/telas-reais/D4-2a-conclusao-confirmada.jpg",
+      "docs/evidencias/b1/telas-reais/D4-2b-outbox-pendente.jpg",
+      "docs/evidencias/b1/telas-reais/D4-3a-outbox-recuperada.jpg",
+      "docs/evidencias/b1/telas-reais/D4-3b-notificacao-recebida.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-04/02-assincrono-pendente.jpg",
@@ -96,7 +161,15 @@
       1264,
       1064
     ],
-    "capturadoEm": "2026-11-04T08:27:20.987866-03:00"
+    "capturadoEm": "2026-11-04T08:27:20.987866-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D4-1-notificacao-sincrona-falha.jpg",
+      "docs/evidencias/b1/telas-reais/D4-2a-conclusao-confirmada.jpg",
+      "docs/evidencias/b1/telas-reais/D4-2b-outbox-pendente.jpg",
+      "docs/evidencias/b1/telas-reais/D4-3a-outbox-recuperada.jpg",
+      "docs/evidencias/b1/telas-reais/D4-3b-notificacao-recebida.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-04/03-recuperacao.jpg",
@@ -105,7 +178,15 @@
       1264,
       1011
     ],
-    "capturadoEm": "2026-11-04T08:27:21.228792-03:00"
+    "capturadoEm": "2026-11-04T08:27:21.228792-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D4-1-notificacao-sincrona-falha.jpg",
+      "docs/evidencias/b1/telas-reais/D4-2a-conclusao-confirmada.jpg",
+      "docs/evidencias/b1/telas-reais/D4-2b-outbox-pendente.jpg",
+      "docs/evidencias/b1/telas-reais/D4-3a-outbox-recuperada.jpg",
+      "docs/evidencias/b1/telas-reais/D4-3b-notificacao-recebida.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-05/01-mqtt-publicacao-recepcao.jpg",
@@ -114,7 +195,15 @@
       1264,
       835
     ],
-    "capturadoEm": "2026-11-04T08:27:21.463944-03:00"
+    "capturadoEm": "2026-11-04T08:27:21.463944-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D5-1-evento-mqtt-entregue.jpg",
+      "docs/evidencias/b1/telas-reais/D5-2a-antes-reconexao.jpg",
+      "docs/evidencias/b1/telas-reais/D5-2b-depois-reconexao.jpg",
+      "docs/evidencias/b1/telas-reais/D5-3a-evento-repetido-aceito.jpg",
+      "docs/evidencias/b1/telas-reais/D5-3b-sem-bonus-duplicado.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-05/02-reconexao.jpg",
@@ -123,7 +212,15 @@
       1264,
       1090
     ],
-    "capturadoEm": "2026-11-04T08:27:21.790200-03:00"
+    "capturadoEm": "2026-11-04T08:27:21.7902-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D5-1-evento-mqtt-entregue.jpg",
+      "docs/evidencias/b1/telas-reais/D5-2a-antes-reconexao.jpg",
+      "docs/evidencias/b1/telas-reais/D5-2b-depois-reconexao.jpg",
+      "docs/evidencias/b1/telas-reais/D5-3a-evento-repetido-aceito.jpg",
+      "docs/evidencias/b1/telas-reais/D5-3b-sem-bonus-duplicado.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-05/03-evento-sem-duplicacao.jpg",
@@ -132,7 +229,15 @@
       1264,
       1090
     ],
-    "capturadoEm": "2026-11-04T08:27:22.040822-03:00"
+    "capturadoEm": "2026-11-04T08:27:22.040822-03:00",
+    "estado": "Substituída na entrega final; relatório visual antigo removido.",
+    "substituidaPor": [
+      "docs/evidencias/b1/telas-reais/D5-1-evento-mqtt-entregue.jpg",
+      "docs/evidencias/b1/telas-reais/D5-2a-antes-reconexao.jpg",
+      "docs/evidencias/b1/telas-reais/D5-2b-depois-reconexao.jpg",
+      "docs/evidencias/b1/telas-reais/D5-3a-evento-repetido-aceito.jpg",
+      "docs/evidencias/b1/telas-reais/D5-3b-sem-bonus-duplicado.jpg"
+    ]
   },
   {
     "arquivo": "docs/evidencias/b1/desafio-06/01-jenkins-sucesso.jpg",

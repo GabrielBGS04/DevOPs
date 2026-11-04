@@ -1,0 +1,22 @@
+{
+  "D5Normal": {
+    "cursoId": 67,
+    "curso": "Curso B1 D5Normal 20261104-110828",
+    "alunoId": 67
+  },
+  "D3": {
+    "cursoId": 65,
+    "curso": "Curso B1 D3 20261104-110828",
+    "alunoId": 65
+  },
+  "D4": {
+    "cursoId": 66,
+    "curso": "Curso B1 D4 20261104-110828",
+    "alunoId": 66
+  },
+  "D5Offline": {
+    "cursoId": 68,
+    "curso": "Curso B1 D5Offline 20261104-110828",
+    "alunoId": 68
+  }
+}

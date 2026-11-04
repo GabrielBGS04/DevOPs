@@ -1,0 +1,168 @@
+{
+  "capturadoEm": "2026-11-04T15:53:55.8127710-03:00",
+  "alunos": [
+    {
+      "cenario": "D3",
+      "status": 200,
+      "resposta": {
+        "id": 65,
+        "nome": "Captura B1 D3 20261104-110828",
+        "plano": "BASICO",
+        "cursosDisponiveis": 3,
+        "mediaGeral": 8,
+        "historico": {
+          "Curso B1 D3 20261104-110828": 8.5
+        }
+      }
+    },
+    {
+      "cenario": "D4",
+      "status": 200,
+      "resposta": {
+        "id": 66,
+        "nome": "Captura B1 D4 20261104-110828",
+        "plano": "BASICO",
+        "cursosDisponiveis": 3,
+        "mediaGeral": 8,
+        "historico": {
+          "Curso B1 D4 20261104-110828": 8.5
+        }
+      }
+    },
+    {
+      "cenario": "D5Normal",
+      "status": 200,
+      "resposta": {
+        "id": 67,
+        "nome": "Captura B1 D5Normal 20261104-110828",
+        "plano": "BASICO",
+        "cursosDisponiveis": 3,
+        "mediaGeral": 8,
+        "historico": {
+          "Curso B1 D5Normal 20261104-110828": 8.5
+        }
+      }
+    },
+    {
+      "cenario": "D5Offline",
+      "status": 200,
+      "resposta": {
+        "id": 68,
+        "nome": "Captura B1 D5Offline 20261104-110828",
+        "plano": "BASICO",
+        "cursosDisponiveis": 3,
+        "mediaGeral": 8,
+        "historico": {
+          "Curso B1 D5Offline 20261104-110828": 8.5
+        }
+      }
+    }
+  ],
+  "outbox": {
+    "quantidade": 0
+  },
+  "gateway": [
+    {
+      "eventId": "4cd4d12b-958b-4ed7-a7c1-545430bc17d4",
+      "status": "ENTREGUE",
+      "tentativas": 1,
+      "ultimoErro": null,
+      "recebidoEm": "2026-11-04 11:23:55",
+      "entregueEm": "2026-11-04 11:23:55"
+    },
+    {
+      "eventId": "55d19921-3ec4-4dea-947d-b8c223cecf2a",
+      "status": "ENTREGUE",
+      "tentativas": 1,
+      "ultimoErro": null,
+      "recebidoEm": "2026-11-04 11:24:02",
+      "entregueEm": "2026-11-04 11:24:07"
+    },
+    {
+      "eventId": "434b5064-1e56-4f6f-9fbf-c2c46bc36fe7",
+      "status": "ENTREGUE",
+      "tentativas": 2,
+      "ultimoErro": null,
+      "recebidoEm": "2026-11-04 11:24:12",
+      "entregueEm": "2026-11-04 11:24:31"
+    },
+    {
+      "eventId": "captura-normal-d8d45913-3970-4882-b562-c47203dc5be5",
+      "status": "ENTREGUE",
+      "tentativas": 1,
+      "ultimoErro": null,
+      "recebidoEm": "2026-11-04 18:41:17",
+      "entregueEm": "2026-11-04 18:41:20"
+    },
+    {
+      "eventId": "captura-offline-39e0c8a9-36fc-49e0-9454-fb38fc40cc16",
+      "status": "ENTREGUE",
+      "tentativas": 1,
+      "ultimoErro": null,
+      "recebidoEm": "2026-11-04 18:44:06",
+      "entregueEm": "2026-11-04 18:44:11"
+    }
+  ],
+  "notificacoes": [
+    {
+      "eventId": "e6d664ad-916e-4dc2-9407-097cf7d96904",
+      "alunoId": 1,
+      "cursoId": 1,
+      "nota": 8.5
+    },
+    {
+      "eventId": "af068af7-1594-48d8-ad7a-70afb90183ff",
+      "alunoId": 33,
+      "cursoId": 33,
+      "nota": 8.5
+    },
+    {
+      "eventId": "7a4c40fd-a026-4fbe-b58c-a1252ba745c7",
+      "alunoId": 34,
+      "cursoId": 34,
+      "nota": 8.5
+    },
+    {
+      "eventId": "99701859-b78d-466f-a115-1bd7b84137cc",
+      "alunoId": 35,
+      "cursoId": 35,
+      "nota": 8.5
+    },
+    {
+      "eventId": "438526fa-64c8-4746-bb65-ac662ecccfff",
+      "alunoId": 36,
+      "cursoId": 36,
+      "nota": 8.5
+    },
+    {
+      "eventId": "f7af73ed-2781-43ee-aedb-57691e26a28d",
+      "alunoId": 37,
+      "cursoId": 37,
+      "nota": 8.5
+    },
+    {
+      "eventId": "0013de42-5ada-45a5-943e-53bb71637ada",
+      "alunoId": 65,
+      "cursoId": 65,
+      "nota": 8.5
+    },
+    {
+      "eventId": "42d5a166-7090-4894-b613-98bf2fc88b9a",
+      "alunoId": 66,
+      "cursoId": 66,
+      "nota": 8.5
+    },
+    {
+      "eventId": "1b750611-756d-445b-92ee-7319eecd9f2f",
+      "alunoId": 67,
+      "cursoId": 67,
+      "nota": 8.5
+    },
+    {
+      "eventId": "6056556c-8735-46c8-a967-74b96c4b4623",
+      "alunoId": 68,
+      "cursoId": 68,
+      "nota": 8.5
+    }
+  ]
+}

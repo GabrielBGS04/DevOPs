@@ -4,7 +4,7 @@ Equipe: Gabriel Baldi e Higor Aranda, conforme identificação existente no READ
 
 Repositório: https://github.com/GabrielBGS04/DevOPs
 
-Base confirmada: bdb6943. Implementação na branch local codex/b1-architecture-lab; resultados sem novo commit são identificados como árvore de trabalho modificada.
+Base histórica do laboratório: `bdb6943`, registrada em 03/11/2026. A [entrega final](../entrega/B1_Architecture_Lab_Final.docx) reúne respostas e diagramas; o [índice de capturas diretas](../evidencias/b1/telas-reais/README.md) documenta as telas e os resultados observados. Esta referência histórica não descreve o estado atual do repositório.
 
 ## Objetivo e execução
 
@@ -97,4 +97,4 @@ Aprofundar antes de produção: carga real e consulta paginada do ranking; model
 
 ## Reprodução
 
-Consultar [infraestrutura](../../infra/README.md), [roteiro de comprovação](../evidencias/b1/README.md) e os comandos registrados nos resultados dos desafios. O documento Word de entrega será disponibilizado em docs/entrega/.
+Consultar [infraestrutura](../../infra/README.md), [roteiro de comprovação](../evidencias/b1/README.md) e os comandos registrados nos resultados dos desafios. O [documento Word final](../entrega/B1_Architecture_Lab_Final.docx) está disponível na pasta de entrega.

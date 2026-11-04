@@ -14,25 +14,17 @@ Execução `20261104-082328-241e66`: 2026-11-04T08:23:28.221-03:00 a 2026-11-04T
 
 Base Git: `bdb6943`, branch local `codex/b1-architecture-lab`, com alterações B1 no momento da execução. Os JSONs dos experimentos e os artefatos do Jenkins registram hashes dos fontes para identificar a implementação efetivamente testada.
 
-## Capturas reais
+## Capturas diretas atualizadas
 
-### 01-ia-disponivel.jpg
+As telas atuais estão reunidas na pasta `telas-reais`. Os logs e JSONs desta pasta preservam a execução original.
 
-![01-ia-disponivel.jpg](01-ia-disponivel.jpg)
+| Item | Tela | Ferramenta |
+| --- | --- | --- |
+| 3.1 | [IA disponível](../telas-reais/D3-1-ia-disponivel-swagger.jpg) | Swagger do Core |
+| 3.2 | [Fallback da IA](../telas-reais/D3-2-ia-indisponivel-swagger.jpg) | Swagger do Core |
+| 3.3 | [Conclusão sem IA](../telas-reais/D3-3-conclusao-sem-ia-swagger.jpg) | Swagger do Core |
 
-Captura: 2026-11-04T08:27:19.632214-03:00. SHA-256: `f21cb8f36062dcf46a26985120970b93896bad4063d25a147a274ae7dcdd5f05`.
-
-### 02-ia-indisponivel.jpg
-
-![02-ia-indisponivel.jpg](02-ia-indisponivel.jpg)
-
-Captura: 2026-11-04T08:27:20.045945-03:00. SHA-256: `dc225dd1e08fd4a41074d443ff849d960c04874c7e731f2cd7a1a318e228242d`.
-
-### 03-core-sem-ia.jpg
-
-![03-core-sem-ia.jpg](03-core-sem-ia.jpg)
-
-Captura: 2026-11-04T08:27:20.396261-03:00. SHA-256: `727a2c1f43cdaf615e6661351142b0ce627338dac2425a043120fe595bdcc07d`.
+[Manifesto com datas e hashes](../telas-reais/capturas.json).
 
 ## Fontes e reprodução
 
@@ -46,4 +38,4 @@ Captura: 2026-11-04T08:27:20.396261-03:00. SHA-256: `727a2c1f43cdaf615e666135114
 
 Python sozinho não prova necessidade de serviço; autonomia de ciclo e isolamento de falha justificam a fronteira aqui testada. ML/RAG compartilham o executável enquanto não há evidência de cargas/ciclos distintos. A recomendação é determinística e o assistente faz busca textual em material local, sem treinamento de ML ou RAG/LLM completo.
 
-Os prints dos Desafios 1 a 5 mostram relatórios de dados reais preservados em texto/JSON; não simulam interface de terminal, Swagger ou IDE. Os prints do Desafio 6 mostram Jenkins e Grafana diretamente.
+Os relatórios visuais antigos foram substituídos por capturas diretas das ferramentas. O print 1.1 exibe o registro histórico da estrutura; o 1.2 mostra a listagem atual dos diretórios. Os dados originais de execução permanecem preservados.

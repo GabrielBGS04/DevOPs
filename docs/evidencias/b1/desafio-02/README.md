@@ -14,25 +14,18 @@ Verificação `mvnw.cmd clean verify` concluída em 03/11/2026; logs e relatóri
 
 Base Git: `bdb6943`, branch local `codex/b1-architecture-lab`, com alterações B1 no momento da execução. Os JSONs dos experimentos e os artefatos do Jenkins registram hashes dos fontes para identificar a implementação efetivamente testada.
 
-## Capturas reais
+## Capturas diretas atualizadas
 
-### 01-regra-isolada.jpg
+As telas atuais estão reunidas na pasta `telas-reais`. Os logs e JSONs desta pasta preservam a execução original.
 
-![01-regra-isolada.jpg](01-regra-isolada.jpg)
+| Item | Tela | Ferramenta |
+| --- | --- | --- |
+| 2.1 | [Política de bônus isolada](../telas-reais/D2-1-politica-jacoco.jpg) | JaCoCo |
+| 2.2 | [Testes dos adapters](../telas-reais/D2-2-testes-adapters-surefire.jpg) | Maven Surefire |
+| 2.3a | [Regressão Java](../telas-reais/D2-3a-resumo-surefire.jpg) | Maven Surefire |
+| 2.3b | [Cobertura do Core](../telas-reais/D2-3-cobertura-jacoco.jpg) | JaCoCo |
 
-Captura: 2026-11-04T08:26:53.657633-03:00. SHA-256: `36eb56c93042f809435723a69c1169d3fd2bec80076167eb571f6f448a8e999c`.
-
-### 02-adapters-testados.jpg
-
-![02-adapters-testados.jpg](02-adapters-testados.jpg)
-
-Captura: 2026-11-04T08:26:55.032343-03:00. SHA-256: `6632ec4b2e0f7c016950d4ddfc62449d1021985d4a46bd9092a6e11d75979970`.
-
-### 03-regressao-cobertura.jpg
-
-![03-regressao-cobertura.jpg](03-regressao-cobertura.jpg)
-
-Captura: 2026-11-04T08:26:55.277758-03:00. SHA-256: `3fbb280f9c29c7f173a7605259fe7deab67ab3d6e2703ce74c09eaaafd6843ee`.
+[Manifesto com datas e hashes](../telas-reais/capturas.json).
 
 ## Fontes e reprodução
 
@@ -46,4 +39,4 @@ Captura: 2026-11-04T08:26:55.277758-03:00. SHA-256: `3fbb280f9c29c7f173a7605259f
 
 As entidades legadas ainda possuem anotações JPA; a proteção é aplicada à política e ao caso de uso selecionados. DDD organiza os conceitos; Hexagonal organiza dependências. Clean/Onion podem compartilhar esse princípio, mas não exigem quatro estruturas simultâneas.
 
-Os prints dos Desafios 1 a 5 mostram relatórios de dados reais preservados em texto/JSON; não simulam interface de terminal, Swagger ou IDE. Os prints do Desafio 6 mostram Jenkins e Grafana diretamente.
+Os relatórios visuais antigos foram substituídos por capturas diretas das ferramentas. O print 1.1 exibe o registro histórico da estrutura; o 1.2 mostra a listagem atual dos diretórios. Os dados originais de execução permanecem preservados.

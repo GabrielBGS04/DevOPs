@@ -1,0 +1,370 @@
+[
+  {
+    "desafio": 1,
+    "print": "1.1",
+    "arquivo": "docs/evidencias/b1/telas-reais/D1-1-registro-estrutura-anterior.jpg",
+    "titulo": "Estrutura anterior",
+    "observacao": "Registro histórico dos arquivos da AC1 aberto no navegador; organização por camadas técnicas.",
+    "ferramenta": "Navegador — arquivo de texto",
+    "url": "http://127.0.0.1:8765/docs/evidencias/b1/desafio-01/antes-arquivos.txt",
+    "capturadoEm": "2026-11-04T15:47:59-03:00",
+    "sha256": "ff106a05cbabdefe4ede3a096545d2d5a31354c454b26756f49fd615f5bc2303",
+    "dimensoes": [
+      850,
+      470
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 1,
+    "print": "1.2",
+    "arquivo": "docs/evidencias/b1/telas-reais/D1-2-diretorios-reais.jpg",
+    "titulo": "Módulos atuais",
+    "observacao": "Listagem real do diretório do Core, com curso, ranking e gamificacao junto do legado.",
+    "ferramenta": "Navegador — listagem de diretório",
+    "url": "http://127.0.0.1:8765/src/main/java/com/example/devops/",
+    "capturadoEm": "2026-11-04T15:48:31-03:00",
+    "sha256": "9ceace6803bc8eeedc5044e1d941fcdc5c6bb22e0e682ca7c569eb154a6709c9",
+    "dimensoes": [
+      1264,
+      500
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 1,
+    "print": "1.3",
+    "arquivo": "docs/evidencias/b1/telas-reais/D1-3-ranking-swagger.jpg",
+    "titulo": "Ranking em execução",
+    "observacao": "Swagger mostra HTTP 200 e pontuação de 100 por conclusão no ranking.",
+    "ferramenta": "Swagger do Core",
+    "url": "http://127.0.0.1:8080/swagger-ui/index.html#/ranking-controller/listar_2",
+    "capturadoEm": "2026-11-04T11:07:17-03:00",
+    "sha256": "bcd92d1df7b26f880862c6315d3f901b8ed71a106229f62d166c8571710415dc",
+    "dimensoes": [
+      800,
+      720
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 2,
+    "print": "2.1",
+    "arquivo": "docs/evidencias/b1/telas-reais/D2-1-politica-jacoco.jpg",
+    "titulo": "Política de bônus isolada",
+    "observacao": "Código real no JaCoCo, com limite 8,5, bônus 3 e os branches da política cobertos.",
+    "ferramenta": "JaCoCo",
+    "url": "http://127.0.0.1:8765/target/site/jacoco/com.example.devops.gamificacao.domain/PoliticaBonus.java.html",
+    "capturadoEm": "2026-11-04T15:49:00-03:00",
+    "sha256": "488c9705cb5f11641e0490117f5c60cc909537a2a363257c32d8d6ae4581ba8e",
+    "dimensoes": [
+      1050,
+      430
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 2,
+    "print": "2.2",
+    "arquivo": "docs/evidencias/b1/telas-reais/D2-2-testes-adapters-surefire.jpg",
+    "titulo": "Testes dos adapters",
+    "observacao": "Surefire confirma ConclusaoDeCursoTest e BancoH2IntegrationTest aprovados, junto dos demais testes do pacote.",
+    "ferramenta": "Maven Surefire",
+    "url": "http://127.0.0.1:8765/target/reports/surefire.html",
+    "capturadoEm": "2026-11-04T15:50:18-03:00",
+    "sha256": "0cde83eed103bd9f28090d310e9398ce90c4dedd81d1d8c00b8ed8a320d7858d",
+    "dimensoes": [
+      1264,
+      460
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 2,
+    "print": "2.3a",
+    "arquivo": "docs/evidencias/b1/telas-reais/D2-3a-resumo-surefire.jpg",
+    "titulo": "Regressão Java",
+    "observacao": "Relatório padrão do Maven: 80 testes, zero erros e zero falhas.",
+    "ferramenta": "Maven Surefire",
+    "url": "http://127.0.0.1:8765/target/reports/surefire.html",
+    "capturadoEm": "2026-11-04T15:50:18-03:00",
+    "sha256": "53f98c49d7895e857e806e597690fde3a189dbb6e0ef0cdd27491da0e202fbae",
+    "dimensoes": [
+      1264,
+      400
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 2,
+    "print": "2.3b",
+    "arquivo": "docs/evidencias/b1/telas-reais/D2-3-cobertura-jacoco.jpg",
+    "titulo": "Cobertura do Core",
+    "observacao": "JaCoCo registra 100% das instruções, branches e linhas nas 38 classes medidas.",
+    "ferramenta": "JaCoCo",
+    "url": "http://127.0.0.1:8765/target/site/jacoco/index.html",
+    "capturadoEm": "2026-11-04T15:49:14-03:00",
+    "sha256": "542a660c87a27d52e1c06678e9ec679f5ac2be29cb57c1fca59bedc3c140598e",
+    "dimensoes": [
+      1264,
+      580
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 3,
+    "print": "3.1",
+    "arquivo": "docs/evidencias/b1/telas-reais/D3-1-ia-disponivel-swagger.jpg",
+    "titulo": "IA disponível",
+    "observacao": "Consulta real do aluno 65 retorna HTTP 200 e disponivel=true.",
+    "ferramenta": "Swagger do Core",
+    "url": "http://127.0.0.1:8080/swagger-ui/index.html#/b-1-ai-controller/recomendar",
+    "capturadoEm": "2026-11-04T11:10:19-03:00",
+    "sha256": "63f1f352b103931aeb16d2b2a71166ed826f70b0bc33cb7f699f07ade6ff1598",
+    "dimensoes": [
+      850,
+      650
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 3,
+    "print": "3.2",
+    "arquivo": "docs/evidencias/b1/telas-reais/D3-2-ia-indisponivel-swagger.jpg",
+    "titulo": "Fallback da IA",
+    "observacao": "Após parar o processo da IA, o Core retorna HTTP 200, disponivel=false e lista vazia.",
+    "ferramenta": "Swagger do Core",
+    "url": "http://127.0.0.1:8080/swagger-ui/index.html#/b-1-ai-controller/recomendar",
+    "capturadoEm": "2026-11-04T11:11:50-03:00",
+    "sha256": "f19ff8a375a5ebac58ecbac72c2060d1449f57db9a86dcdc1f66d2569581caab",
+    "dimensoes": [
+      850,
+      480
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 3,
+    "print": "3.3",
+    "arquivo": "docs/evidencias/b1/telas-reais/D3-3-conclusao-sem-ia-swagger.jpg",
+    "titulo": "Conclusão sem IA",
+    "observacao": "Com a IA parada, o aluno 65 conclui com HTTP 200, histórico e três cursos de bônus.",
+    "ferramenta": "Swagger do Core",
+    "url": "http://127.0.0.1:8080/swagger-ui/index.html#/aluno-controller/concluirCurso",
+    "capturadoEm": "2026-11-04T11:12:47-03:00",
+    "sha256": "60fd5fe893d34f4fb049081047b81d5511231486c8ebb9acd2ff917ec4393fb3",
+    "dimensoes": [
+      850,
+      570
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 4,
+    "print": "4.1",
+    "arquivo": "docs/evidencias/b1/telas-reais/D4-1-notificacao-sincrona-falha.jpg",
+    "titulo": "Falha da chamada síncrona",
+    "observacao": "O receptor foi interrompido e o Swagger não recebeu resposta da chamada de notificação.",
+    "ferramenta": "Swagger das integrações",
+    "url": "http://127.0.0.1:8002/docs#/default/notification_notificacoes_post",
+    "capturadoEm": "2026-11-04T15:37:10-03:00",
+    "sha256": "a60bdcf5a67b655a49763481fe61a25f588b470804cc6478edf6786f5c011b8e",
+    "dimensoes": [
+      1050,
+      470
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 4,
+    "print": "4.2a",
+    "arquivo": "docs/evidencias/b1/telas-reais/D4-2a-conclusao-confirmada.jpg",
+    "titulo": "Conclusão confirmada",
+    "observacao": "Com o receptor parado, o aluno 66 conclui com HTTP 200, histórico e bônus 3.",
+    "ferramenta": "Swagger do Core",
+    "url": "http://127.0.0.1:8080/swagger-ui/index.html#/aluno-controller/concluirCurso",
+    "capturadoEm": "2026-11-04T15:37:37-03:00",
+    "sha256": "de8e12524b13e54d4d25a11678a9fa966972c9036b32b9cc29efe254bdc54757",
+    "dimensoes": [
+      850,
+      570
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 4,
+    "print": "4.2b",
+    "arquivo": "docs/evidencias/b1/telas-reais/D4-2b-outbox-pendente.jpg",
+    "titulo": "Evento pendente",
+    "observacao": "A outbox preserva uma notificação enquanto o receptor está indisponível.",
+    "ferramenta": "Swagger do Core",
+    "url": "http://127.0.0.1:8080/swagger-ui/index.html#/notificacao-controller/pendentes",
+    "capturadoEm": "2026-11-04T15:37:55-03:00",
+    "sha256": "7177f3a5d55d6338a091828bb94e30bb46672b908a7708e2410dce3ab18aadf6",
+    "dimensoes": [
+      850,
+      440
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 4,
+    "print": "4.3a",
+    "arquivo": "docs/evidencias/b1/telas-reais/D4-3a-outbox-recuperada.jpg",
+    "titulo": "Outbox após recuperação",
+    "observacao": "Depois de restaurar o receptor, a quantidade de pendências retorna a zero.",
+    "ferramenta": "Swagger do Core",
+    "url": "http://127.0.0.1:8080/swagger-ui/index.html#/notificacao-controller/pendentes",
+    "capturadoEm": "2026-11-04T15:39:04-03:00",
+    "sha256": "01cfc4cb7f3b4b41c5962bf0c04f36849af8065d691c6a332fa58ac07c47cbf0",
+    "dimensoes": [
+      850,
+      440
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 4,
+    "print": "4.3b",
+    "arquivo": "docs/evidencias/b1/telas-reais/D4-3b-notificacao-recebida.jpg",
+    "titulo": "Notificação recebida",
+    "observacao": "A lista do receptor inclui a notificação do aluno 66 e do curso 66.",
+    "ferramenta": "Swagger das integrações",
+    "url": "http://127.0.0.1:8002/docs#/default/notifications_notificacoes_get",
+    "capturadoEm": "2026-11-04T15:40:00-03:00",
+    "sha256": "ae93dd1b01e3de78096ea27ef135de4f732a15251427163dbb46f1f1a18d01ed",
+    "dimensoes": [
+      850,
+      690
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 5,
+    "print": "5.1",
+    "arquivo": "docs/evidencias/b1/telas-reais/D5-1-evento-mqtt-entregue.jpg",
+    "titulo": "Evento MQTT entregue",
+    "observacao": "O gateway mostra o eventId captura-normal-d8d45913-3970-4882-b562-c47203dc5be5 como ENTREGUE.",
+    "ferramenta": "Swagger das integrações",
+    "url": "http://127.0.0.1:8002/docs#/default/gateway_events_gateway_eventos_get",
+    "capturadoEm": "2026-11-04T15:42:06-03:00",
+    "sha256": "ac8037e02621e7916bcf8af49afb083a80ad50fa43a82ee2eaeabb54c3a57df6",
+    "dimensoes": [
+      950,
+      690
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 5,
+    "print": "5.2a",
+    "arquivo": "docs/evidencias/b1/telas-reais/D5-2a-antes-reconexao.jpg",
+    "titulo": "Gateway desconectado",
+    "observacao": "Evento publicado no broker com o gateway parado; aluno 68 ainda sem histórico ou bônus.",
+    "ferramenta": "Swagger do Core",
+    "url": "http://127.0.0.1:8080/swagger-ui/index.html#/aluno-controller/buscarPorId",
+    "capturadoEm": "2026-11-04T15:42:42-03:00",
+    "sha256": "0605f5e83241eaa54f6a440d9bdd6266f792cff25b28fc2e5882022e74de8602",
+    "dimensoes": [
+      850,
+      545
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 5,
+    "print": "5.2b",
+    "arquivo": "docs/evidencias/b1/telas-reais/D5-2b-depois-reconexao.jpg",
+    "titulo": "Após reconexão",
+    "observacao": "Após o retorno do gateway, o aluno 68 apresenta uma conclusão e três cursos de bônus.",
+    "ferramenta": "Swagger do Core",
+    "url": "http://127.0.0.1:8080/swagger-ui/index.html#/aluno-controller/buscarPorId",
+    "capturadoEm": "2026-11-04T15:44:42-03:00",
+    "sha256": "2e1f5d9f09da46d40611045d41b32252e703e58407a9f76fae0d0082804781dc",
+    "dimensoes": [
+      850,
+      570
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 5,
+    "print": "5.3a",
+    "arquivo": "docs/evidencias/b1/telas-reais/D5-3a-evento-repetido-aceito.jpg",
+    "titulo": "Mesmo evento aceito",
+    "observacao": "O mesmo eventId é retransmitido por MQTT e repetido por HTTP; o Core responde aceito=true.",
+    "ferramenta": "Swagger do Core",
+    "url": "http://127.0.0.1:8080/swagger-ui/index.html#/iot-controller/receber",
+    "capturadoEm": "2026-11-04T15:46:02-03:00",
+    "sha256": "231f5a3abe0e39bc7a9ab2b024669be3b7f2f0d2ffc3a79c13b49c6263419351",
+    "dimensoes": [
+      1050,
+      590
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 5,
+    "print": "5.3b",
+    "arquivo": "docs/evidencias/b1/telas-reais/D5-3b-sem-bonus-duplicado.jpg",
+    "titulo": "Sem recompensa duplicada",
+    "observacao": "A consulta final do aluno 68 mantém uma conclusão e bônus 3 após a retransmissão.",
+    "ferramenta": "Swagger do Core",
+    "url": "http://127.0.0.1:8080/swagger-ui/index.html#/aluno-controller/buscarPorId",
+    "capturadoEm": "2026-11-04T15:46:17-03:00",
+    "sha256": "11f7926a905c2862c53f966de7d25fcc9c70bb03d41732eaa5a73ba9563e4cff",
+    "dimensoes": [
+      850,
+      570
+    ],
+    "metodo": "Captura direta do navegador, com enquadramento de região; conteúdo da tela preservado."
+  },
+  {
+    "desafio": 6,
+    "print": "6.1",
+    "arquivo": "docs/evidencias/b1/desafio-06/01-jenkins-sucesso.jpg",
+    "titulo": "Pipeline aprovado",
+    "observacao": "Pipeline real do Core #3 com Test, Build e Deploy concluídos. Os registros também confirmam IA #8 e integrações #4.",
+    "ferramenta": "Jenkins",
+    "url": "http://127.0.0.1:8081/job/b1-core/3/",
+    "capturadoEm": "2026-11-03T20:12:37.723598-03:00",
+    "sha256": "c445cd2a9669549b3fffb18b999e6bc6457ee1231fa816ef86dadc10789c9d94",
+    "dimensoes": [
+      1013,
+      1181
+    ],
+    "metodo": "Captura direta existente da execução original, preservada."
+  },
+  {
+    "desafio": 6,
+    "print": "6.2",
+    "arquivo": "docs/evidencias/b1/desafio-06/02-jenkins-bloqueio.jpg",
+    "titulo": "Teste falho bloqueia o deploy",
+    "observacao": "No job IA #9, um teste controlado falha e impede build/deploy.",
+    "ferramenta": "Jenkins",
+    "url": "http://127.0.0.1:8081/job/b1-ia/9/console",
+    "capturadoEm": "2026-11-03T20:12:47.388019-03:00",
+    "sha256": "f7b54c96b8629cd287ea12324b22d934df14aa53196bf064c273cd7b7932cf3e",
+    "dimensoes": [
+      1013,
+      871
+    ],
+    "metodo": "Captura direta existente da execução original, preservada."
+  },
+  {
+    "desafio": 6,
+    "print": "6.3",
+    "arquivo": "docs/evidencias/b1/desafio-06/03-grafana-falha-recuperacao.jpg",
+    "titulo": "Falha e recuperação nas métricas",
+    "observacao": "Séries da execução original: IA 0→2; outbox 0→1→0. A queda do contador da IA ocorre por reinício do Core.",
+    "ferramenta": "Grafana",
+    "url": "http://127.0.0.1:3000/d/b1-operacao",
+    "capturadoEm": "2026-11-04T08:28:40.741689-03:00",
+    "sha256": "62a7322047e43f256ca382057d99b5bddf0cde6e31c63072cbfc9c9d4274753a",
+    "dimensoes": [
+      1265,
+      712
+    ],
+    "metodo": "Captura direta existente da execução original, preservada."
+  }
+]

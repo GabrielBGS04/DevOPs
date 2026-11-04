@@ -1,0 +1,280 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< com.example:devops >-------------------------
+[INFO] Building DEVOPS 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ devops ---
+[INFO] Deleting C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\target
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default) @ devops ---
+[INFO] argLine set to "-javaagent:C:\\Users\\higor aranda\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.14\\org.jacoco.agent-0.8.14-runtime.jar=destfile=C:\\Users\\higor aranda\\Documents\\importante\\ENGENHARIA DE SOFTWARE\\aaaaaaa\\DEVOPS\\target\\jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ devops ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ devops ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 36 source files with javac [debug parameters release 17] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ devops ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ devops ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 11 source files with javac [debug parameters release 17] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ devops ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.devops.ApiIntegrationTest
+11:03:19.628 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.devops.ApiIntegrationTest]: ApiIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:03:19.961 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.devops.DevopsApplication for test class com.example.devops.ApiIntegrationTest
+11:03:20.196 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.devops.ApiIntegrationTest]: ApiIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:03:20.201 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.devops.DevopsApplication for test class com.example.devops.ApiIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-11-04T11:03:21.084-03:00  INFO 19736 --- [DEVOPS] [           main] com.example.devops.ApiIntegrationTest    : Starting ApiIntegrationTest using Java 25.0.4.1 with PID 19736 (started by higor aranda in C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS)
+2026-11-04T11:03:21.084-03:00  INFO 19736 --- [DEVOPS] [           main] com.example.devops.ApiIntegrationTest    : The following 1 profile is active: "test"
+2026-11-04T11:03:23.430-03:00  INFO 19736 --- [DEVOPS] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T11:03:23.588-03:00  INFO 19736 --- [DEVOPS] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 130 ms. Found 4 JPA repository interfaces.
+2026-11-04T11:03:24.812-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-04T11:03:25.000-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-11-04T11:03:26.206-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T11:03:26.272-03:00  INFO 19736 --- [DEVOPS] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-04T11:03:26.910-03:00  INFO 19736 --- [DEVOPS] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:devops user=SA
+2026-11-04T11:03:26.915-03:00  INFO 19736 --- [DEVOPS] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-04T11:03:27.108-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:devops]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: devops/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04T11:03:29.783-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04T11:03:29.884-03:00  INFO 19736 --- [DEVOPS] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T11:03:30.045-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-04T11:03:32.640-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-11-04T11:03:33.847-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-04T11:03:33.847-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-04T11:03:33.857-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-11-04T11:03:33.868-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 21 ms
+2026-11-04T11:03:33.971-03:00  INFO 19736 --- [DEVOPS] [           main] com.example.devops.ApiIntegrationTest    : Started ApiIntegrationTest in 13.61 seconds (process running for 16.581)
+2026-11-04T11:03:34.068-03:00  WARN 19736 --- [DEVOPS] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-04T11:03:34.068-03:00  WARN 19736 --- [DEVOPS] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (C:\Users\higor aranda\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.11 s -- in com.example.devops.ApiIntegrationTest
+[INFO] Running com.example.devops.B1CoreTest
+2026-11-04T11:03:36.170-03:00  INFO 19736 --- [DEVOPS] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.devops.B1CoreTest]: B1CoreTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-04T11:03:36.174-03:00  INFO 19736 --- [DEVOPS] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.devops.DevopsApplication for test class com.example.devops.B1CoreTest
+2026-11-04T11:03:36.174-03:00  INFO 19736 --- [DEVOPS] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.devops.B1CoreTest]: B1CoreTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-04T11:03:36.179-03:00  INFO 19736 --- [DEVOPS] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.devops.DevopsApplication for test class com.example.devops.B1CoreTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-11-04T11:03:36.219-03:00  INFO 19736 --- [DEVOPS] [           main] com.example.devops.B1CoreTest            : Starting B1CoreTest using Java 25.0.4.1 with PID 19736 (started by higor aranda in C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS)
+2026-11-04T11:03:36.219-03:00  INFO 19736 --- [DEVOPS] [           main] com.example.devops.B1CoreTest            : The following 1 profile is active: "test"
+2026-11-04T11:03:36.451-03:00  INFO 19736 --- [DEVOPS] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T11:03:36.466-03:00  INFO 19736 --- [DEVOPS] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 4 JPA repository interfaces.
+2026-11-04T11:03:36.542-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-04T11:03:36.557-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T11:03:36.562-03:00  INFO 19736 --- [DEVOPS] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-11-04T11:03:36.562-03:00  INFO 19736 --- [DEVOPS] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:devops user=SA
+2026-11-04T11:03:36.562-03:00  INFO 19736 --- [DEVOPS] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-11-04T11:03:36.562-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:devops]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: devops/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04T11:03:36.618-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04T11:03:36.628-03:00  INFO 19736 --- [DEVOPS] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T11:03:36.779-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-11-04T11:03:36.993-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-04T11:03:36.993-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-04T11:03:36.993-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-11-04T11:03:37.007-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 14 ms
+2026-11-04T11:03:37.028-03:00  INFO 19736 --- [DEVOPS] [           main] com.example.devops.B1CoreTest            : Started B1CoreTest in 0.844 seconds (process running for 19.636)
+2026-11-04T11:03:37.028-03:00  WARN 19736 --- [DEVOPS] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-04T11:03:37.028-03:00  WARN 19736 --- [DEVOPS] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.085 s -- in com.example.devops.B1CoreTest
+[INFO] Running com.example.devops.BancoH2IntegrationTest
+2026-11-04T11:03:37.261-03:00  INFO 19736 --- [DEVOPS] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.devops.BancoH2IntegrationTest]: BancoH2IntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-04T11:03:37.261-03:00  INFO 19736 --- [DEVOPS] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.devops.DevopsApplication for test class com.example.devops.BancoH2IntegrationTest
+2026-11-04T11:03:37.266-03:00  INFO 19736 --- [DEVOPS] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.devops.BancoH2IntegrationTest]: BancoH2IntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-04T11:03:37.266-03:00  INFO 19736 --- [DEVOPS] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.devops.DevopsApplication for test class com.example.devops.BancoH2IntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-11-04T11:03:37.313-03:00  INFO 19736 --- [DEVOPS] [           main] c.example.devops.BancoH2IntegrationTest  : Starting BancoH2IntegrationTest using Java 25.0.4.1 with PID 19736 (started by higor aranda in C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS)
+2026-11-04T11:03:37.313-03:00  INFO 19736 --- [DEVOPS] [           main] c.example.devops.BancoH2IntegrationTest  : The following 1 profile is active: "test"
+2026-11-04T11:03:37.648-03:00  INFO 19736 --- [DEVOPS] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T11:03:37.673-03:00  INFO 19736 --- [DEVOPS] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 4 JPA repository interfaces.
+2026-11-04T11:03:37.788-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-04T11:03:37.820-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T11:03:37.825-03:00  INFO 19736 --- [DEVOPS] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-11-04T11:03:37.825-03:00  INFO 19736 --- [DEVOPS] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:devops user=SA
+2026-11-04T11:03:37.825-03:00  INFO 19736 --- [DEVOPS] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-11-04T11:03:37.825-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:devops]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: devops/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04T11:03:37.921-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04T11:03:37.941-03:00  INFO 19736 --- [DEVOPS] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T11:03:38.139-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-11-04T11:03:38.410-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-11-04T11:03:38.430-03:00  INFO 19736 --- [DEVOPS] [           main] c.example.devops.BancoH2IntegrationTest  : Started BancoH2IntegrationTest in 1.153 seconds (process running for 21.037)
+2026-11-04T11:03:38.430-03:00  WARN 19736 --- [DEVOPS] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-04T11:03:38.430-03:00  WARN 19736 --- [DEVOPS] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.208 s -- in com.example.devops.BancoH2IntegrationTest
+[INFO] Running com.example.devops.ConclusaoDeCursoTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.example.devops.ConclusaoDeCursoTest
+[INFO] Running com.example.devops.domain.AlunoEdgeCasesTest
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.090 s -- in com.example.devops.domain.AlunoEdgeCasesTest
+[INFO] Running com.example.devops.domain.AlunoTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.example.devops.domain.AlunoTest
+[INFO] Running com.example.devops.domain.CursoTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.example.devops.domain.CursoTest
+[INFO] Running com.example.devops.IntegracoesB1ControllerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.319 s -- in com.example.devops.IntegracoesB1ControllerTest
+[INFO] Running com.example.devops.IntegracoesB1HttpTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.251 s -- in com.example.devops.IntegracoesB1HttpTest
+[INFO] Running com.example.devops.IntegracoesB1Test
+2026-11-04T11:03:39.192-03:00  INFO 19736 --- [DEVOPS] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.devops.IntegracoesB1Test]: IntegracoesB1Test does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-04T11:03:39.220-03:00  INFO 19736 --- [DEVOPS] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.devops.DevopsApplication for test class com.example.devops.IntegracoesB1Test
+2026-11-04T11:03:39.220-03:00  INFO 19736 --- [DEVOPS] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.devops.IntegracoesB1Test]: IntegracoesB1Test does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-04T11:03:39.225-03:00  INFO 19736 --- [DEVOPS] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.devops.DevopsApplication for test class com.example.devops.IntegracoesB1Test
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-11-04T11:03:39.328-03:00  INFO 19736 --- [DEVOPS] [           main] com.example.devops.IntegracoesB1Test     : Starting IntegracoesB1Test using Java 25.0.4.1 with PID 19736 (started by higor aranda in C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS)
+2026-11-04T11:03:39.328-03:00  INFO 19736 --- [DEVOPS] [           main] com.example.devops.IntegracoesB1Test     : The following 1 profile is active: "test"
+2026-11-04T11:03:39.970-03:00  INFO 19736 --- [DEVOPS] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-04T11:03:39.996-03:00  INFO 19736 --- [DEVOPS] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 4 JPA repository interfaces.
+2026-11-04T11:03:40.210-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-04T11:03:40.300-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-04T11:03:40.305-03:00  INFO 19736 --- [DEVOPS] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-11-04T11:03:40.310-03:00  INFO 19736 --- [DEVOPS] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection conn30: url=jdbc:h2:mem:devops user=SA
+2026-11-04T11:03:40.310-03:00  INFO 19736 --- [DEVOPS] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-11-04T11:03:40.310-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:devops]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: devops/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-04T11:03:40.524-03:00  INFO 19736 --- [DEVOPS] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-04T11:03:40.549-03:00  INFO 19736 --- [DEVOPS] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-04T11:03:41.452-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-11-04T11:03:41.986-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-04T11:03:41.986-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-04T11:03:41.996-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-11-04T11:03:42.001-03:00  INFO 19736 --- [DEVOPS] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 15 ms
+2026-11-04T11:03:42.052-03:00  INFO 19736 --- [DEVOPS] [           main] com.example.devops.IntegracoesB1Test     : Started IntegracoesB1Test in 2.791 seconds (process running for 24.662)
+2026-11-04T11:03:42.057-03:00  WARN 19736 --- [DEVOPS] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-11-04T11:03:42.057-03:00  WARN 19736 --- [DEVOPS] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-11-04T11:03:42.394-03:00  WARN 19736 --- [DEVOPS] [           main] i.m.core.instrument.MeterRegistry        : This Gauge has been already registered (MeterId{name='b1.notificacoes.pendentes', tags=[]}), the registration will be ignored. Note that subsequent logs will be logged at debug level.
+2026-11-04T11:03:42.526-03:00  WARN 19736 --- [DEVOPS] [           main] c.e.d.integracao.NotificacaoDispatcher   : Notifica��o permanece pendente eventId=9024cf26-2d30-4601-9c5f-221bf72d80cd causa=java.io.IOException: HTTP 503
+2026-11-04T11:03:42.561-03:00  INFO 19736 --- [DEVOPS] [           main] c.e.d.integracao.NotificacaoDispatcher   : Notifica��o confirmada eventId=9024cf26-2d30-4601-9c5f-221bf72d80cd
+2026-11-04T11:03:44.948-03:00  WARN 19736 --- [DEVOPS] [           main] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 22001, SQLState: 22001
+2026-11-04T11:03:44.948-03:00  WARN 19736 --- [DEVOPS] [           main] org.hibernate.orm.jdbc.error             : Value too long for column "event_id CHARACTER VARYING(255)": "'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx... (300)"; SQL statement:
+insert into b1_iot_inbox (aluno_id,curso_id,dispositivo_id,nota,tipo,event_id) values (?,?,?,?,?,?) [22001-240]
+2026-11-04T11:03:45.339-03:00  WARN 19736 --- [DEVOPS] [evento-atrasado] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 23505, SQLState: 23505
+2026-11-04T11:03:45.339-03:00  WARN 19736 --- [DEVOPS] [evento-atrasado] org.hibernate.orm.jdbc.error             : Unique index or primary key violation: "public.CONSTRAINT_9 INDEX public.PRIMARY_KEY_9 ON public.b1_iot_inbox(event_id) VALUES ( /* 2 */ 'insercao-tardia' )"; SQL statement:
+insert into b1_iot_inbox (aluno_id,curso_id,dispositivo_id,nota,tipo,event_id) values (?,?,?,?,?,?) [23505-240]
+2026-11-04T11:03:47.490-03:00  WARN 19736 --- [DEVOPS] [pool-4-thread-2] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 23505, SQLState: 23505
+2026-11-04T11:03:47.490-03:00  WARN 19736 --- [DEVOPS] [pool-4-thread-2] org.hibernate.orm.jdbc.error             : Unique index or primary key violation: "public.CONSTRAINT_9 INDEX public.PRIMARY_KEY_9 ON public.b1_iot_inbox(event_id) VALUES ( /* 4 */ 'concorrente' )"; SQL statement:
+insert into b1_iot_inbox (aluno_id,curso_id,dispositivo_id,nota,tipo,event_id) values (?,?,?,?,?,?) [23505-240]
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.630 s -- in com.example.devops.IntegracoesB1Test
+[INFO] Running com.example.devops.PoliticaBonusTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.046 s -- in com.example.devops.PoliticaBonusTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 80, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.14:report (report) @ devops ---
+[INFO] Loading execution data file C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\target\jacoco.exec
+[INFO] Analyzed bundle 'DEVOPS' with 38 classes
+[INFO] 
+[INFO] --- jar:3.5.1:jar (default-jar) @ devops ---
+[INFO] Building jar: C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\target\devops-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:4.1.1:repackage (repackage) @ devops ---
+[INFO] Replacing main artifact C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\target\devops-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\target\devops-0.0.1-SNAPSHOT.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.14:check (check-coverage) @ devops ---
+[INFO] Loading execution data file C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\target\jacoco.exec
+[INFO] Analyzed bundle 'devops' with 38 classes
+[INFO] All coverage checks have been met.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  39.186 s
+[INFO] Finished at: 2026-11-04T11:03:50-03:00
+[INFO] ------------------------------------------------------------------------

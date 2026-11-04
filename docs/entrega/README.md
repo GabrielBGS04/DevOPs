@@ -1,9 +1,18 @@
-# Entrega B1 resolvida
+# Entrega do Architecture Lab B1
 
-[B1 Architecture Lab resolvido](B1_Architecture_Lab_Resolvido.docx) contém o enunciado integral, as seis resoluções, seis diagramas e 18 prints reais inseridos após o desafio correspondente.
+**[Documento final em Word](B1_Architecture_Lab_Final.docx)** — 27 páginas, com os seis desafios, as 12 partes do modelo em cada desafio, seis diagramas e 23 capturas diretas para os 18 itens de evidência. As respostas foram resumidas e os prints aparecem junto do desafio correspondente.
 
-O Word final tem 39 páginas verificadas visualmente. Cada print inclui legenda, fonte, data e leitura do resultado. A síntese final registra as decisões para a AF e os limites do laboratório.
+Equipe: Gabriel Baldi e Higor Aranda.
 
-Equipe: Gabriel Baldi e Higor Aranda. O arquivo fonte `Exercicio_B1_Architecture_Lab_6_Desafios_Reavaliado.docx`, em Downloads, foi preservado. SHA-256: `cb5b51138ad714b3f86d6bbaf6a47fbdbdf7b41d6ccbf32065714934972b1d7f`.
+As telas mostram Swagger, JaCoCo, Maven Surefire, arquivos do projeto, Jenkins e Grafana. O print 1.1 exibe um registro histórico da estrutura anterior; o 1.2 mostra a listagem atual dos diretórios. Os três prints do Jenkins/Grafana mantêm as datas originais. O [índice das capturas](../evidencias/b1/telas-reais/README.md) relaciona arquivos, cenários, fontes e hashes.
 
-O documento acompanha o registro cumulativo em `../arquitetura/README.md`, os ADRs em `../adr/` e os registros de execução em `../evidencias/b1/`. Ambiente executado: Windows nativo, H2 arquivo e JAR/ZIP; Docker e PostgreSQL não executados. IA é demonstração determinística com busca textual local. As alterações são locais e esta entrega não declara publicação remota.
+Nesta rodada, `clean verify` aprovou os 80 testes Java. Os cenários manuais de IA, outbox e MQTT foram executados para as novas capturas. As contagens de 19 testes Python e 36 verificações E2E pertencem à execução automatizada original.
+
+A execução comprovada usa Windows nativo, H2 em arquivo e SQLite. Docker, PostgreSQL e nuvem não foram executados. A IA é uma demonstração determinística com busca textual local. Todos os serviços temporários iniciados para as capturas foram encerrados.
+
+## Materiais de apoio
+
+- [Registro arquitetural](../arquitetura/README.md), [ADRs](../adr/) e [evidências por desafio](../evidencias/b1/README.md).
+- [Índice das capturas diretas](../evidencias/b1/telas-reais/README.md), com os arquivos brutos de apoio.
+
+Esta pasta contém apenas a versão final em Word e este índice. O enunciado e o exemplo recebidos em Downloads foram preservados.
