@@ -1,0 +1,17 @@
+[
+  {
+    "palavras": ["bonus", "recompensa", "basico", "premium", "nota"],
+    "resposta": "No plano básico, concluir um curso com nota maior ou igual a 8,5 concede três cursos de bônus. Nota 7,0 não concede bônus e o plano Premium não recebe esse bônus.",
+    "fonte": "conteudo-local/bonus"
+  },
+  {
+    "palavras": ["ranking", "pontos", "pontuacao"],
+    "resposta": "O ranking demonstrativo atribui 100 pontos por entrada distinta no histórico e ordena por pontos decrescentes, com desempate pelo ID do aluno.",
+    "fonte": "conteudo-local/ranking"
+  },
+  {
+    "palavras": ["recomendacao", "recomendacoes", "recomendar"],
+    "resposta": "A recomendação demonstrativa seleciona até três cursos ainda ausentes do histórico, ordenados pelo ID do curso. Não há treinamento de modelo ou API paga.",
+    "fonte": "conteudo-local/recomendacoes"
+  }
+]

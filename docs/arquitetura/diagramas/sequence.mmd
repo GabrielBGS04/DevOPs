@@ -1,0 +1,19 @@
+sequenceDiagram
+ participant U as Cliente
+ participant C as Core
+ participant D as Banco relacional
+ participant W as Worker outbox
+ participant N as Receptor Python
+ U->>C: concluir curso
+ C->>D: BEGIN conclusão + bônus + evento
+ D-->>C: COMMIT
+ C-->>U: HTTP 200
+ W->>D: consultar eventos pendentes
+ W->>N: POST eventId
+ alt indisponível
+ N--xW: falha/timeout
+ Note over W,D: manter pendente e retentar
+ else disponível
+ N-->>W: confirmado/deduplicado
+ W->>D: marcar entregue
+ end

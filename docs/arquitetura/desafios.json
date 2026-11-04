@@ -1,0 +1,258 @@
+[
+  {
+    "n": 1,
+    "titulo": "Drivers e evolução do Core",
+    "rf": "RF01 Ranking; RF02 Conquistas e funcionalidades da AC1.",
+    "rnfs": "Manutenibilidade, desempenho, escalabilidade, testabilidade e complexidade operacional.",
+    "asrs": [
+      [
+        "Manutenibilidade",
+        "Agrupar curso e ranking por capacidade localiza alterações e explicita fronteiras."
+      ],
+      [
+        "Testabilidade",
+        "Preservar contratos HTTP e testar o comportamento antes/depois permite reorganização incremental."
+      ],
+      [
+        "Complexidade operacional",
+        "Manter um processo Core e banco relacional evita infraestrutura distribuída sem evidência de necessidade."
+      ]
+    ],
+    "rpc": "Core Java/Spring Boot, legado AC1, banco relacional e equipe de seis desenvolvedores no cenário. A equipe real identificada no repositório tem Gabriel Baldi e Higor Aranda.",
+    "alternativas": [
+      [
+        "Monólito em camadas",
+        "Mudança inicial pequena; capacidades permanecem espalhadas por pastas técnicas."
+      ],
+      [
+        "Monólito modular",
+        "Maior coesão e fronteiras explícitas; exige disciplina de dependências e ainda escala o Core inteiro."
+      ],
+      [
+        "Serviço seletivo de ranking",
+        "Permite deploy/escala independentes; acrescenta rede, sincronização de dados e operação sem demanda medida neste experimento."
+      ]
+    ],
+    "decisao": "Modularizar incrementalmente curso e ranking dentro do Core. Ranking lê alunos pela API pública do serviço, sem importar seu repositório. Preservar contratos de cursos e alunos.",
+    "consequencias": "Não há escala independente dos módulos. Ranking usa 100 pontos por entrada distinta no histórico e desempate por ID; não foram introduzidas moedas. Consulta atual é didática e não certifica desempenho para 100 mil usuários.",
+    "evidencia": "Snapshot original, árvore reorganizada, imports antes/depois, consulta ao ranking e regressão automatizada.",
+    "c4": "core",
+    "prints": [
+      "01-camadas-antes",
+      "02-modulos-depois",
+      "03-ranking-funcionando"
+    ]
+  },
+  {
+    "n": 2,
+    "titulo": "Organização interna do Core",
+    "rf": "RF02 Conquistas e recompensa por conclusão; RF01 Ranking como leitura do resultado.",
+    "rnfs": "Manutenibilidade, testabilidade, modificabilidade e facilidade de evolução.",
+    "asrs": [
+      [
+        "Testabilidade",
+        "A política de bônus deve rodar sem contexto Spring nem acesso ao banco."
+      ],
+      [
+        "Modificabilidade",
+        "O caso de conclusão depende de uma porta de dados com adapters substituíveis."
+      ],
+      [
+        "Manutenibilidade",
+        "Uma única política concentra o limite de nota e a quantidade de bônus."
+      ]
+    ],
+    "rpc": "Core permanece Spring Boot, regras existentes reaproveitadas e refatoração localizada. Básico com nota ≥ 8,5 recebe três cursos; Premium não recebe esse bônus.",
+    "alternativas": [
+      [
+        "Estrutura atual",
+        "Simples e já testada; acesso JPA e orquestração ficam juntos no serviço."
+      ],
+      [
+        "Ports & Adapters localizado",
+        "Caso de uso e regra testáveis com memória/JPA; acrescenta uma porta e adapter, sem reescrever todas as entidades."
+      ]
+    ],
+    "decisao": "Extrair PoliticaBonus em Java puro e ConclusaoDeCurso dependente de ConclusaoPort. Usar JpaConclusaoAdapter no Core e adapter em memória nos testes.",
+    "consequencias": "As entidades legadas ainda possuem anotações JPA; a proteção é aplicada à política e ao caso de uso selecionados. DDD organiza os conceitos; Hexagonal organiza dependências. Clean/Onion podem compartilhar esse princípio, mas não exigem quatro estruturas simultâneas.",
+    "evidencia": "Teste puro da política, contrato de conclusão em memória e integração JPA/H2, limites de nota e relatório de cobertura.",
+    "c4": "component",
+    "prints": [
+      "01-regra-isolada",
+      "02-adapters-testados",
+      "03-regressao-cobertura"
+    ]
+  },
+  {
+    "n": 3,
+    "titulo": "Serviço Python e IA",
+    "rf": "RF03 Recomendação inteligente; RF04 Assistente educacional, em microsolução demonstrativa.",
+    "rnfs": "Deploy independente, escalabilidade, tolerância a falhas, interoperabilidade, desempenho e manutenibilidade.",
+    "asrs": [
+      [
+        "Tolerância a falhas",
+        "Timeout e resposta degradada impedem que a IA indisponível bloqueie o Core."
+      ],
+      [
+        "Deploy independente",
+        "Processo Python próprio permite atualizar a implementação sem reiniciar o Java."
+      ],
+      [
+        "Interoperabilidade",
+        "Contrato HTTP/JSON mantém a fronteira entre Java e Python explícita."
+      ]
+    ],
+    "rpc": "Core Java/Spring Boot, IA em Python, fluxo essencial disponível sem IA. Usuário escolheu laboratório local sem provedor pago.",
+    "alternativas": [
+      [
+        "IA embutida no Core",
+        "Menos processos; ciclo de modelos e execução ficam acoplados ao Java."
+      ],
+      [
+        "Módulo acoplado",
+        "Localiza a capacidade, mas não oferece isolamento de processo ou deploy."
+      ],
+      [
+        "FastAPI independente",
+        "Fronteira e deploy próprios; exige contratos, timeout e tratamento de indisponibilidade."
+      ]
+    ],
+    "decisao": "Um FastAPI atende recomendação e assistente demonstrativos. O Core chama por HTTP com timeout de dois segundos e sem retentativa na thread do usuário. Falha retorna HTTP 200 com disponivel=false e fallback explícito.",
+    "consequencias": "Python sozinho não prova necessidade de serviço; autonomia de ciclo e isolamento de falha justificam a fronteira aqui testada. ML/RAG compartilham o executável enquanto não há evidência de cargas/ciclos distintos. A recomendação é determinística e o assistente faz busca textual em material local, sem treinamento de ML ou RAG/LLM completo.",
+    "evidencia": "Requisições com IA ativa, IA parada e conclusão de curso mantendo recompensa e histórico.",
+    "c4": "ai",
+    "prints": [
+      "01-ia-disponivel",
+      "02-ia-indisponivel",
+      "03-core-sem-ia"
+    ]
+  },
+  {
+    "n": 4,
+    "titulo": "Comunicação e eventos",
+    "rf": "RF02 Conquistas; RF05 Notificações após conclusão.",
+    "rnfs": "Tolerância a falhas, disponibilidade, latência, consistência, desacoplamento e recuperabilidade.",
+    "asrs": [
+      [
+        "Tolerância a falhas",
+        "Falha do receptor não deve impedir confirmar conclusão e bônus."
+      ],
+      [
+        "Consistência",
+        "Estado essencial e evento pendente são gravados na mesma transação; notificação é eventual."
+      ],
+      [
+        "Recuperabilidade",
+        "Eventos pendentes e identificadores estáveis permitem retentar após indisponibilidade."
+      ]
+    ],
+    "rpc": "Core precisa concluir com consumidor externo indisponível; broker dedicado implica custo operacional. Processamento único de outbox no laboratório.",
+    "alternativas": [
+      [
+        "REST síncrono",
+        "Resposta imediata do receptor; falha e latência propagam-se à chamada dependente."
+      ],
+      [
+        "Outbox e worker HTTP",
+        "Usa o banco relacional existente e entrega eventual; exige polling, retentativa e deduplicação."
+      ],
+      [
+        "RabbitMQ ou Kafka",
+        "RabbitMQ agrega filas/roteamento e acknowledgements; Kafka agrega log/replay e grupos. Ambos exigem operação adicional sem necessidade de throughput ou replay demonstrada neste caso."
+      ]
+    ],
+    "decisao": "Conclusão e outbox na mesma transação. Worker HTTP a cada cinco segundos, timeout de dois segundos e retentativa com o mesmo eventId. Receptor Python persiste deduplicação em SQLite.",
+    "consequencias": "Entrega pelo menos uma vez, com deduplicação no receptor; não há exatamente uma vez distribuído. Confirmação da notificação é eventual. Polling acrescenta latência e o dispatcher do laboratório é de instância única. Dados relacionais do laboratório ficam em H2 arquivo; configuração PostgreSQL permanece para Compose.",
+    "evidencia": "Falha síncrona provocada, conclusão HTTP 200 com evento pendente, recuperação e entrega do mesmo identificador.",
+    "c4": "sequence",
+    "prints": [
+      "01-sincrono-falha",
+      "02-assincrono-pendente",
+      "03-recuperacao"
+    ]
+  },
+  {
+    "n": 5,
+    "titulo": "IoT e MQTT",
+    "rf": "RF06 Receber presença, início e conclusão de atividade por dispositivo simulado.",
+    "rnfs": "Interoperabilidade, eficiência, disponibilidade, tolerância à conexão intermitente, escalabilidade e segurança de integração.",
+    "asrs": [
+      [
+        "Interoperabilidade",
+        "Gateway traduz o evento do dispositivo para contrato HTTP do Core."
+      ],
+      [
+        "Eficiência de comunicação",
+        "MQTT pub/sub evita acoplamento HTTP de cada dispositivo ao Core."
+      ],
+      [
+        "Tolerância à conexão intermitente",
+        "Sessão persistente, QoS 1 e inbox idempotente permitem reconexão e retransmissão."
+      ]
+    ],
+    "rpc": "Dispositivo pode ter poucos recursos e conexão instável; broker e gateway acrescentam operação. Laboratório usa dados sintéticos e conexões restritas ao loopback.",
+    "alternativas": [
+      [
+        "REST direto",
+        "Menos componentes; cada dispositivo precisa conhecer a integração e suas falhas HTTP."
+      ],
+      [
+        "MQTT com gateway",
+        "Sessões e pub/sub adequados ao cenário; exige broker, política de entrega e deduplicação."
+      ],
+      [
+        "MQTT e broker interno adicional",
+        "Útil para múltiplos consumidores e replay conforme ASRs; neste laboratório duplicaria infraestrutura sem necessidade comprovada."
+      ]
+    ],
+    "decisao": "Mosquitto com persistência e QoS 1 no tópico b1/atividades. Gateway Python mantém spool SQLite e confirma MQTT depois da aceitação HTTP. Core grava eventId e efeito de negócio atomicamente; retransmissão retorna sucesso sem repetir bônus.",
+    "consequencias": "QoS 1 admite duplicatas e não substitui idempotência. O experimento prova a janela de desconexão/reconexão executada, não ausência absoluta de perdas em qualquer falha de disco. O gateway compartilha executável de integrações para reduzir operação, com responsabilidades separadas no código.",
+    "evidencia": "Publicação/recepção com mesmo ID, publicação com gateway offline, reconexão e retransmissão sem nova recompensa.",
+    "c4": "iot",
+    "prints": [
+      "01-mqtt-publicacao-recepcao",
+      "02-reconexao",
+      "03-evento-sem-duplicacao"
+    ]
+  },
+  {
+    "n": 6,
+    "titulo": "CI CD e observabilidade",
+    "rf": "RF01 a RF06: construção, implantação e observação dos componentes executados.",
+    "rnfs": "Observabilidade, deploy independente, confiabilidade, testabilidade, recuperabilidade e desempenho.",
+    "asrs": [
+      [
+        "Testabilidade",
+        "Pipeline executa testes e a política de cobertura antes de disponibilizar artefato."
+      ],
+      [
+        "Observabilidade",
+        "Métricas e logs mostram efeito da falha e da recuperação sobre os fluxos essenciais."
+      ],
+      [
+        "Deploy independente",
+        "Jobs por executável atualizam somente Core, IA ou integrações."
+      ]
+    ],
+    "rpc": "Jenkins é a esteira; Prometheus/Grafana são obrigatórios; configurações e evidências versionadas. Ambiente sem engine Docker disponível.",
+    "alternativas": [
+      [
+        "Pipeline único",
+        "Visão centralizada e configuração inicial menor; mudanças independentes ficam acopladas à mesma execução."
+      ],
+      [
+        "Pipeline por executável",
+        "Validação e deploy independentes; duplica parte da configuração e requer contratos entre componentes."
+      ]
+    ],
+    "decisao": "Três pipelines Jenkins com teste, build e deploy nativo local. Falha em teste impede build/deploy. Prometheus coleta o Core a cada cinco segundos; Grafana exibe falhas da IA, pendências de notificação e métricas HTTP.",
+    "consequencias": "A prova foi desenhada para processos Windows portáveis, com JAR/ZIP e health check. Dockerfiles/Compose são alternativa fornecida, sem alegar execução de containers. O laboratório usa H2 relacional em arquivo; não comprova operação PostgreSQL nem escala. Métrica técnica vira evidência arquitetural quando a parada/recuperação mostra preservação do Core e drenagem da outbox.",
+    "evidencia": "Builds reais de três jobs, teste falho controlado bloqueando deploy, dashboard durante falha/recuperação e consultas Prometheus.",
+    "c4": "deployment",
+    "prints": [
+      "01-jenkins-sucesso",
+      "02-jenkins-bloqueio",
+      "03-grafana-falha-recuperacao"
+    ]
+  }
+]

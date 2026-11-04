@@ -1,0 +1,13 @@
+{
+  "observadoEm": "2026-11-03T20:01:15.5665121-03:00",
+  "build": "http://127.0.0.1:8081/job/b1-ia/5/",
+  "resultado": "FAILURE",
+  "inicioBuildUtc": "2026-11-03T23:00:40.2890000+00:00",
+  "ultimoDeploy": "2026-11-03T20:00:05.2393620-03:00",
+  "pid": "4576",
+  "health": {
+    "status": "ok",
+    "servico": "ia"
+  },
+  "observacao": "Teste real falhou na copia descartavel; estagios Build e Deploy nao executados; servico anterior permanece saudavel"
+}

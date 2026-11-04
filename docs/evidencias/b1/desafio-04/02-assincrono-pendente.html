@@ -1,0 +1,13 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>Conclusão confirmada e notificação pendente</title>
+<style>*{box-sizing:border-box}body{margin:0;padding:36px 44px;color:#14212f;background:#f3f5f7;font:22px Arial,sans-serif}header{border-left:7px solid #194e78;padding-left:22px;margin-bottom:22px}h1{font-size:32px;margin:8px 0}h2{font-size:23px;margin:0 0 12px}p{margin:8px 0;line-height:1.45}small{font-size:17px;color:#415367}section{background:white;border:1px solid #cbd5df;border-radius:6px;padding:20px;margin:16px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:19px/1.4 Consolas,monospace;margin:0}footer{font-size:16px;color:#415367;line-height:1.4}strong{color:#194e78}</style>
+<header><small>B1 ARCHITECTURE LAB · DESAFIO 4 · RELATÓRIO TÉCNICO</small><h1>Conclusão confirmada e notificação pendente</h1><p>Execução real 20261104-082328-241e66 · 2026-11-04T08:23:33.360-03:00 · estado PASSOU</p></header><section><h2>assincrono-conclusao-disponivel</h2><pre>2026-11-04T08:23:39.746-03:00
+POST http://127.0.0.1:8080/api/alunos/34/concluir-curso
+HTTP 200 · duração 16.0 ms
+payload: {&quot;cursoId&quot;:34,&quot;nota&quot;:8.5}
+resposta: {&quot;id&quot;:34,&quot;nome&quot;:&quot;B1 Experimento 20261104-082328-241e66 D4&quot;,&quot;plano&quot;:&quot;BASICO&quot;,&quot;cursosDisponiveis&quot;:3,&quot;mediaGeral&quot;:8,&quot;historico&quot;:{&quot;B1 Curso 20261104-082328-241e66 D4&quot;:8.5}}</pre></section><section><h2>outbox-pendente-apos10s</h2><pre>2026-11-04T08:23:49.777-03:00
+GET http://127.0.0.1:8080/api/notificacoes/pendentes
+HTTP 200 · duração 16.0 ms
+payload: null
+resposta: {&quot;quantidade&quot;:1}</pre></section><section><h2>log-core-pendencia-retentativas</h2><pre>2026-11-04T08:23:49.788-03:00
+eventIds: [&quot;7a4c40fd-a026-4fbe-b58c-a1252ba745c7&quot;]
+linhas: [&quot;2026-11-04T08:23:44.600-03:00  WARN 10124 --- [DEVOPS] [   scheduling-1] c.e.d.integracao.NotificacaoDispatcher   : Notificação permanece pendente eventId=7a4c40fd-a026-4fbe-b58c-a1252ba745c7 causa=java.net.ConnectException&quot;,&quot;2026-11-04T08:23:49.617-03:00  WARN 10124 --- [DEVOPS] [   scheduling-1] c.e.d.integracao.NotificacaoDispatcher   : Notificação permanece pendente eventId=7a4c40fd-a026-4fbe-b58c-a1252ba745c7 causa=java.net.ConnectException&quot;]</pre></section><footer>Fonte: execucao.json<br>Relatório gerado: 2026-11-04T08:26:02-03:00 · Base bdb6943 + alterações B1 locais.<br>Captura de relatório de dados reais; não é uma simulação de ferramenta.</footer></html>

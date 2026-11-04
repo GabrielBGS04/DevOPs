@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JpaConclusaoAdapter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DEVOPS</a> &gt; <a href="index.source.html" class="el_package">com.example.devops.gamificacao.internal.persistence</a> &gt; <span class="el_source">JpaConclusaoAdapter.java</span></div><h1>JpaConclusaoAdapter.java</h1><pre class="source lang-java linenums">package com.example.devops.gamificacao.internal.persistence;
+
+import com.example.devops.domain.Aluno;
+import com.example.devops.curso.domain.Curso;
+import com.example.devops.repository.AlunoRepository;
+import com.example.devops.curso.application.CursoService;
+import com.example.devops.gamificacao.application.ConclusaoPort;
+import com.example.devops.service.RecursoNaoEncontradoException;
+
+public class JpaConclusaoAdapter implements ConclusaoPort {
+    private final AlunoRepository alunos;
+    private final CursoService cursos;
+<span class="fc" id="L13">    public JpaConclusaoAdapter(AlunoRepository alunos, CursoService cursos) {</span>
+<span class="fc" id="L14">        this.alunos = alunos; this.cursos = cursos;</span>
+<span class="fc" id="L15">    }</span>
+    public Aluno buscarAluno(Long id) {
+<span class="fc" id="L17">        return alunos.findById(id).orElseThrow(() -&gt; new RecursoNaoEncontradoException(&quot;Aluno não encontrado&quot;));</span>
+    }
+    public Curso buscarCurso(Long id) {
+<span class="fc" id="L20">        return cursos.buscarPorId(id);</span>
+    }
+<span class="fc" id="L22">    public Aluno salvar(Aluno aluno) { return alunos.save(aluno); }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

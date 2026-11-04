@@ -1,11 +1,14 @@
 package com.example.devops.service;
 
 import com.example.devops.domain.Aluno;
-import com.example.devops.domain.Curso;
 import com.example.devops.domain.Plano;
 import com.example.devops.dto.ConclusaoCursoDTO;
 import com.example.devops.repository.AlunoRepository;
-import com.example.devops.repository.CursoRepository;
+import com.example.devops.curso.application.CursoService;
+import com.example.devops.aluno.api.AlunoRanking;
+import com.example.devops.gamificacao.application.ConclusaoDeCurso;
+import com.example.devops.gamificacao.internal.persistence.JpaConclusaoAdapter;
+import com.example.devops.integracao.NotificacaoOutbox;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,11 +18,13 @@ import java.util.List;
 public class AlunoService {
 
     private final AlunoRepository alunoRepository;
-    private final CursoRepository cursoRepository;
+    private final ConclusaoDeCurso conclusao;
+    private final NotificacaoOutbox notificacoes;
 
-    public AlunoService(AlunoRepository alunoRepository, CursoRepository cursoRepository) {
+    public AlunoService(AlunoRepository alunoRepository, CursoService cursos, NotificacaoOutbox notificacoes) {
         this.alunoRepository = alunoRepository;
-        this.cursoRepository = cursoRepository;
+        this.conclusao = new ConclusaoDeCurso(new JpaConclusaoAdapter(alunoRepository, cursos));
+        this.notificacoes = notificacoes;
     }
 
     public Aluno criar(String nome, Plano plano) {
@@ -30,6 +35,8 @@ public class AlunoService {
         return alunoRepository.findAll();
     }
 
+    public List<AlunoRanking> consultarRanking() { return alunoRepository.consultarRanking(); }
+
     public Aluno buscarPorId(Long alunoId) {
         return alunoRepository.findById(alunoId)
                 .orElseThrow(() -> new RecursoNaoEncontradoException("Aluno não encontrado"));
@@ -37,15 +44,8 @@ public class AlunoService {
 
     @Transactional
     public Aluno processarConclusao(Long alunoId, ConclusaoCursoDTO dto) {
-        if (dto == null || dto.getCursoId() == null) {
-            throw new IllegalArgumentException("O id do curso é obrigatório");
-        }
-
-        Aluno aluno = buscarPorId(alunoId);
-        Curso curso = cursoRepository.findById(dto.getCursoId())
-                .orElseThrow(() -> new RecursoNaoEncontradoException("Curso não encontrado"));
-
-        aluno.concluirCurso(curso, dto.getNota());
-        return alunoRepository.save(aluno);
+        Aluno aluno = conclusao.executar(alunoId, dto);
+        notificacoes.gravar(alunoId, dto.getCursoId(), dto.getNota());
+        return aluno;
     }
 }

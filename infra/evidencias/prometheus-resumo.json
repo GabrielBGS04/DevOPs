@@ -1,0 +1,14 @@
+[
+  {
+    "metrica": "b1_ia_falhas_total",
+    "amostras": 35,
+    "minimo": 0.0,
+    "maximo": 2.0
+  },
+  {
+    "metrica": "b1_notificacoes_pendentes",
+    "amostras": 35,
+    "minimo": 0.0,
+    "maximo": 1.0
+  }
+]

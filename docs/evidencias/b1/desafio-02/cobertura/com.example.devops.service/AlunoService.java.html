@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AlunoService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DEVOPS</a> &gt; <a href="index.source.html" class="el_package">com.example.devops.service</a> &gt; <span class="el_source">AlunoService.java</span></div><h1>AlunoService.java</h1><pre class="source lang-java linenums">package com.example.devops.service;
+
+import com.example.devops.domain.Aluno;
+import com.example.devops.domain.Plano;
+import com.example.devops.dto.ConclusaoCursoDTO;
+import com.example.devops.repository.AlunoRepository;
+import com.example.devops.curso.application.CursoService;
+import com.example.devops.aluno.api.AlunoRanking;
+import com.example.devops.gamificacao.application.ConclusaoDeCurso;
+import com.example.devops.gamificacao.internal.persistence.JpaConclusaoAdapter;
+import com.example.devops.integracao.NotificacaoOutbox;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+public class AlunoService {
+
+    private final AlunoRepository alunoRepository;
+    private final ConclusaoDeCurso conclusao;
+    private final NotificacaoOutbox notificacoes;
+
+<span class="fc" id="L24">    public AlunoService(AlunoRepository alunoRepository, CursoService cursos, NotificacaoOutbox notificacoes) {</span>
+<span class="fc" id="L25">        this.alunoRepository = alunoRepository;</span>
+<span class="fc" id="L26">        this.conclusao = new ConclusaoDeCurso(new JpaConclusaoAdapter(alunoRepository, cursos));</span>
+<span class="fc" id="L27">        this.notificacoes = notificacoes;</span>
+<span class="fc" id="L28">    }</span>
+
+    public Aluno criar(String nome, Plano plano) {
+<span class="fc" id="L31">        return alunoRepository.save(new Aluno(nome, plano));</span>
+    }
+
+    public List&lt;Aluno&gt; listar() {
+<span class="fc" id="L35">        return alunoRepository.findAll();</span>
+    }
+
+<span class="fc" id="L38">    public List&lt;AlunoRanking&gt; consultarRanking() { return alunoRepository.consultarRanking(); }</span>
+
+    public Aluno buscarPorId(Long alunoId) {
+<span class="fc" id="L41">        return alunoRepository.findById(alunoId)</span>
+<span class="fc" id="L42">                .orElseThrow(() -&gt; new RecursoNaoEncontradoException(&quot;Aluno não encontrado&quot;));</span>
+    }
+
+    @Transactional
+    public Aluno processarConclusao(Long alunoId, ConclusaoCursoDTO dto) {
+<span class="fc" id="L47">        Aluno aluno = conclusao.executar(alunoId, dto);</span>
+<span class="fc" id="L48">        notificacoes.gravar(alunoId, dto.getCursoId(), dto.getNota());</span>
+<span class="fc" id="L49">        return aluno;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

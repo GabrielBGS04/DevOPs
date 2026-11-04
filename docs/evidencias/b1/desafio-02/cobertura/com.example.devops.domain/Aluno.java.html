@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Aluno.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DEVOPS</a> &gt; <a href="index.source.html" class="el_package">com.example.devops.domain</a> &gt; <span class="el_source">Aluno.java</span></div><h1>Aluno.java</h1><pre class="source lang-java linenums">package com.example.devops.domain;
+
+import com.example.devops.curso.domain.Curso;
+import com.example.devops.gamificacao.domain.PoliticaBonus;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapKeyColumn;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+@Entity
+public class Aluno {
+
+    public static final double NOTA_MINIMA_PARA_BONUS = PoliticaBonus.NOTA_MINIMA;
+    public static final int QUANTIDADE_CURSOS_BONUS = PoliticaBonus.BONUS;
+<span class="fc" id="L27">    private static final PoliticaBonus POLITICA_BONUS = new PoliticaBonus();</span>
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nome;
+
+    @Enumerated(EnumType.STRING)
+    private Plano plano;
+
+    private int cursosDisponiveis;
+
+<span class="fc" id="L40">    @ElementCollection</span>
+    @CollectionTable(name = &quot;historico_notas&quot;, joinColumns = @JoinColumn(name = &quot;aluno_id&quot;))
+    @MapKeyColumn(name = &quot;curso_nome&quot;)
+    @Column(name = &quot;nota&quot;, nullable = false)
+    private Map&lt;String, Double&gt; historico = new HashMap&lt;&gt;();
+
+<span class="fc" id="L46">    protected Aluno() {</span>
+<span class="fc" id="L47">    }</span>
+
+<span class="fc" id="L49">    public Aluno(String nome, Plano plano) {</span>
+<span class="fc bfc" id="L50" title="All 4 branches covered.">        if (nome == null || nome.isBlank()) {</span>
+<span class="fc" id="L51">            throw new IllegalArgumentException(&quot;O nome do aluno é obrigatório&quot;);</span>
+        }
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (plano == null) {</span>
+<span class="fc" id="L54">            throw new IllegalArgumentException(&quot;O plano do aluno é obrigatório&quot;);</span>
+        }
+<span class="fc" id="L56">        this.nome = nome.trim();</span>
+<span class="fc" id="L57">        this.plano = plano;</span>
+<span class="fc" id="L58">    }</span>
+
+    public void concluirCurso(Curso curso, double nota) {
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        if (curso == null) {</span>
+<span class="fc" id="L62">            throw new IllegalArgumentException(&quot;O curso é obrigatório&quot;);</span>
+        }
+<span class="fc" id="L64">        int bonus = POLITICA_BONUS.calcularBonus(plano, nota);</span>
+<span class="fc" id="L65">        historico.put(curso.getNome(), nota);</span>
+<span class="fc" id="L66">        cursosDisponiveis += bonus;</span>
+<span class="fc" id="L67">    }</span>
+
+    public boolean temDireitoABonus(double nota) {
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        return POLITICA_BONUS.calcularBonus(plano, nota) &gt; 0;</span>
+    }
+
+    public double getNotaDoCurso(Curso curso) {
+<span class="fc bfc" id="L74" title="All 4 branches covered.">        if (curso == null || !historico.containsKey(curso.getNome())) {</span>
+<span class="fc" id="L75">            throw new IllegalArgumentException(&quot;Curso não encontrado no histórico&quot;);</span>
+        }
+<span class="fc" id="L77">        return historico.get(curso.getNome());</span>
+    }
+
+    public int getMediaGeral() {
+<span class="fc" id="L81">        return (int) historico.values().stream()</span>
+<span class="fc" id="L82">                .mapToDouble(Double::doubleValue)</span>
+<span class="fc" id="L83">                .average()</span>
+<span class="fc" id="L84">                .orElse(0.0);</span>
+    }
+
+    public Long getId() {
+<span class="fc" id="L88">        return id;</span>
+    }
+
+    public String getNome() {
+<span class="fc" id="L92">        return nome;</span>
+    }
+
+    public Plano getPlano() {
+<span class="fc" id="L96">        return plano;</span>
+    }
+
+    public int getCursosDisponiveis() {
+<span class="fc" id="L100">        return cursosDisponiveis;</span>
+    }
+
+    public Map&lt;String, Double&gt; getHistorico() {
+<span class="fc" id="L104">        return Collections.unmodifiableMap(historico);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

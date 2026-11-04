@@ -1,0 +1,19 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>Módulos e fronteiras do Core</title>
+<style>*{box-sizing:border-box}body{margin:0;padding:36px 44px;color:#14212f;background:#f3f5f7;font:22px Arial,sans-serif}header{border-left:7px solid #194e78;padding-left:22px;margin-bottom:22px}h1{font-size:32px;margin:8px 0}h2{font-size:23px;margin:0 0 12px}p{margin:8px 0;line-height:1.45}small{font-size:17px;color:#415367}section{background:white;border:1px solid #cbd5df;border-radius:6px;padding:20px;margin:16px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:19px/1.4 Consolas,monospace;margin:0}footer{font-size:16px;color:#415367;line-height:1.4}strong{color:#194e78}</style>
+<header><small>B1 ARCHITECTURE LAB · DESAFIO 1 · RELATÓRIO TÉCNICO</small><h1>Módulos e fronteiras do Core</h1><p>Modularização incremental no mesmo processo Spring Boot; legado preservado.</p></header><section><h2>Árvore real do código implementado</h2><pre>curso/ — 4 fontes
+  api/CursoController.java
+  application/CursoService.java
+  domain/Curso.java
+  internal/persistence/CursoRepository.java
+ranking/ — 2 fontes
+  api/RankingController.java
+  application/RankingService.java
+gamificacao/ — 4 fontes
+  application/ConclusaoDeCurso.java
+  application/ConclusaoPort.java
+  domain/PoliticaBonus.java
+  internal/persistence/JpaConclusaoAdapter.java
+aluno/ — 1 fontes
+integracao/ — 12 fontes</pre></section><section><h2>Integração pela interface pública</h2><pre>Ranking → AlunoService.consultarRanking() → projeção no banco
+ConclusaoDeCurso → ConclusaoPort ← JpaConclusaoAdapter
+CursoService encapsula seu repositório interno</pre></section><footer>Fonte: src/main/java/com/example/devops/; depois-dependencias.txt<br>Relatório gerado: 2026-11-04T08:26:02-03:00 · Base bdb6943 + alterações B1 locais.<br>Captura de relatório de dados reais; não é uma simulação de ferramenta.</footer></html>

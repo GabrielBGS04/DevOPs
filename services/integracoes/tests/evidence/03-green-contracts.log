@@ -1,0 +1,22 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.3.5, pluggy-1.7.0 -- C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\integracoes
+configfile: pytest.ini
+plugins: anyio-4.16.0
+collecting ... collected 6 items
+
+services\integracoes\tests\test_integracoes.py::test_receiver_deduplicates_after_process_restart PASSED [ 16%]
+services\integracoes\tests\test_integracoes.py::test_concurrent_duplicates_are_processed_once PASSED [ 33%]
+services\integracoes\tests\test_integracoes.py::test_receiver_rejects_invalid_notification_without_persisting PASSED [ 50%]
+services\integracoes\tests\test_integracoes.py::test_gateway_defers_ack_until_core_accepts_and_preserves_failed_event PASSED [ 66%]
+services\integracoes\tests\test_integracoes.py::test_gateway_recovers_pending_after_restart_and_deduplicates_redelivery PASSED [ 83%]
+services\integracoes\tests\test_integracoes.py::test_gateway_connection_error_keeps_durable_pending PASSED [100%]
+
+============================== warnings summary ===============================
+services\ia\.venv\Lib\site-packages\starlette\testclient.py:37
+  C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Lib\site-packages\starlette\testclient.py:37: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 6 passed, 1 warning in 0.47s =========================

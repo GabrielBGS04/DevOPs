@@ -1,0 +1,11 @@
+flowchart LR
+ DEV[Simulador
+eventId tipo aluno curso nota] -->|MQTT QoS1| M[Mosquitto
+sessão persistente]
+ M --> G[Gateway Python]
+ G --> S[(Spool SQLite)]
+ G -->|POST evento| CORE[Core
+inbox e caso de conclusão]
+ CORE -->|mesma transação| DB[(Inbox histórico bônus outbox)]
+ CORE -->|2xx| G
+ G -->|ACK após aceitação| M

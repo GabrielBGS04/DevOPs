@@ -1,0 +1,22 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.3.5, pluggy-1.7.0 -- C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia
+configfile: pytest.ini
+plugins: anyio-4.16.0
+collecting ... collected 6 items
+
+services\ia\tests\test_ia.py::test_recommendations_exclude_history_order_and_limit PASSED [ 16%]
+services\ia\tests\test_ia.py::test_recommendations_exhausted_catalog_is_available_and_empty PASSED [ 33%]
+services\ia\tests\test_ia.py::test_assistant_looks_up_local_bonus_content_and_source PASSED [ 50%]
+services\ia\tests\test_ia.py::test_assistant_unknown_question_does_not_invent_answer PASSED [ 66%]
+services\ia\tests\test_ia.py::test_blank_question_is_rejected PASSED     [ 83%]
+services\ia\tests\test_ia.py::test_health_identifies_service PASSED      [100%]
+
+============================== warnings summary ===============================
+services\ia\.venv\Lib\site-packages\starlette\testclient.py:37
+  C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Lib\site-packages\starlette\testclient.py:37: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 6 passed, 1 warning in 0.34s =========================

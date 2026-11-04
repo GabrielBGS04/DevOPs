@@ -1,5 +1,7 @@
 package com.example.devops.domain;
 
+import com.example.devops.curso.domain.Curso;
+
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

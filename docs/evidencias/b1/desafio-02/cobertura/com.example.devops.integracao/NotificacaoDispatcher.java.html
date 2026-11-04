@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NotificacaoDispatcher.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DEVOPS</a> &gt; <a href="index.source.html" class="el_package">com.example.devops.integracao</a> &gt; <span class="el_source">NotificacaoDispatcher.java</span></div><h1>NotificacaoDispatcher.java</h1><pre class="source lang-java linenums">package com.example.devops.integracao;
+
+import io.micrometer.core.instrument.Gauge;
+import io.micrometer.core.instrument.MeterRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
+import java.io.IOException;
+
+@Component
+public class NotificacaoDispatcher {
+<span class="fc" id="L14">    private static final Logger log = LoggerFactory.getLogger(NotificacaoDispatcher.class);</span>
+    private final NotificacaoRepository repository;
+    private final B1HttpClient client;
+<span class="fc" id="L17">    @Value(&quot;${b1.dispatch.enabled:true}&quot;) private boolean enabled = true;</span>
+<span class="fc" id="L18">    public NotificacaoDispatcher(NotificacaoRepository repository, B1HttpClient client, MeterRegistry registry) {</span>
+<span class="fc" id="L19">        this.repository = repository;</span>
+<span class="fc" id="L20">        this.client = client;</span>
+<span class="fc" id="L21">        Gauge.builder(&quot;b1.notificacoes.pendentes&quot;, repository, NotificacaoRepository::countByEntregueFalse).register(registry);</span>
+<span class="fc" id="L22">    }</span>
+    @Scheduled(fixedDelayString = &quot;${b1.notificacoes.intervalo-ms:5000}&quot;, initialDelayString = &quot;${b1.notificacoes.intervalo-ms:5000}&quot;)
+    public void executar() {
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (enabled) entregarPendentes();</span>
+<span class="fc" id="L26">    }</span>
+    public void entregarPendentes() {
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        for (var evento : repository.findTop50ByEntregueFalseOrderByEventIdAsc()) {</span>
+            try {
+<span class="fc" id="L30">                client.notificar(evento);</span>
+<span class="fc" id="L31">                evento.confirmarEntrega();</span>
+<span class="fc" id="L32">                repository.save(evento);</span>
+<span class="fc" id="L33">                log.info(&quot;Notificação confirmada eventId={}&quot;, evento.getEventId());</span>
+<span class="fc" id="L34">            } catch (InterruptedException e) {</span>
+<span class="fc" id="L35">                Thread.currentThread().interrupt();</span>
+<span class="fc" id="L36">                return;</span>
+<span class="fc" id="L37">            } catch (IOException | RuntimeException e) {</span>
+<span class="fc" id="L38">                log.warn(&quot;Notificação permanece pendente eventId={} causa={}&quot;, evento.getEventId(), e.toString());</span>
+<span class="fc" id="L39">            }</span>
+<span class="fc" id="L40">        }</span>
+<span class="fc" id="L41">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

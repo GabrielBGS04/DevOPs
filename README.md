@@ -167,3 +167,42 @@ cada classe. Se a cobertura ficar abaixo disso ou algum teste falhar, o build fa
 Abra `target/site/jacoco/index.html` no navegador para consultar o relatório.
 Os testes verificam os limites de nota, o plano Premium, entradas inválidas,
 histórico e média, persistência, criação e consulta pela API e respostas 400/404.
+
+## B1 Architecture Lab
+
+Os seis desafios evoluem este MVP com módulos de curso e ranking, política de
+bônus isolada, serviço Python demonstrativo, outbox de notificações, integração
+MQTT idempotente e pipelines Jenkins com Prometheus/Grafana.
+
+O laboratório foi executado com processos Windows nativos e banco H2 em arquivo.
+PostgreSQL/Docker permanecem como alternativa configurada, sem comprovação de
+execução em containers. A regra original do bônus de três cursos a partir de
+nota 8,5 foi preservada. A IA é demonstrativa, sem modelo ML/RAG completo.
+
+- [Registro arquitetural, matriz de ASRs e seis ADRs](docs/arquitetura/README.md)
+- [Resultados reais e 18 capturas](docs/evidencias/b1/README.md)
+- [Documento Word com respostas e evidências por desafio](docs/entrega/B1_Architecture_Lab_Resolvido.docx)
+- [Preparação e execução da infraestrutura local](infra/README.md)
+
+- [Especificação e decisões propostas](docs/superpowers/specs/2026-11-03-b1-design.md)
+- [Plano de implementação e critérios de conclusão](docs/superpowers/plans/2026-11-03-b1-architecture-lab.md)
+- [Guia de prints com nomes, telas e pastas de destino](docs/evidencias/b1/README.md)
+
+Verificação executada: 80 testes Java aprovados, com 100% de cobertura de linhas,
+branches e instruções por classe; 19 testes Python aprovados. Os experimentos
+reais dos Desafios 3, 4 e 5 aprovaram 36 verificações de integração.
+
+Para repetir os experimentos depois de iniciar a infraestrutura e implantar os
+três componentes conforme o guia:
+
+```powershell
+services/ia/.venv/Scripts/python.exe -m pytest services/ia/tests services/integracoes/tests scripts/b1/tests -q
+services/ia/.venv/Scripts/python.exe scripts/b1/laboratorio.py --execute
+.\scripts\b1\infra-metrics.ps1
+```
+
+O roteiro usa dados sintéticos novos, provoca indisponibilidade temporária e
+restaura os componentes a partir do último artefato aprovado. As evidências
+registram datas, respostas, identificadores e hashes dos fontes efetivamente
+executados. A entrega no GitHub deve usar a branch do B1; a cópia interna
+`DevOPs/` não faz parte desta implementação.

@@ -1,0 +1,12 @@
+{
+  "observadoEm": "2026-11-03T20:07:12.3866951-03:00",
+  "cenario": "Artefato ausente aborta antes de parar serviço",
+  "erro": "Deployment artifact missing before service stop: app.zip",
+  "pidAntes": "21544",
+  "pidDepois": "21544",
+  "mesmoProcesso": true,
+  "health": {
+    "status": "ok",
+    "servico": "ia"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "url": "http://127.0.0.1:8080/api/ranking",
+  "status": 200,
+  "resposta": [
+    {
+      "alunoId": 1,
+      "nome": "B1 Experimento 20261103-201141-4f2c7b D3",
+      "cursosConcluidos": 1,
+      "pontos": 100
+    },
+    {
+      "alunoId": 33,
+      "nome": "B1 Experimento 20261104-082328-241e66 D3",
+      "cursosConcluidos": 1,
+      "pontos": 100
+    },
+    {
+      "alunoId": 34,
+      "nome": "B1 Experimento 20261104-082328-241e66 D4",
+      "cursosConcluidos": 1,
+      "pontos": 100
+    },
+    {
+      "alunoId": 35,
+      "nome": "B1 Experimento 20261104-082328-241e66 D5-normal",
+      "cursosConcluidos": 1,
+      "pontos": 100
+    },
+    {
+      "alunoId": 36,
+      "nome": "B1 Experimento 20261104-082328-241e66 D5-offline",
+      "cursosConcluidos": 1,
+      "pontos": 100
+    },
+    {
+      "alunoId": 37,
+      "nome": "B1 Experimento 20261104-082328-241e66 D5-spool",
+      "cursosConcluidos": 1,
+      "pontos": 100
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 package com.example.devops;
 
 import com.example.devops.domain.Aluno;
-import com.example.devops.domain.Curso;
+import com.example.devops.curso.domain.Curso;
 import com.example.devops.domain.Plano;
 import com.example.devops.dto.ConclusaoCursoDTO;
 import com.example.devops.service.AlunoService;
-import com.example.devops.service.CursoService;
+import com.example.devops.curso.application.CursoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

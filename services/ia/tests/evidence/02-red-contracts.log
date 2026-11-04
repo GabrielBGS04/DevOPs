@@ -1,0 +1,106 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.3.5, pluggy-1.7.0 -- C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia
+configfile: pytest.ini
+plugins: anyio-4.16.0
+collecting ... collected 6 items
+
+services\ia\tests\test_ia.py::test_recommendations_exclude_history_order_and_limit FAILED [ 16%]
+services\ia\tests\test_ia.py::test_recommendations_exhausted_catalog_is_available_and_empty FAILED [ 33%]
+services\ia\tests\test_ia.py::test_assistant_looks_up_local_bonus_content_and_source FAILED [ 50%]
+services\ia\tests\test_ia.py::test_assistant_unknown_question_does_not_invent_answer FAILED [ 66%]
+services\ia\tests\test_ia.py::test_blank_question_is_rejected FAILED     [ 83%]
+services\ia\tests\test_ia.py::test_health_identifies_service FAILED      [100%]
+
+================================== FAILURES ===================================
+____________ test_recommendations_exclude_history_order_and_limit _____________
+
+    def test_recommendations_exclude_history_order_and_limit():
+        response = client.post('/recomendacoes', json={
+            'alunoId': 7, 'historico': ['Java'],
+            'cursos': [{'id': 9, 'nome': 'Docker'}, {'id': 1, 'nome': 'Java'},
+                       {'id': 5, 'nome': 'SQL'}, {'id': 3, 'nome': 'Python'},
+                       {'id': 8, 'nome': 'Redes'}],
+        })
+>       assert response.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+services\ia\tests\test_ia.py:16: AssertionError
+________ test_recommendations_exhausted_catalog_is_available_and_empty ________
+
+    def test_recommendations_exhausted_catalog_is_available_and_empty():
+        response = client.post('/recomendacoes', json={
+            'alunoId': 1, 'historico': ['Java'], 'cursos': [{'id': 1, 'nome': 'Java'}],
+        })
+>       assert response.json() == {'disponivel': True, 'recomendacoes': []}
+E       AssertionError: assert {'detail': 'Not Found'} == {'disponivel'...endacoes': []}
+E         
+E         Left contains 1 more item:
+E         {'detail': 'Not Found'}
+E         Right contains 2 more items:
+E         {'disponivel': True, 'recomendacoes': []}
+E         
+E         Full diff:...
+E         
+E         ...Full output truncated (5 lines hidden), use '-vv' to show
+
+services\ia\tests\test_ia.py:27: AssertionError
+___________ test_assistant_looks_up_local_bonus_content_and_source ____________
+
+    def test_assistant_looks_up_local_bonus_content_and_source():
+        response = client.post('/assistente', json={'pergunta': 'Como funciona o b�nus?'})
+>       assert response.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+services\ia\tests\test_ia.py:32: AssertionError
+___________ test_assistant_unknown_question_does_not_invent_answer ____________
+
+    def test_assistant_unknown_question_does_not_invent_answer():
+        body = client.post('/assistente', json={'pergunta': 'Qual � a capital de Marte?'}).json()
+>       assert body['disponivel'] is True
+E       KeyError: 'disponivel'
+
+services\ia\tests\test_ia.py:42: KeyError
+_______________________ test_blank_question_is_rejected _______________________
+
+    def test_blank_question_is_rejected():
+>       assert client.post('/assistente', json={'pergunta': '  '}).status_code == 422
+E       AssertionError: assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +    where <Response [404 Not Found]> = post('/assistente', json={'pergunta': '  '})
+E        +      where post = <starlette.testclient.TestClient object at 0x000001541CE4F200>.post
+
+services\ia\tests\test_ia.py:48: AssertionError
+_______________________ test_health_identifies_service ________________________
+
+    def test_health_identifies_service():
+>       assert client.get('/health').json() == {'status': 'ok', 'servico': 'ia'}
+E       AssertionError: assert {'detail': 'Not Found'} == {'servico': '...status': 'ok'}
+E         
+E         Left contains 1 more item:
+E         {'detail': 'Not Found'}
+E         Right contains 2 more items:
+E         {'servico': 'ia', 'status': 'ok'}
+E         
+E         Full diff:...
+E         
+E         ...Full output truncated (5 lines hidden), use '-vv' to show
+
+services\ia\tests\test_ia.py:52: AssertionError
+============================== warnings summary ===============================
+services\ia\.venv\Lib\site-packages\starlette\testclient.py:37
+  C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Lib\site-packages\starlette\testclient.py:37: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED services\ia\tests\test_ia.py::test_recommendations_exclude_history_order_and_limit
+FAILED services\ia\tests\test_ia.py::test_recommendations_exhausted_catalog_is_available_and_empty
+FAILED services\ia\tests\test_ia.py::test_assistant_looks_up_local_bonus_content_and_source
+FAILED services\ia\tests\test_ia.py::test_assistant_unknown_question_does_not_invent_answer
+FAILED services\ia\tests\test_ia.py::test_blank_question_is_rejected - Assert...
+FAILED services\ia\tests\test_ia.py::test_health_identifies_service - Asserti...
+======================== 6 failed, 1 warning in 0.43s =========================

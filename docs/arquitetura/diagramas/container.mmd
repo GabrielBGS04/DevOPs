@@ -1,0 +1,11 @@
+flowchart LR
+ U[Aluno e equipe] -->|HTTP JSON| C[Core Spring Boot :8080]
+ C -->|JPA| DB[(Banco relacional
+H2 arquivo no lab
+PostgreSQL no Compose)]
+ C -->|HTTP JSON timeout 2s| IA[IA FastAPI :8001]
+ C -->|Outbox worker HTTP| IN[Integrações FastAPI :8002]
+ IN --> S[(SQLite dedup e spool)]
+ D[Dispositivo simulado] -->|MQTT QoS1| M[Mosquitto :1883]
+ M -->|MQTT sessão persistente| IN
+ IN -->|HTTP evento idempotente| C

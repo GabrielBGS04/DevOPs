@@ -1,0 +1,562 @@
+{
+  "desafio": 4,
+  "runId": "20261104-082328-241e66",
+  "inicio": "2026-11-04T08:23:33.360-03:00",
+  "fuso": "America/Sao_Paulo (UTC-03:00)",
+  "commitBase": "bdb6943aab3baa52994f2f0096c8e4fcef6ccfd6",
+  "alteracoesLocais": true,
+  "sha256Fontes": {
+    "services/ia/app/__init__.py": "b3dc9adba8a8e1309c9d50c74d437bd4e927bc2f83fab7736d67e543f5d55eda",
+    "services/ia/app/assistant.py": "2ac3bf1e279193904a5580d18dcda401bb4889c077d1f4d330417f8226aa60ea",
+    "services/ia/app/conteudo.json": "0fae0a56128be0054e8f665f8502dad9e58660dce916b5f9e32941e571b4b8e3",
+    "services/ia/app/main.py": "ab167cd722b8582fecb7d9d8cb38635b75908fb30ae0c8a84e6cc5477be7ad1f",
+    "services/ia/app/recommendations.py": "0aa9b8de7b3315162c1349452685ff7531bbe31ab53e01b458f36a6d120f057e",
+    "services/integracoes/app/__init__.py": "096136502a12646b76134dd1c6dcd43f7fe46eccd539e6859330ddc961486ccf",
+    "services/integracoes/app/gateway.py": "c2da5f71e17d960433af898669dcd6557215eb6b3e543ad30348deaf5f9f01c8",
+    "services/integracoes/app/main.py": "6598c0d288b629568beaac636ecef68f765c38978230ba238cdc1b317b503d81",
+    "services/integracoes/app/storage.py": "07462ac771f6d97f1d4e073986c931e736330acf9f03b0ca81e9d974d3dddb10",
+    "src/main/java/com/example/devops/aluno/api/AlunoRanking.java": "61e6ed16fd1e7ab80133165c48f2ecedb73ea8585559ecf055464830ba09f5ef",
+    "src/main/java/com/example/devops/config/OpenApiConfig.java": "51c0e711948bc47919a252d1a317b6aea8a84d39570c8f8cda10ea3b7b6476c8",
+    "src/main/java/com/example/devops/controller/AlunoController.java": "4826cec8aeb8b4ab333ff68e64b2729031895ffb78ac7794a9ccd63180afad5b",
+    "src/main/java/com/example/devops/controller/ApiExceptionHandler.java": "cbcb7de02ac38405c56ac0b549a97bdf90f368b228d1086e6a0797ed656e1b9b",
+    "src/main/java/com/example/devops/curso/api/CursoController.java": "ee565f5d203816fb467fcff4d82e6032df7dfdc71c62723118ff6d087af29040",
+    "src/main/java/com/example/devops/curso/application/CursoService.java": "77203c95d7a628b524d983d44ff5cbece0921d4bc88b4759dac30bed65ba4938",
+    "src/main/java/com/example/devops/curso/domain/Curso.java": "eda7a3393b18f84de6e8308287aee7306c93869fcdfb1dc7eb4c22145a32d7b8",
+    "src/main/java/com/example/devops/curso/internal/persistence/CursoRepository.java": "822c636169c857e189b11e1d67bccb85ca7e3460cd14d4e6c5db415d1c28120e",
+    "src/main/java/com/example/devops/DevopsApplication.java": "fbaeadf83ac91b07969f923d6ec62bdbc3232f725a1743bbbb03bd9d41591f6a",
+    "src/main/java/com/example/devops/domain/Aluno.java": "06fe7cd311962e7441deb902491f745cebf6901e7e90af16ef56dbe7f7aca6bb",
+    "src/main/java/com/example/devops/domain/Plano.java": "87939b9eb615aa0d075fcdf3de1e752f83a8cceac4092c83ea9e3e5ffd3ae677",
+    "src/main/java/com/example/devops/dto/AlunoResponseDTO.java": "d8c5c1b9323649a5acf8c68ab55933108b862587f100dbaffe74f2f300b47201",
+    "src/main/java/com/example/devops/dto/ConclusaoCursoDTO.java": "2bb92891c62e25ca3768936302ec1d5cf3d1af868cb8f805863b546b41da11d3",
+    "src/main/java/com/example/devops/dto/CriarAlunoDTO.java": "4b3921390587e4a3b03e5a73d7a58c4654e36e3107a6368d278d790868f23791",
+    "src/main/java/com/example/devops/dto/CriarCursoDTO.java": "cfc0f40d0aca3dcd4065c62d4d545c8881acc99bac6e1bdca3afbdad73a6c0c5",
+    "src/main/java/com/example/devops/gamificacao/application/ConclusaoDeCurso.java": "70b3d70e4af78ce13f4bbf7f13f9c9673da1f36b1b5e7298827460d249c83ab3",
+    "src/main/java/com/example/devops/gamificacao/application/ConclusaoPort.java": "b77406e0ddfabb099b665c30c903c7fadf2bd13c2e5d4340f0e303fedb9abd3e",
+    "src/main/java/com/example/devops/gamificacao/domain/PoliticaBonus.java": "eef038103d58ae00ddab9cc55c6ea2551ce08c78e277a33639bfe4f805d8bdc0",
+    "src/main/java/com/example/devops/gamificacao/internal/persistence/JpaConclusaoAdapter.java": "6f5a00e45ed1429d142e5b431d337ca49bcb3f57e8a228255bc48cb398df8ba4",
+    "src/main/java/com/example/devops/integracao/B1AiController.java": "11312f55a30bd66dfcd486e3676de8300f17c3241ec941285843402d93737800",
+    "src/main/java/com/example/devops/integracao/B1HttpClient.java": "cc2f8244a2f1227b884011ffe345a4f69306a02721611958c0033afea347ff5e",
+    "src/main/java/com/example/devops/integracao/IotController.java": "50070b861c07b181674c651ee89fca7652d8d96d2267fa4ef2f8f5ae18f5260c",
+    "src/main/java/com/example/devops/integracao/IotEvento.java": "4b329e47729ce5eaab2566f6da08a7f2da22b57a26d4400b07d6ee918badaeee",
+    "src/main/java/com/example/devops/integracao/IotInbox.java": "dffbbc98aa0901cd71746756c2662b89521b2720b10b8df515100dfec83ed373",
+    "src/main/java/com/example/devops/integracao/IotRepository.java": "b53fe80d2a82f33d21f9764578f32c0f3d456dd04603366570fd425bd2ee72c3",
+    "src/main/java/com/example/devops/integracao/IotService.java": "938260a97224e6dcf61a7cb30460d6f86e589ea00290bf937e6a436da5df472f",
+    "src/main/java/com/example/devops/integracao/NotificacaoController.java": "7bd7982c6b8c737026c5d9b06857b6fc1b35ddcaa88327cd9a7da337232e2846",
+    "src/main/java/com/example/devops/integracao/NotificacaoDispatcher.java": "95f9deb0f19eb93ab4d33c40c44e981a245681f08fa59c7faea62fe86c71c880",
+    "src/main/java/com/example/devops/integracao/NotificacaoEvento.java": "2bfa59c4521a5d64a2fcee36758b9c033eb753a5cfb7bee02e670a6e522c36aa",
+    "src/main/java/com/example/devops/integracao/NotificacaoOutbox.java": "13ddae90fe7ddbd100b4a0918ecc190fae2628802b2dc8cf01f8a7a52bc8832d",
+    "src/main/java/com/example/devops/integracao/NotificacaoRepository.java": "397e5b1f9e9b27fc197a43789b2fb19d6bff3bfcfe11f7720ad0c4fbbfc1e1b6",
+    "src/main/java/com/example/devops/ranking/api/RankingController.java": "c9846c30d5e0b8eec644a2958ef6b6d1be4122720c79388876a52ed0ff42bd48",
+    "src/main/java/com/example/devops/ranking/application/RankingService.java": "65aeec07fb6cb7bc85af35206404ec347f77d28a06cdebd957c71088c36671e5",
+    "src/main/java/com/example/devops/repository/AlunoRepository.java": "6870179b2d9c98a8299c51aa5d305c02de68d1981666a490dbb5c751268a71be",
+    "src/main/java/com/example/devops/service/AlunoService.java": "446fce8a37cae237ccaecdd1d4d10fd8cc9c0e25417daa7e87cc8d0867f3f3d4",
+    "src/main/java/com/example/devops/service/RecursoNaoEncontradoException.java": "fd410d1c7ed726f3729d5691f7f6dfa93d6a8cb8feb971c88e3600c2b075cb93",
+    "scripts/b1/laboratorio.py": "3dfa0b8c22929cc614dc8cd385d9d914c7b6ad8a28c2d0ee950b33c07009dc71"
+  },
+  "comando": "C:\\Users\\higor aranda\\Documents\\importante\\ENGENHARIA DE SOFTWARE\\aaaaaaa\\DEVOPS\\services\\ia\\.venv\\Scripts\\python.exe scripts/b1/laboratorio.py --execute --only 4",
+  "estado": "PASSOU",
+  "passos": [
+    {
+      "nome": "integracoes-saudavel",
+      "data": "2026-11-04T08:23:33.360-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8002/health",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 0.0,
+      "resposta": {
+        "status": "ok",
+        "servico": "integracoes"
+      },
+      "respostaRaw": "{\"status\":\"ok\",\"servico\":\"integracoes\"}"
+    },
+    {
+      "nome": "baseline-outbox-vazia",
+      "data": "2026-11-04T08:23:33.371-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8080/api/notificacoes/pendentes",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 16.0,
+      "resposta": {
+        "quantidade": 1
+      },
+      "respostaRaw": "{\"quantidade\":1}"
+    },
+    {
+      "nome": "baseline-outbox-vazia",
+      "data": "2026-11-04T08:23:34.376-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8080/api/notificacoes/pendentes",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 0.0,
+      "resposta": {
+        "quantidade": 1
+      },
+      "respostaRaw": "{\"quantidade\":1}"
+    },
+    {
+      "nome": "baseline-outbox-vazia",
+      "data": "2026-11-04T08:23:35.380-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8080/api/notificacoes/pendentes",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 0.0,
+      "resposta": {
+        "quantidade": 0
+      },
+      "respostaRaw": "{\"quantidade\":0}"
+    },
+    {
+      "nome": "criar-aluno-D4",
+      "data": "2026-11-04T08:23:35.385-03:00",
+      "metodo": "POST",
+      "url": "http://127.0.0.1:8080/api/alunos",
+      "payload": {
+        "nome": "B1 Experimento 20261104-082328-241e66 D4",
+        "plano": "BASICO"
+      },
+      "status": 201,
+      "duracaoMs": 0.0,
+      "resposta": {
+        "id": 34,
+        "nome": "B1 Experimento 20261104-082328-241e66 D4",
+        "plano": "BASICO",
+        "cursosDisponiveis": 0,
+        "mediaGeral": 0,
+        "historico": {}
+      },
+      "respostaRaw": "{\"id\":34,\"nome\":\"B1 Experimento 20261104-082328-241e66 D4\",\"plano\":\"BASICO\",\"cursosDisponiveis\":0,\"mediaGeral\":0,\"historico\":{}}"
+    },
+    {
+      "nome": "criar-curso-D4",
+      "data": "2026-11-04T08:23:35.390-03:00",
+      "metodo": "POST",
+      "url": "http://127.0.0.1:8080/api/cursos",
+      "payload": {
+        "nome": "B1 Curso 20261104-082328-241e66 D4"
+      },
+      "status": 201,
+      "duracaoMs": 0.0,
+      "resposta": {
+        "nome": "B1 Curso 20261104-082328-241e66 D4",
+        "id": 34
+      },
+      "respostaRaw": "{\"nome\":\"B1 Curso 20261104-082328-241e66 D4\",\"id\":34}"
+    },
+    {
+      "nome": "preflight-restauracao-integracoes",
+      "data": "2026-11-04T08:23:35.394-03:00",
+      "artefatos": "C:\\Users\\higor aranda\\Documents\\importante\\ENGENHARIA DE SOFTWARE\\aaaaaaa\\DEVOPS\\infra\\.runtime\\last-good\\integracoes"
+    },
+    {
+      "nome": "parar-integracoes",
+      "data": "2026-11-04T08:23:35.700-03:00",
+      "comando": [
+        "powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\higor aranda\\Documents\\importante\\ENGENHARIA DE SOFTWARE\\aaaaaaa\\DEVOPS\\scripts\\b1\\infra-component-stop.ps1",
+        "-Component",
+        "integracoes"
+      ],
+      "exitCode": 0,
+      "stdout": "ÊXITO: o processo com PID 13412 (processo filho de PID 3740) foi finalizado.\nÊXITO: o processo com PID 14240 (processo filho de PID 3740) foi finalizado.\nÊXITO: o processo com PID 3740 (processo filho de PID 2904) foi finalizado.\nintegracoes stopped (including child interpreter processes)\n",
+      "stderr": ""
+    },
+    {
+      "nome": "integracoes-indisponivel-confirmado",
+      "data": "2026-11-04T08:23:37.720-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8002/health",
+      "payload": null,
+      "status": null,
+      "duracaoMs": 2031.0,
+      "erro": "ConnectError('[WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')"
+    },
+    {
+      "nome": "sincrono-falha-esperada",
+      "data": "2026-11-04T08:23:39.735-03:00",
+      "metodo": "POST",
+      "url": "http://127.0.0.1:8002/notificacoes",
+      "payload": {
+        "eventId": "sincrono-d2317bf4-76a8-4fe8-a51b-53a071fe457f",
+        "alunoId": 34,
+        "cursoId": 34,
+        "nota": 8.5
+      },
+      "status": null,
+      "duracaoMs": 2000.0,
+      "erro": "ConnectError('[WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')"
+    },
+    {
+      "nome": "assincrono-conclusao-disponivel",
+      "data": "2026-11-04T08:23:39.746-03:00",
+      "metodo": "POST",
+      "url": "http://127.0.0.1:8080/api/alunos/34/concluir-curso",
+      "payload": {
+        "cursoId": 34,
+        "nota": 8.5
+      },
+      "status": 200,
+      "duracaoMs": 16.0,
+      "resposta": {
+        "id": 34,
+        "nome": "B1 Experimento 20261104-082328-241e66 D4",
+        "plano": "BASICO",
+        "cursosDisponiveis": 3,
+        "mediaGeral": 8,
+        "historico": {
+          "B1 Curso 20261104-082328-241e66 D4": 8.5
+        }
+      },
+      "respostaRaw": "{\"id\":34,\"nome\":\"B1 Experimento 20261104-082328-241e66 D4\",\"plano\":\"BASICO\",\"cursosDisponiveis\":3,\"mediaGeral\":8,\"historico\":{\"B1 Curso 20261104-082328-241e66 D4\":8.5}}"
+    },
+    {
+      "nome": "outbox-pendente-imediata",
+      "data": "2026-11-04T08:23:39.751-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8080/api/notificacoes/pendentes",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 15.0,
+      "resposta": {
+        "quantidade": 1
+      },
+      "respostaRaw": "{\"quantidade\":1}"
+    },
+    {
+      "nome": "aguardar-retentativas",
+      "data": "2026-11-04T08:23:39.751-03:00",
+      "segundos": 10
+    },
+    {
+      "nome": "outbox-pendente-apos10s",
+      "data": "2026-11-04T08:23:49.777-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8080/api/notificacoes/pendentes",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 16.0,
+      "resposta": {
+        "quantidade": 1
+      },
+      "respostaRaw": "{\"quantidade\":1}"
+    },
+    {
+      "nome": "log-core-pendencia-retentativas",
+      "data": "2026-11-04T08:23:49.788-03:00",
+      "arquivo": "infra\\.runtime\\core.stdout.log",
+      "linhas": [
+        "2026-11-04T08:23:44.600-03:00  WARN 10124 --- [DEVOPS] [   scheduling-1] c.e.d.integracao.NotificacaoDispatcher   : Notificação permanece pendente eventId=7a4c40fd-a026-4fbe-b58c-a1252ba745c7 causa=java.net.ConnectException",
+        "2026-11-04T08:23:49.617-03:00  WARN 10124 --- [DEVOPS] [   scheduling-1] c.e.d.integracao.NotificacaoDispatcher   : Notificação permanece pendente eventId=7a4c40fd-a026-4fbe-b58c-a1252ba745c7 causa=java.net.ConnectException"
+      ],
+      "eventIds": [
+        "7a4c40fd-a026-4fbe-b58c-a1252ba745c7"
+      ]
+    },
+    {
+      "nome": "restaurar-integracoes",
+      "data": "2026-11-04T08:23:51.423-03:00",
+      "comando": [
+        "powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\higor aranda\\Documents\\importante\\ENGENHARIA DE SOFTWARE\\aaaaaaa\\DEVOPS\\scripts\\b1\\infra-deploy.ps1",
+        "-Component",
+        "integracoes",
+        "-Artifacts",
+        "C:\\Users\\higor aranda\\Documents\\importante\\ENGENHARIA DE SOFTWARE\\aaaaaaa\\DEVOPS\\infra\\.runtime\\last-good\\integracoes"
+      ],
+      "exitCode": 0,
+      "stdout": "DEPLOY SUCCESS: integracoes PID=11852 http://127.0.0.1:8002\n",
+      "stderr": ""
+    },
+    {
+      "nome": "integracoes-saudavel",
+      "data": "2026-11-04T08:23:51.423-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8002/health",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 0.0,
+      "resposta": {
+        "status": "ok",
+        "servico": "integracoes"
+      },
+      "respostaRaw": "{\"status\":\"ok\",\"servico\":\"integracoes\"}"
+    },
+    {
+      "nome": "receptor-recuperado-evento-entregue",
+      "data": "2026-11-04T08:23:51.428-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8002/notificacoes",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 15.0,
+      "resposta": [
+        {
+          "eventId": "e6d664ad-916e-4dc2-9407-097cf7d96904",
+          "alunoId": 1,
+          "cursoId": 1,
+          "nota": 8.5
+        },
+        {
+          "eventId": "af068af7-1594-48d8-ad7a-70afb90183ff",
+          "alunoId": 33,
+          "cursoId": 33,
+          "nota": 8.5
+        }
+      ],
+      "respostaRaw": "[{\"eventId\":\"e6d664ad-916e-4dc2-9407-097cf7d96904\",\"alunoId\":1,\"cursoId\":1,\"nota\":8.5},{\"eventId\":\"af068af7-1594-48d8-ad7a-70afb90183ff\",\"alunoId\":33,\"cursoId\":33,\"nota\":8.5}]"
+    },
+    {
+      "nome": "receptor-recuperado-evento-entregue",
+      "data": "2026-11-04T08:23:52.452-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8002/notificacoes",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 16.0,
+      "resposta": [
+        {
+          "eventId": "e6d664ad-916e-4dc2-9407-097cf7d96904",
+          "alunoId": 1,
+          "cursoId": 1,
+          "nota": 8.5
+        },
+        {
+          "eventId": "af068af7-1594-48d8-ad7a-70afb90183ff",
+          "alunoId": 33,
+          "cursoId": 33,
+          "nota": 8.5
+        }
+      ],
+      "respostaRaw": "[{\"eventId\":\"e6d664ad-916e-4dc2-9407-097cf7d96904\",\"alunoId\":1,\"cursoId\":1,\"nota\":8.5},{\"eventId\":\"af068af7-1594-48d8-ad7a-70afb90183ff\",\"alunoId\":33,\"cursoId\":33,\"nota\":8.5}]"
+    },
+    {
+      "nome": "receptor-recuperado-evento-entregue",
+      "data": "2026-11-04T08:23:53.499-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8002/notificacoes",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 32.0,
+      "resposta": [
+        {
+          "eventId": "e6d664ad-916e-4dc2-9407-097cf7d96904",
+          "alunoId": 1,
+          "cursoId": 1,
+          "nota": 8.5
+        },
+        {
+          "eventId": "af068af7-1594-48d8-ad7a-70afb90183ff",
+          "alunoId": 33,
+          "cursoId": 33,
+          "nota": 8.5
+        }
+      ],
+      "respostaRaw": "[{\"eventId\":\"e6d664ad-916e-4dc2-9407-097cf7d96904\",\"alunoId\":1,\"cursoId\":1,\"nota\":8.5},{\"eventId\":\"af068af7-1594-48d8-ad7a-70afb90183ff\",\"alunoId\":33,\"cursoId\":33,\"nota\":8.5}]"
+    },
+    {
+      "nome": "receptor-recuperado-evento-entregue",
+      "data": "2026-11-04T08:23:54.556-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8002/notificacoes",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 47.0,
+      "resposta": [
+        {
+          "eventId": "e6d664ad-916e-4dc2-9407-097cf7d96904",
+          "alunoId": 1,
+          "cursoId": 1,
+          "nota": 8.5
+        },
+        {
+          "eventId": "af068af7-1594-48d8-ad7a-70afb90183ff",
+          "alunoId": 33,
+          "cursoId": 33,
+          "nota": 8.5
+        }
+      ],
+      "respostaRaw": "[{\"eventId\":\"e6d664ad-916e-4dc2-9407-097cf7d96904\",\"alunoId\":1,\"cursoId\":1,\"nota\":8.5},{\"eventId\":\"af068af7-1594-48d8-ad7a-70afb90183ff\",\"alunoId\":33,\"cursoId\":33,\"nota\":8.5}]"
+    },
+    {
+      "nome": "receptor-recuperado-evento-entregue",
+      "data": "2026-11-04T08:23:55.567-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8002/notificacoes",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 0.0,
+      "resposta": [
+        {
+          "eventId": "e6d664ad-916e-4dc2-9407-097cf7d96904",
+          "alunoId": 1,
+          "cursoId": 1,
+          "nota": 8.5
+        },
+        {
+          "eventId": "af068af7-1594-48d8-ad7a-70afb90183ff",
+          "alunoId": 33,
+          "cursoId": 33,
+          "nota": 8.5
+        },
+        {
+          "eventId": "7a4c40fd-a026-4fbe-b58c-a1252ba745c7",
+          "alunoId": 34,
+          "cursoId": 34,
+          "nota": 8.5
+        }
+      ],
+      "respostaRaw": "[{\"eventId\":\"e6d664ad-916e-4dc2-9407-097cf7d96904\",\"alunoId\":1,\"cursoId\":1,\"nota\":8.5},{\"eventId\":\"af068af7-1594-48d8-ad7a-70afb90183ff\",\"alunoId\":33,\"cursoId\":33,\"nota\":8.5},{\"eventId\":\"7a4c40fd-a026-4fbe-b58c-a1252ba745c7\",\"alunoId\":34,\"cursoId\":34,\"nota\":8.5}]"
+    },
+    {
+      "nome": "outbox-sem-pendencias-apos-recuperacao",
+      "data": "2026-11-04T08:23:55.572-03:00",
+      "metodo": "GET",
+      "url": "http://127.0.0.1:8080/api/notificacoes/pendentes",
+      "payload": null,
+      "status": 200,
+      "duracaoMs": 0.0,
+      "resposta": {
+        "quantidade": 0
+      },
+      "respostaRaw": "{\"quantidade\":0}"
+    },
+    {
+      "nome": "receptor-deduplica-repeticao",
+      "data": "2026-11-04T08:23:55.582-03:00",
+      "metodo": "POST",
+      "url": "http://127.0.0.1:8002/notificacoes",
+      "payload": {
+        "eventId": "7a4c40fd-a026-4fbe-b58c-a1252ba745c7",
+        "alunoId": 34,
+        "cursoId": 34,
+        "nota": 8.5
+      },
+      "status": 200,
+      "duracaoMs": 15.0,
+      "resposta": {
+        "eventId": "7a4c40fd-a026-4fbe-b58c-a1252ba745c7",
+        "duplicado": true
+      },
+      "respostaRaw": "{\"eventId\":\"7a4c40fd-a026-4fbe-b58c-a1252ba745c7\",\"duplicado\":true}"
+    }
+  ],
+  "verificacoes": [
+    {
+      "nome": "aluno básico inicia sem bônus",
+      "passou": true,
+      "observado": {
+        "id": 34,
+        "nome": "B1 Experimento 20261104-082328-241e66 D4",
+        "plano": "BASICO",
+        "cursosDisponiveis": 0,
+        "mediaGeral": 0,
+        "historico": {}
+      }
+    },
+    {
+      "nome": "integracoes realmente indisponível",
+      "passou": true,
+      "observado": {
+        "nome": "integracoes-indisponivel-confirmado",
+        "data": "2026-11-04T08:23:37.720-03:00",
+        "metodo": "GET",
+        "url": "http://127.0.0.1:8002/health",
+        "payload": null,
+        "status": null,
+        "duracaoMs": 2031.0,
+        "erro": "ConnectError('[WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')"
+      }
+    },
+    {
+      "nome": "notificação síncrona não foi confirmada",
+      "passou": true,
+      "observado": {
+        "nome": "sincrono-falha-esperada",
+        "data": "2026-11-04T08:23:39.735-03:00",
+        "metodo": "POST",
+        "url": "http://127.0.0.1:8002/notificacoes",
+        "payload": {
+          "eventId": "sincrono-d2317bf4-76a8-4fe8-a51b-53a071fe457f",
+          "alunoId": 34,
+          "cursoId": 34,
+          "nota": 8.5
+        },
+        "status": null,
+        "duracaoMs": 2000.0,
+        "erro": "ConnectError('[WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente')"
+      }
+    },
+    {
+      "nome": "assincrono-conclusao-disponivel: HTTP200, bônus3 e histórico",
+      "passou": true,
+      "observado": {
+        "id": 34,
+        "nome": "B1 Experimento 20261104-082328-241e66 D4",
+        "plano": "BASICO",
+        "cursosDisponiveis": 3,
+        "mediaGeral": 8,
+        "historico": {
+          "B1 Curso 20261104-082328-241e66 D4": 8.5
+        }
+      }
+    },
+    {
+      "nome": "uma pendência gravada",
+      "passou": true,
+      "observado": {
+        "quantidade": 1
+      }
+    },
+    {
+      "nome": "pendência preservada durante falha",
+      "passou": true,
+      "observado": {
+        "quantidade": 1
+      }
+    },
+    {
+      "nome": "log identifica evento persistente",
+      "passou": true,
+      "observado": {
+        "eventIds": [
+          "7a4c40fd-a026-4fbe-b58c-a1252ba745c7"
+        ],
+        "falhas": 2
+      }
+    },
+    {
+      "nome": "mesmo eventId foi entregue uma vez",
+      "passou": true,
+      "observado": [
+        {
+          "eventId": "7a4c40fd-a026-4fbe-b58c-a1252ba745c7",
+          "alunoId": 34,
+          "cursoId": 34,
+          "nota": 8.5
+        }
+      ]
+    },
+    {
+      "nome": "receptor confirmou duplicado",
+      "passou": true,
+      "observado": {
+        "eventId": "7a4c40fd-a026-4fbe-b58c-a1252ba745c7",
+        "duplicado": true
+      }
+    }
+  ],
+  "eventIdOutbox": "7a4c40fd-a026-4fbe-b58c-a1252ba745c7",
+  "conclusao": "Com receptor parado, tentativa síncrona falhou, mas conclusão/bônus3 foram confirmados e uma pendência permaneceu por10s com retentativas do mesmo eventId. Após restauração, o mesmo identificador foi recebido uma vez, outbox esvaziou e repetição foi deduplicada. Não comprova atomicidade distribuída ou envio real de mensagem.",
+  "fim": "2026-11-04T08:23:55.582-03:00"
+}

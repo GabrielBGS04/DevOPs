@@ -3,7 +3,7 @@ package com.example.devops;
 import com.example.devops.domain.Aluno;
 import com.example.devops.domain.Plano;
 import com.example.devops.repository.AlunoRepository;
-import com.example.devops.repository.CursoRepository;
+import com.example.devops.curso.internal.persistence.CursoRepository;
 import com.example.devops.service.AlunoService;
 import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.BeforeEach;

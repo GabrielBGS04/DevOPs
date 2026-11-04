@@ -1,0 +1,53 @@
+Iniciado pelo usuário unknown or anonymous
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\infra\.runtime\jenkins\workspace\b1-integracoes
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Teste)
+[Pipeline] bat
+
+C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\infra\.runtime\jenkins\workspace\b1-integracoes>powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS/scripts/b1/infra-job.ps1" -Component integracoes -Stage Test -ControlledFailure:$false 
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.3.5, pluggy-1.7.0 -- C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\infra\.runtime\jenkins\workspace\b1-integracoes\source\services\integracoes
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.9.0
+collecting ... collected 7 items
+
+tests/test_integracoes.py::test_receiver_deduplicates_after_process_restart PASSED [ 14%]
+tests/test_integracoes.py::test_concurrent_duplicates_are_processed_once PASSED [ 28%]
+tests/test_integracoes.py::test_receiver_rejects_invalid_notification_without_persisting PASSED [ 42%]
+tests/test_integracoes.py::test_gateway_defers_ack_until_core_accepts_and_preserves_failed_event PASSED [ 57%]
+tests/test_integracoes.py::test_gateway_recovers_pending_after_restart_and_deduplicates_redelivery PASSED [ 71%]
+tests/test_integracoes.py::test_gateway_connection_error_keeps_durable_pending PASSED [ 85%]
+tests/test_integracoes.py::test_gateway_status_exposes_failure_then_delivery PASSED [100%]
+
+============================== 7 passed in 0.51s ==============================
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] bat
+
+C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\infra\.runtime\jenkins\workspace\b1-integracoes>powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS/scripts/b1/infra-job.ps1" -Component integracoes -Stage Build 
+BUILD COMPLETE: native integracoes artifact (container engine unavailable)
+[Pipeline] archiveArtifacts
+Arquivando artefatos
+Gravando fingerprints
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy local)
+[Pipeline] bat
+
+C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\infra\.runtime\jenkins\workspace\b1-integracoes>powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS/scripts/b1/infra-job.ps1" -Component integracoes -Stage Deploy 
+DEPLOY SUCCESS: integracoes PID=20280 http://127.0.0.1:8002
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

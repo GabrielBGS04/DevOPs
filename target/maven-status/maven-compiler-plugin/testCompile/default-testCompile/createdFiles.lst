@@ -1,2 +1,12 @@
+com\example\devops\ConclusaoDeCursoTest$1.class
 com\example\devops\BancoH2IntegrationTest.class
+com\example\devops\IntegracoesB1HttpTest.class
+com\example\devops\IntegracoesB1ControllerTest.class
+com\example\devops\domain\AlunoEdgeCasesTest.class
+com\example\devops\B1CoreTest.class
+com\example\devops\PoliticaBonusTest.class
+com\example\devops\ConclusaoDeCursoTest.class
 com\example\devops\domain\AlunoTest.class
+com\example\devops\ApiIntegrationTest.class
+com\example\devops\IntegracoesB1Test.class
+com\example\devops\domain\CursoTest.class

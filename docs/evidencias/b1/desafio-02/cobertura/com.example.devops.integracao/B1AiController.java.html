@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>B1AiController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">DEVOPS</a> &gt; <a href="index.source.html" class="el_package">com.example.devops.integracao</a> &gt; <span class="el_source">B1AiController.java</span></div><h1>B1AiController.java</h1><pre class="source lang-java linenums">package com.example.devops.integracao;
+
+import com.example.devops.curso.application.CursoService;
+import com.example.devops.service.AlunoService;
+import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+
+@RestController
+public class B1AiController {
+<span class="fc" id="L10">    public record Pergunta(String pergunta) { }</span>
+    private final AlunoService alunos;
+    private final CursoService cursos;
+    private final B1HttpClient client;
+<span class="fc" id="L14">    public B1AiController(AlunoService alunos, CursoService cursos, B1HttpClient client) {</span>
+<span class="fc" id="L15">        this.alunos = alunos;</span>
+<span class="fc" id="L16">        this.cursos = cursos;</span>
+<span class="fc" id="L17">        this.client = client;</span>
+<span class="fc" id="L18">    }</span>
+    @GetMapping(&quot;/api/alunos/{id}/recomendacoes&quot;)
+    public B1HttpClient.Recomendacoes recomendar(@PathVariable Long id) {
+<span class="fc" id="L21">        var aluno = alunos.buscarPorId(id);</span>
+<span class="fc" id="L22">        var catalogo = cursos.listar().stream().map(c -&gt; new B1HttpClient.CursoItem(c.getId(), c.getNome())).toList();</span>
+<span class="fc" id="L23">        return client.recomendar(id, new ArrayList&lt;&gt;(aluno.getHistorico().keySet()), catalogo);</span>
+    }
+    @PostMapping(&quot;/api/assistente&quot;)
+    public B1HttpClient.Resposta perguntar(@RequestBody Pergunta request) {
+<span class="fc bfc" id="L27" title="All 4 branches covered.">        if (request.pergunta() == null || request.pergunta().isBlank()) throw new IllegalArgumentException(&quot;A pergunta é obrigatória&quot;);</span>
+<span class="fc" id="L28">        return client.perguntar(request.pergunta());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

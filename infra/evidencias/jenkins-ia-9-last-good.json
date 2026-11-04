@@ -1,0 +1,14 @@
+{
+  "observadoEm": "2026-11-03T20:10:30.0249015-03:00",
+  "build": "http://127.0.0.1:8081/job/b1-ia/9/",
+  "resultado": "FAILURE",
+  "artifactsWorkspaceExiste": false,
+  "lastgoodExiste": true,
+  "lastgoodSHA256": "18FBC3D995C39F525B1846B63D3868E7B08A2B82053882E30F34588FBA794B28",
+  "ultimoDeploy": "2026-11-03T20:06:22.1977526-03:00",
+  "pid": "21544",
+  "health": {
+    "status": "ok",
+    "servico": "ia"
+  }
+}

@@ -33,3 +33,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# B1 local laboratory
+/tools/
+/infra/.runtime/
+.venv/
+__pycache__/
+*.pyc
+/.b1-*.log
+
+/DevOPs/

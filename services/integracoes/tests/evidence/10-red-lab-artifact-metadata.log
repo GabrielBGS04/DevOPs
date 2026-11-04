@@ -1,0 +1,96 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.3.5, pluggy-1.7.0 -- C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS
+plugins: anyio-4.9.0
+collecting ... collected 5 items
+
+scripts/b1/tests/test_laboratorio.py::test_missing_last_good_prevents_stopping_a_live_component PASSED [ 20%]
+scripts/b1/tests/test_laboratorio.py::test_restore_uses_last_good_even_if_latest_pipeline_artifacts_are_missing PASSED [ 40%]
+scripts/b1/tests/test_laboratorio.py::test_core_health_uses_core_port_and_actuator_path PASSED [ 60%]
+scripts/b1/tests/test_laboratorio.py::test_incomplete_last_good_metadata_prevents_stop[source-commit.txt] FAILED [ 80%]
+scripts/b1/tests/test_laboratorio.py::test_incomplete_last_good_metadata_prevents_stop[test-result.txt] FAILED [100%]
+
+================================== FAILURES ===================================
+_____ test_incomplete_last_good_metadata_prevents_stop[source-commit.txt] _____
+
+lab = <scripts.b1.laboratorio.Lab object at 0x000001FCC1B77C20>
+tmp_path = WindowsPath('C:/Users/higor aranda/AppData/Local/Temp/pytest-of-higor aranda/pytest-11/test_incomplete_last_good_meta0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001FCC1B77440>
+missing = 'source-commit.txt'
+
+    @pytest.mark.parametrize('missing', ['source-commit.txt', 'test-result.txt'])
+    def test_incomplete_last_good_metadata_prevents_stop(lab, tmp_path, monkeypatch, missing):
+        stable = tmp_path / 'infra/.runtime/last-good/integracoes'
+        stable.mkdir(parents=True)
+        for name in ['app.zip', 'source-commit.txt', 'test-result.txt']:
+            if name != missing:
+                (stable / name).write_text('successful artifact')
+        commands = []
+        monkeypatch.setattr(laboratorio.subprocess, 'run', lambda *args, **kwargs: commands.append(args))
+        with pytest.raises(FileNotFoundError, match=missing):
+>           lab.stop('integracoes')
+
+scripts\b1\tests\test_laboratorio.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <scripts.b1.laboratorio.Lab object at 0x000001FCC1B77C20>
+component = 'integracoes'
+
+    def stop(self, component):
+        # Um pipeline de falha pode ter apagado seu workspace; last-good sobrevive.
+        artifacts = self.artifacts(component)
+        self.record(f'preflight-restauracao-{component}', artefatos=str(artifacts))
+        command = ['powershell.exe', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+                   str(ROOT / 'scripts/b1/infra-component-stop.ps1'), '-Component', component]
+        result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, timeout=30)
+>       self.record(f'parar-{component}', comando=command, exitCode=result.returncode,
+                    stdout=result.stdout, stderr=result.stderr)
+E       AttributeError: 'NoneType' object has no attribute 'returncode'
+
+scripts\b1\laboratorio.py:125: AttributeError
+---------------------------- Captured stdout call -----------------------------
+{"nome": "preflight-restauracao-integracoes", "data": "2026-11-03T20:07:24.989-03:00", "artefatos": "C:\\Users\\higor aranda\\AppData\\Local\\Temp\\pytest-of-higor aranda\\pytest-11\\test_incomplete_last_good_meta0\\infra\\.runtime\\last-good\\integracoes"}
+______ test_incomplete_last_good_metadata_prevents_stop[test-result.txt] ______
+
+lab = <scripts.b1.laboratorio.Lab object at 0x000001FCC1E53B00>
+tmp_path = WindowsPath('C:/Users/higor aranda/AppData/Local/Temp/pytest-of-higor aranda/pytest-11/test_incomplete_last_good_meta1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001FCC1E52AE0>
+missing = 'test-result.txt'
+
+    @pytest.mark.parametrize('missing', ['source-commit.txt', 'test-result.txt'])
+    def test_incomplete_last_good_metadata_prevents_stop(lab, tmp_path, monkeypatch, missing):
+        stable = tmp_path / 'infra/.runtime/last-good/integracoes'
+        stable.mkdir(parents=True)
+        for name in ['app.zip', 'source-commit.txt', 'test-result.txt']:
+            if name != missing:
+                (stable / name).write_text('successful artifact')
+        commands = []
+        monkeypatch.setattr(laboratorio.subprocess, 'run', lambda *args, **kwargs: commands.append(args))
+        with pytest.raises(FileNotFoundError, match=missing):
+>           lab.stop('integracoes')
+
+scripts\b1\tests\test_laboratorio.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <scripts.b1.laboratorio.Lab object at 0x000001FCC1E53B00>
+component = 'integracoes'
+
+    def stop(self, component):
+        # Um pipeline de falha pode ter apagado seu workspace; last-good sobrevive.
+        artifacts = self.artifacts(component)
+        self.record(f'preflight-restauracao-{component}', artefatos=str(artifacts))
+        command = ['powershell.exe', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+                   str(ROOT / 'scripts/b1/infra-component-stop.ps1'), '-Component', component]
+        result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, timeout=30)
+>       self.record(f'parar-{component}', comando=command, exitCode=result.returncode,
+                    stdout=result.stdout, stderr=result.stderr)
+E       AttributeError: 'NoneType' object has no attribute 'returncode'
+
+scripts\b1\laboratorio.py:125: AttributeError
+---------------------------- Captured stdout call -----------------------------
+{"nome": "preflight-restauracao-integracoes", "data": "2026-11-03T20:07:25.058-03:00", "artefatos": "C:\\Users\\higor aranda\\AppData\\Local\\Temp\\pytest-of-higor aranda\\pytest-11\\test_incomplete_last_good_meta1\\infra\\.runtime\\last-good\\integracoes"}
+=========================== short test summary info ===========================
+FAILED scripts/b1/tests/test_laboratorio.py::test_incomplete_last_good_metadata_prevents_stop[source-commit.txt]
+FAILED scripts/b1/tests/test_laboratorio.py::test_incomplete_last_good_metadata_prevents_stop[test-result.txt]
+========================= 2 failed, 3 passed in 0.30s =========================

@@ -1,0 +1,131 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.3.5, pluggy-1.7.0 -- C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\integracoes
+configfile: pytest.ini
+plugins: anyio-4.16.0
+collecting ... collected 6 items
+
+services\integracoes\tests\test_integracoes.py::test_receiver_deduplicates_after_process_restart FAILED [ 16%]
+services\integracoes\tests\test_integracoes.py::test_concurrent_duplicates_are_processed_once FAILED [ 33%]
+services\integracoes\tests\test_integracoes.py::test_receiver_rejects_invalid_notification_without_persisting FAILED [ 50%]
+services\integracoes\tests\test_integracoes.py::test_gateway_defers_ack_until_core_accepts_and_preserves_failed_event FAILED [ 66%]
+services\integracoes\tests\test_integracoes.py::test_gateway_recovers_pending_after_restart_and_deduplicates_redelivery FAILED [ 83%]
+services\integracoes\tests\test_integracoes.py::test_gateway_connection_error_keeps_durable_pending FAILED [100%]
+
+================================== FAILURES ===================================
+______________ test_receiver_deduplicates_after_process_restart _______________
+
+tmp_path = WindowsPath('C:/Users/higor aranda/AppData/Local/Temp/pytest-of-higor aranda/pytest-0/test_receiver_deduplicates_aft0')
+
+    def test_receiver_deduplicates_after_process_restart(tmp_path):
+        database = tmp_path / 'recebidos.sqlite3'
+        with TestClient(create_app(database)) as client:
+>           assert client.post('/notificacoes', json=NOTIFICATION).json() == {
+                'eventId': 'evt-1', 'duplicado': False}
+E           AssertionError: assert {'detail': 'Not Found'} == {'duplicado':...tId': 'evt-1'}
+E             
+E             Left contains 1 more item:
+E             {'detail': 'Not Found'}
+E             Right contains 2 more items:
+E             {'duplicado': False, 'eventId': 'evt-1'}
+E             
+E             Full diff:...
+E             
+E             ...Full output truncated (5 lines hidden), use '-vv' to show
+
+services\integracoes\tests\test_integracoes.py:19: AssertionError
+________________ test_concurrent_duplicates_are_processed_once ________________
+
+tmp_path = WindowsPath('C:/Users/higor aranda/AppData/Local/Temp/pytest-of-higor aranda/pytest-0/test_concurrent_duplicates_are0')
+
+    def test_concurrent_duplicates_are_processed_once(tmp_path):
+        with TestClient(create_app(tmp_path / 'concurrent.sqlite3')) as client:
+            with ThreadPoolExecutor(max_workers=6) as executor:
+                replies = list(executor.map(
+                    lambda _: client.post('/notificacoes', json=NOTIFICATION).json(), range(12)))
+>           assert sum(not r['duplicado'] for r in replies) == 1
+
+services\integracoes\tests\test_integracoes.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <list_iterator object at 0x0000027956F2DB40>
+
+>   assert sum(not r['duplicado'] for r in replies) == 1
+E   KeyError: 'duplicado'
+
+services\integracoes\tests\test_integracoes.py:32: KeyError
+________ test_receiver_rejects_invalid_notification_without_persisting ________
+
+tmp_path = WindowsPath('C:/Users/higor aranda/AppData/Local/Temp/pytest-of-higor aranda/pytest-0/test_receiver_rejects_invalid_0')
+
+    def test_receiver_rejects_invalid_notification_without_persisting(tmp_path):
+        with TestClient(create_app(tmp_path / 'validation.sqlite3')) as client:
+            invalid = dict(NOTIFICATION, nota=11)
+>           assert client.post('/notificacoes', json=invalid).status_code == 422
+E           AssertionError: assert 404 == 422
+E            +  where 404 = <Response [404 Not Found]>.status_code
+E            +    where <Response [404 Not Found]> = post('/notificacoes', json={'alunoId': 1, 'cursoId': 2, 'eventId': 'evt-1', 'nota': 11})
+E            +      where post = <starlette.testclient.TestClient object at 0x0000027956F2F260>.post
+
+services\integracoes\tests\test_integracoes.py:39: AssertionError
+____ test_gateway_defers_ack_until_core_accepts_and_preserves_failed_event ____
+
+tmp_path = WindowsPath('C:/Users/higor aranda/AppData/Local/Temp/pytest-of-higor aranda/pytest-0/test_gateway_defers_ack_until_0')
+
+    def test_gateway_defers_ack_until_core_accepts_and_preserves_failed_event(tmp_path):
+        requests = []
+    
+        def core(request):
+            requests.append(json.loads(request.content))
+            return httpx.Response(503)
+    
+        storage = Storage(tmp_path / 'gateway.sqlite3')
+        broker = BrokerConnection()
+        with httpx.Client(transport=httpx.MockTransport(core)) as http:
+            gateway = Gateway(storage, broker, http=http)
+>           gateway.receive(42, 1, json.dumps(EVENT).encode())
+E           AttributeError: 'Gateway' object has no attribute 'receive'
+
+services\integracoes\tests\test_integracoes.py:64: AttributeError
+___ test_gateway_recovers_pending_after_restart_and_deduplicates_redelivery ___
+
+tmp_path = WindowsPath('C:/Users/higor aranda/AppData/Local/Temp/pytest-of-higor aranda/pytest-0/test_gateway_recovers_pending_0')
+
+    def test_gateway_recovers_pending_after_restart_and_deduplicates_redelivery(tmp_path):
+        database = tmp_path / 'restart.sqlite3'
+        before_restart = Storage(database)
+>       before_restart.enqueue(EVENT)
+E       AttributeError: 'Storage' object has no attribute 'enqueue'
+
+services\integracoes\tests\test_integracoes.py:75: AttributeError
+_____________ test_gateway_connection_error_keeps_durable_pending _____________
+
+tmp_path = WindowsPath('C:/Users/higor aranda/AppData/Local/Temp/pytest-of-higor aranda/pytest-0/test_gateway_connection_error_0')
+
+    def test_gateway_connection_error_keeps_durable_pending(tmp_path):
+        def offline(request):
+            raise httpx.ConnectError('Core offline', request=request)
+    
+        storage = Storage(tmp_path / 'offline.sqlite3')
+        broker = BrokerConnection()
+        with httpx.Client(transport=httpx.MockTransport(offline)) as http:
+            gateway = Gateway(storage, broker, http=http)
+>           gateway.receive(45, 1, json.dumps(EVENT).encode())
+E           AttributeError: 'Gateway' object has no attribute 'receive'
+
+services\integracoes\tests\test_integracoes.py:105: AttributeError
+============================== warnings summary ===============================
+services\ia\.venv\Lib\site-packages\starlette\testclient.py:37
+  C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Lib\site-packages\starlette\testclient.py:37: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED services\integracoes\tests\test_integracoes.py::test_receiver_deduplicates_after_process_restart
+FAILED services\integracoes\tests\test_integracoes.py::test_concurrent_duplicates_are_processed_once
+FAILED services\integracoes\tests\test_integracoes.py::test_receiver_rejects_invalid_notification_without_persisting
+FAILED services\integracoes\tests\test_integracoes.py::test_gateway_defers_ack_until_core_accepts_and_preserves_failed_event
+FAILED services\integracoes\tests\test_integracoes.py::test_gateway_recovers_pending_after_restart_and_deduplicates_redelivery
+FAILED services\integracoes\tests\test_integracoes.py::test_gateway_connection_error_keeps_durable_pending
+======================== 6 failed, 1 warning in 0.39s =========================

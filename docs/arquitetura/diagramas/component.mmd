@@ -1,0 +1,15 @@
+flowchart LR
+ API[AlunoController] --> AS[AlunoService
+fronteira transacional]
+ AS --> UC[ConclusaoDeCurso]
+ UC --> PORT[ConclusaoPort]
+ UC --> AL[Aluno]
+ AL --> R[PoliticaBonus
+Java puro]
+ JPA[JpaConclusaoAdapter] -. implementa .-> PORT
+ MEM[Adapter memória em teste] -. implementa .-> PORT
+ JPA --> REP[Repositories JPA]
+ AS --> OUT[NotificacaoOutbox]
+ OUT --> DB[(Banco relacional)]
+ REP --> DB
+ RANK[Ranking] -->|API pública| AS

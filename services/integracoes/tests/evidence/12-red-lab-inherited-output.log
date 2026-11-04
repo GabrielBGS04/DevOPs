@@ -1,0 +1,27 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.3.5, pluggy-1.7.0 -- C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS
+plugins: anyio-4.9.0
+collecting ... collected 1 item
+
+scripts/b1/tests/test_laboratorio.py::test_helper_returns_without_waiting_for_a_service_inheriting_stdout FAILED [100%]
+
+================================== FAILURES ===================================
+_____ test_helper_returns_without_waiting_for_a_service_inheriting_stdout _____
+
+lab = <scripts.b1.laboratorio.Lab object at 0x00000222A04479E0>
+
+    def test_helper_returns_without_waiting_for_a_service_inheriting_stdout(lab):
+        # Um helper termina, mas o servi�o rec�m-criado mant�m os handles herdados.
+        helper = ('import subprocess,sys; '
+                  'subprocess.Popen([sys.executable,"-c","import time;time.sleep(3)"],'
+                  'close_fds=False); print("helper-complete")')
+        started = time.monotonic()
+>       result = lab.run_command([sys.executable, '-c', helper], timeout=10)
+E       AttributeError: 'Lab' object has no attribute 'run_command'
+
+scripts\b1\tests\test_laboratorio.py:82: AttributeError
+=========================== short test summary info ===========================
+FAILED scripts/b1/tests/test_laboratorio.py::test_helper_returns_without_waiting_for_a_service_inheriting_stdout
+============================== 1 failed in 0.19s ==============================

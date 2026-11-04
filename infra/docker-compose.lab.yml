@@ -1,0 +1,43 @@
+# Optional container alternative; the captured lab uses native Windows processes.
+services:
+  mqtt:
+    image: eclipse-mosquitto:2.0.22
+    profiles: [iot]
+    ports: ['127.0.0.1:1883:1883']
+    volumes:
+      - ./mqtt/mosquitto.container.conf:/mosquitto/config/mosquitto.conf:ro
+      - mqtt-data:/mosquitto/data
+  prometheus:
+    image: prom/prometheus:v3.7.3
+    profiles: [observabilidade]
+    ports: ['127.0.0.1:9090:9090']
+    volumes:
+      - ./observabilidade/prometheus.container.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    extra_hosts: ['host.docker.internal:host-gateway']
+  grafana:
+    image: grafana/grafana:12.3.0
+    profiles: [observabilidade]
+    ports: ['127.0.0.1:3000:3000']
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: 'true'
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+      GF_AUTH_DISABLE_LOGIN_FORM: 'true'
+      GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION: 'true'
+    volumes:
+      - ./observabilidade/container-provisioning:/etc/grafana/provisioning:ro
+      - ./observabilidade/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+  jenkins:
+    image: jenkins/jenkins:2.580.2-jdk21
+    profiles: [ci]
+    ports: ['127.0.0.1:8081:8080']
+    volumes:
+      - jenkins-data:/var/jenkins_home
+    # An agent with Java/Maven/Python and explicit container-engine access is
+    # required for image pipelines; this alternative has not been executed here.
+volumes:
+  mqtt-data:
+  prometheus-data:
+  grafana-data:
+  jenkins-data:

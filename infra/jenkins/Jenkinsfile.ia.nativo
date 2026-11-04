@@ -1,0 +1,15 @@
+// Real Windows laboratory pipeline. Container image delivery is a separate Compose path.
+node {
+    def component = 'ia'
+    def runner = '"' + env.B1_LAB_ROOT + '/scripts/b1/infra-job.ps1"'
+    stage('Teste') {
+        bat "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ${runner} -Component ${component} -Stage Test -ControlledFailure:${params.FALHA_CONTROLADA ? '$true' : '$false'}"
+    }
+    stage('Build') {
+        bat "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ${runner} -Component ${component} -Stage Build"
+        archiveArtifacts artifacts: 'artifacts/**/*', fingerprint: true
+    }
+    stage('Deploy local') {
+        bat "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ${runner} -Component ${component} -Stage Deploy"
+    }
+}

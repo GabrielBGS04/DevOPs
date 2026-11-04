@@ -1,0 +1,15 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>Recuperação e confirmação do mesmo evento</title>
+<style>*{box-sizing:border-box}body{margin:0;padding:36px 44px;color:#14212f;background:#f3f5f7;font:22px Arial,sans-serif}header{border-left:7px solid #194e78;padding-left:22px;margin-bottom:22px}h1{font-size:32px;margin:8px 0}h2{font-size:23px;margin:0 0 12px}p{margin:8px 0;line-height:1.45}small{font-size:17px;color:#415367}section{background:white;border:1px solid #cbd5df;border-radius:6px;padding:20px;margin:16px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:19px/1.4 Consolas,monospace;margin:0}footer{font-size:16px;color:#415367;line-height:1.4}strong{color:#194e78}</style>
+<header><small>B1 ARCHITECTURE LAB · DESAFIO 4 · RELATÓRIO TÉCNICO</small><h1>Recuperação e confirmação do mesmo evento</h1><p>Execução real 20261104-082328-241e66 · 2026-11-04T08:23:33.360-03:00 · estado PASSOU</p></header><section><h2>receptor-recuperado-evento-entregue</h2><pre>2026-11-04T08:23:55.567-03:00
+GET http://127.0.0.1:8002/notificacoes
+HTTP 200 · duração 0.0 ms
+payload: null
+resposta: [{&quot;eventId&quot;:&quot;e6d664ad-916e-4dc2-9407-097cf7d96904&quot;,&quot;alunoId&quot;:1,&quot;cursoId&quot;:1,&quot;nota&quot;:8.5},{&quot;eventId&quot;:&quot;af068af7-1594-48d8-ad7a-70afb90183ff&quot;,&quot;alunoId&quot;:33,&quot;cursoId&quot;:33,&quot;nota&quot;:8.5},{&quot;eventId&quot;:&quot;7a4c40fd-a026-4fbe-b58c-a1252ba745c7&quot;,&quot;alunoId&quot;:34,&quot;cursoId&quot;:34,&quot;nota&quot;:8.5}]</pre></section><section><h2>outbox-sem-pendencias-apos-recuperacao</h2><pre>2026-11-04T08:23:55.572-03:00
+GET http://127.0.0.1:8080/api/notificacoes/pendentes
+HTTP 200 · duração 0.0 ms
+payload: null
+resposta: {&quot;quantidade&quot;:0}</pre></section><section><h2>receptor-deduplica-repeticao</h2><pre>2026-11-04T08:23:55.582-03:00
+POST http://127.0.0.1:8002/notificacoes
+HTTP 200 · duração 15.0 ms
+payload: {&quot;eventId&quot;:&quot;7a4c40fd-a026-4fbe-b58c-a1252ba745c7&quot;,&quot;alunoId&quot;:34,&quot;cursoId&quot;:34,&quot;nota&quot;:8.5}
+resposta: {&quot;eventId&quot;:&quot;7a4c40fd-a026-4fbe-b58c-a1252ba745c7&quot;,&quot;duplicado&quot;:true}</pre></section><footer>Fonte: execucao.json<br>Relatório gerado: 2026-11-04T08:26:02-03:00 · Base bdb6943 + alterações B1 locais.<br>Captura de relatório de dados reais; não é uma simulação de ferramenta.</footer></html>

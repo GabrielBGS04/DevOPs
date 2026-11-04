@@ -1,0 +1,42 @@
+{
+  "observadoEm": "2026-11-03T20:08:30.6827280-03:00",
+  "tcp": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 9090,
+      "OwningProcess": 19892
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 8081,
+      "OwningProcess": 20412
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 8080,
+      "OwningProcess": 20524
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 8002,
+      "OwningProcess": 18196
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 8001,
+      "OwningProcess": 20008
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 3000,
+      "OwningProcess": 5876
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 1883,
+      "OwningProcess": 8636
+    }
+  ],
+  "udp": [],
+  "jenkinsInboundAgentPort": -1
+}

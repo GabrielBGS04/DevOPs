@@ -1,5 +1,8 @@
 package com.example.devops.domain;
 
+import com.example.devops.curso.domain.Curso;
+import com.example.devops.gamificacao.domain.PoliticaBonus;
+
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -19,8 +22,9 @@ import java.util.Map;
 @Entity
 public class Aluno {
 
-    public static final double NOTA_MINIMA_PARA_BONUS = 8.5;
-    public static final int QUANTIDADE_CURSOS_BONUS = 3;
+    public static final double NOTA_MINIMA_PARA_BONUS = PoliticaBonus.NOTA_MINIMA;
+    public static final int QUANTIDADE_CURSOS_BONUS = PoliticaBonus.BONUS;
+    private static final PoliticaBonus POLITICA_BONUS = new PoliticaBonus();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,18 +61,13 @@ public class Aluno {
         if (curso == null) {
             throw new IllegalArgumentException("O curso é obrigatório");
         }
-        if (nota < 0 || nota > 10) {
-            throw new IllegalArgumentException("A nota deve estar entre 0 e 10");
-        }
-
+        int bonus = POLITICA_BONUS.calcularBonus(plano, nota);
         historico.put(curso.getNome(), nota);
-        if (temDireitoABonus(nota)) {
-            cursosDisponiveis += QUANTIDADE_CURSOS_BONUS;
-        }
+        cursosDisponiveis += bonus;
     }
 
     public boolean temDireitoABonus(double nota) {
-        return plano == Plano.BASICO && nota >= NOTA_MINIMA_PARA_BONUS;
+        return POLITICA_BONUS.calcularBonus(plano, nota) > 0;
     }
 
     public double getNotaDoCurso(Curso curso) {

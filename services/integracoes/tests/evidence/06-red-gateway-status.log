@@ -1,0 +1,33 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.3.5, pluggy-1.7.0 -- C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\integracoes
+configfile: pytest.ini
+plugins: anyio-4.9.0
+collecting ... collected 1 item
+
+services\integracoes\tests\test_integracoes.py::test_gateway_status_exposes_failure_then_delivery FAILED [100%]
+
+================================== FAILURES ===================================
+______________ test_gateway_status_exposes_failure_then_delivery ______________
+
+tmp_path = WindowsPath('C:/Users/higor aranda/AppData/Local/Temp/pytest-of-higor aranda/pytest-4/test_gateway_status_exposes_fa0')
+
+    def test_gateway_status_exposes_failure_then_delivery(tmp_path):
+        with TestClient(create_app(tmp_path / 'status.sqlite3')) as client:
+            storage = client.app.state.storage
+            storage.enqueue(EVENT)
+            with httpx.Client(transport=httpx.MockTransport(lambda request: httpx.Response(503))) as http:
+                Gateway(storage, BrokerConnection(), http=http).deliver_pending()
+            pending = client.get('/gateway/eventos')
+>           assert pending.status_code == 200
+E           assert 404 == 200
+E            +  where 404 = <Response [404 Not Found]>.status_code
+
+services\integracoes\tests\test_integracoes.py:118: AssertionError
+------------------------------ Captured log call ------------------------------
+WARNING  services.integracoes.app.gateway:gateway.py:47 Core recusou/indispon�vel; pend�ncia preservada eventId=evt-1: Server error '503 Service Unavailable' for url 'http://127.0.0.1:8080/api/iot/eventos'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+=========================== short test summary info ===========================
+FAILED services\integracoes\tests\test_integracoes.py::test_gateway_status_exposes_failure_then_delivery
+============================== 1 failed in 0.81s ==============================

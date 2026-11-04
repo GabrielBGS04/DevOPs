@@ -1,0 +1,164 @@
+[
+  {
+    "arquivo": "docs/evidencias/b1/desafio-01/01-camadas-antes.jpg",
+    "sha256": "1612f7e52fff5a0bac948064502b8ecae85850af08700a80cec5e3ca4469f83a",
+    "dimensoes": [
+      1013,
+      998
+    ],
+    "capturadoEm": "2026-11-03T20:09:21.250432-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-01/02-modulos-depois.jpg",
+    "sha256": "f83065cda64241350af15cc5f505e8a8f5f2ff5c733e01511b9531b104873298",
+    "dimensoes": [
+      1264,
+      941
+    ],
+    "capturadoEm": "2026-11-04T08:26:53.223422-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-01/03-ranking-funcionando.jpg",
+    "sha256": "d35d7cd17b21e018b6217a175b54f55827d0b749b006d58bb16fe189ee2ea00e",
+    "dimensoes": [
+      1280,
+      720
+    ],
+    "capturadoEm": "2026-11-04T08:26:53.436484-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-02/01-regra-isolada.jpg",
+    "sha256": "36eb56c93042f809435723a69c1169d3fd2bec80076167eb571f6f448a8e999c",
+    "dimensoes": [
+      1264,
+      941
+    ],
+    "capturadoEm": "2026-11-04T08:26:53.657633-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-02/02-adapters-testados.jpg",
+    "sha256": "6632ec4b2e0f7c016950d4ddfc62449d1021985d4a46bd9092a6e11d75979970",
+    "dimensoes": [
+      1264,
+      784
+    ],
+    "capturadoEm": "2026-11-04T08:26:55.032343-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-02/03-regressao-cobertura.jpg",
+    "sha256": "3fbb280f9c29c7f173a7605259fe7deab67ab3d6e2703ce74c09eaaafd6843ee",
+    "dimensoes": [
+      1280,
+      720
+    ],
+    "capturadoEm": "2026-11-04T08:26:55.277758-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-03/01-ia-disponivel.jpg",
+    "sha256": "f21cb8f36062dcf46a26985120970b93896bad4063d25a147a274ae7dcdd5f05",
+    "dimensoes": [
+      1264,
+      808
+    ],
+    "capturadoEm": "2026-11-04T08:27:19.632214-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-03/02-ia-indisponivel.jpg",
+    "sha256": "dc225dd1e08fd4a41074d443ff849d960c04874c7e731f2cd7a1a318e228242d",
+    "dimensoes": [
+      1264,
+      984
+    ],
+    "capturadoEm": "2026-11-04T08:27:20.045945-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-03/03-core-sem-ia.jpg",
+    "sha256": "727a2c1f43cdaf615e6661351142b0ce627338dac2425a043120fe595bdcc07d",
+    "dimensoes": [
+      1280,
+      720
+    ],
+    "capturadoEm": "2026-11-04T08:27:20.396261-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-04/01-sincrono-falha.jpg",
+    "sha256": "33b6312c9bbc3ee5b180fe2a295bb6bfe3843eb07f3184109cdfd41bb00eed8b",
+    "dimensoes": [
+      1280,
+      720
+    ],
+    "capturadoEm": "2026-11-04T08:27:20.768930-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-04/02-assincrono-pendente.jpg",
+    "sha256": "c37f8b6d27a034b006828ba835226a9c3320767c231e9175bd8f96bf25e6557e",
+    "dimensoes": [
+      1264,
+      1064
+    ],
+    "capturadoEm": "2026-11-04T08:27:20.987866-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-04/03-recuperacao.jpg",
+    "sha256": "48fa4b32f9de42c19374ee4927d1c96e82a4dc60d24f997a70101ce7b3120412",
+    "dimensoes": [
+      1264,
+      1011
+    ],
+    "capturadoEm": "2026-11-04T08:27:21.228792-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-05/01-mqtt-publicacao-recepcao.jpg",
+    "sha256": "cbd8f839fcfc6910a4fe583a5ea1cd8533a48a56f34db9ba4416a704bd9b0eb6",
+    "dimensoes": [
+      1264,
+      835
+    ],
+    "capturadoEm": "2026-11-04T08:27:21.463944-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-05/02-reconexao.jpg",
+    "sha256": "67fb249fd1e3d59cc7c82769ee2cec6c710952167f70922c56ff1305cacef340",
+    "dimensoes": [
+      1264,
+      1090
+    ],
+    "capturadoEm": "2026-11-04T08:27:21.790200-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-05/03-evento-sem-duplicacao.jpg",
+    "sha256": "8d3a810f3e558525fa44b650ffe8438b429e11828aef8a1eae16afd7048eba3e",
+    "dimensoes": [
+      1264,
+      1090
+    ],
+    "capturadoEm": "2026-11-04T08:27:22.040822-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-06/01-jenkins-sucesso.jpg",
+    "sha256": "c445cd2a9669549b3fffb18b999e6bc6457ee1231fa816ef86dadc10789c9d94",
+    "dimensoes": [
+      1013,
+      1181
+    ],
+    "capturadoEm": "2026-11-03T20:12:37.723598-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-06/02-jenkins-bloqueio.jpg",
+    "sha256": "f7b54c96b8629cd287ea12324b22d934df14aa53196bf064c273cd7b7932cf3e",
+    "dimensoes": [
+      1013,
+      871
+    ],
+    "capturadoEm": "2026-11-03T20:12:47.388019-03:00"
+  },
+  {
+    "arquivo": "docs/evidencias/b1/desafio-06/03-grafana-falha-recuperacao.jpg",
+    "sha256": "62a7322047e43f256ca382057d99b5bddf0cde6e31c63072cbfc9c9d4274753a",
+    "dimensoes": [
+      1265,
+      712
+    ],
+    "capturadoEm": "2026-11-04T08:28:40.741689-03:00"
+  }
+]

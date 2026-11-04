@@ -1,0 +1,112 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.3.5, pluggy-1.7.0 -- C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS
+plugins: anyio-4.9.0
+collecting ... collected 3 items
+
+scripts/b1/tests/test_laboratorio.py::test_missing_last_good_prevents_stopping_a_live_component FAILED [ 33%]
+scripts/b1/tests/test_laboratorio.py::test_restore_uses_last_good_even_if_latest_pipeline_artifacts_are_missing FAILED [ 66%]
+scripts/b1/tests/test_laboratorio.py::test_core_health_uses_core_port_and_actuator_path FAILED [100%]
+
+================================== FAILURES ===================================
+__________ test_missing_last_good_prevents_stopping_a_live_component __________
+
+lab = <scripts.b1.laboratorio.Lab object at 0x00000211BDD671D0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000211BDD677D0>
+
+    def test_missing_last_good_prevents_stopping_a_live_component(lab, monkeypatch):
+        commands = []
+        monkeypatch.setattr(laboratorio.subprocess, 'run', lambda *args, **kwargs: commands.append(args))
+        with pytest.raises(FileNotFoundError, match='last-good'):
+>           lab.stop('integracoes')
+
+scripts\b1\tests\test_laboratorio.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <scripts.b1.laboratorio.Lab object at 0x00000211BDD671D0>
+component = 'integracoes'
+
+    def stop(self, component):
+        command = ['powershell.exe', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+                   str(ROOT / 'scripts/b1/infra-component-stop.ps1'), '-Component', component]
+        result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, timeout=30)
+>       self.record(f'parar-{component}', comando=command, exitCode=result.returncode,
+                    stdout=result.stdout, stderr=result.stderr)
+E       AttributeError: 'NoneType' object has no attribute 'returncode'
+
+scripts\b1\laboratorio.py:113: AttributeError
+__ test_restore_uses_last_good_even_if_latest_pipeline_artifacts_are_missing __
+
+lab = <scripts.b1.laboratorio.Lab object at 0x00000211BE03E240>
+tmp_path = WindowsPath('C:/Users/higor aranda/AppData/Local/Temp/pytest-of-higor aranda/pytest-9/test_restore_uses_last_good_ev0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000211BE03EB70>
+
+    def test_restore_uses_last_good_even_if_latest_pipeline_artifacts_are_missing(lab, tmp_path, monkeypatch):
+        stable = tmp_path / 'infra/.runtime/last-good/integracoes'
+        stable.mkdir(parents=True)
+        (stable / 'app.zip').write_bytes(b'preserved successful artifact')
+        commands = []
+    
+        def command(args, **kwargs):
+            commands.append(args)
+            return SimpleNamespace(returncode=0, stdout='restored', stderr='')
+    
+        monkeypatch.setattr(laboratorio.subprocess, 'run', command)
+        monkeypatch.setattr(lab, 'health', lambda component: None)
+        lab.stopped.add('integracoes')
+        lab.restore('integracoes')
+>       assert commands[0][-2:] == ['-Artifacts', str(stable)]
+E       AssertionError: assert ['-Artifacts'...s\\artifacts'] == ['-Artifacts'...\integracoes']
+E         
+E         At index 1 diff: 'C:\\Users\\higor aranda\\AppData\\Local\\Temp\\pytest-of-higor aranda\\pytest-9\\test_restore_uses_last_good_ev0\\infra\\.runtime\\jenkins\\workspace\\b1-integracoes\\artifacts' != 'C:\\Users\\higor aranda\\AppData\\Local\\Temp\\pytest-of-higor aranda\\pytest-9\\test_restore_uses_last_good_ev0\\infra\\.runtime\\last-good\\integracoes'
+E         
+E         Full diff:
+E           [
+E               '-Artifacts',
+E               'C:\\Users\\higor aranda\\AppData\\Local\\Temp\\pytest-of-higor '...
+E         
+E         ...Full output truncated (5 lines hidden), use '-vv' to show
+
+scripts\b1\tests\test_laboratorio.py:42: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"nome": "restaurar-integracoes", "data": "2026-11-03T20:06:20.001-03:00", "comando": ["powershell.exe", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\higor aranda\\AppData\\Local\\Temp\\pytest-of-higor aranda\\pytest-9\\test_restore_uses_last_good_ev0\\scripts\\b1\\infra-deploy.ps1", "-Component", "integracoes", "-Artifacts", "C:\\Users\\higor aranda\\AppData\\Local\\Temp\\pytest-of-higor aranda\\pytest-9\\test_restore_uses_last_good_ev0\\infra\\.runtime\\jenkins\\workspace\\b1-integracoes\\artifacts"], "exitCode": 0, "stdout": "restored", "stderr": ""}
+______________ test_core_health_uses_core_port_and_actuator_path ______________
+
+lab = <scripts.b1.laboratorio.Lab object at 0x00000211BE03CF80>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000211BE03C860>
+
+    def test_core_health_uses_core_port_and_actuator_path(lab, monkeypatch):
+        polls = []
+    
+        def poll(name, path, predicate, port, **kwargs):
+            polls.append((path, port))
+            assert predicate({'status': 'UP'})
+            return {'status': 'UP'}
+    
+        monkeypatch.setattr(lab, 'poll', poll)
+>       assert lab.health('core') == {'status': 'UP'}
+
+scripts\b1\tests\test_laboratorio.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\b1\laboratorio.py:107: in health
+    return self.poll(f'{component}-saudavel', '/health', lambda body: body.get('status') == 'ok', port)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'core-saudavel', path = '/health'
+predicate = <function Lab.health.<locals>.<lambda> at 0x00000211BE05B920>
+port = 8002, kwargs = {}, @py_assert1 = {'status': 'UP'}, @py_assert3 = False
+@py_format5 = "assert False\n{False = <function Lab.health.<locals>.<lambda> at 0x00000211BE05B920>({'status': 'UP'})\n}"
+
+    def poll(name, path, predicate, port, **kwargs):
+        polls.append((path, port))
+>       assert predicate({'status': 'UP'})
+E       AssertionError: assert False
+E        +  where False = <function Lab.health.<locals>.<lambda> at 0x00000211BE05B920>({'status': 'UP'})
+
+scripts\b1\tests\test_laboratorio.py:51: AssertionError
+=========================== short test summary info ===========================
+FAILED scripts/b1/tests/test_laboratorio.py::test_missing_last_good_prevents_stopping_a_live_component
+FAILED scripts/b1/tests/test_laboratorio.py::test_restore_uses_last_good_even_if_latest_pipeline_artifacts_are_missing
+FAILED scripts/b1/tests/test_laboratorio.py::test_core_health_uses_core_port_and_actuator_path
+============================== 3 failed in 0.35s ==============================

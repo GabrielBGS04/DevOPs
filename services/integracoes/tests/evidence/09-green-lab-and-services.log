@@ -1,0 +1,25 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.3.5, pluggy-1.7.0 -- C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS\services\ia\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\higor aranda\Documents\importante\ENGENHARIA DE SOFTWARE\aaaaaaa\DEVOPS
+plugins: anyio-4.9.0
+collecting ... collected 16 items
+
+scripts/b1/tests/test_laboratorio.py::test_missing_last_good_prevents_stopping_a_live_component PASSED [  6%]
+scripts/b1/tests/test_laboratorio.py::test_restore_uses_last_good_even_if_latest_pipeline_artifacts_are_missing PASSED [ 12%]
+scripts/b1/tests/test_laboratorio.py::test_core_health_uses_core_port_and_actuator_path PASSED [ 18%]
+services/ia/tests/test_ia.py::test_recommendations_exclude_history_order_and_limit PASSED [ 25%]
+services/ia/tests/test_ia.py::test_recommendations_exhausted_catalog_is_available_and_empty PASSED [ 31%]
+services/ia/tests/test_ia.py::test_assistant_looks_up_local_bonus_content_and_source PASSED [ 37%]
+services/ia/tests/test_ia.py::test_assistant_unknown_question_does_not_invent_answer PASSED [ 43%]
+services/ia/tests/test_ia.py::test_blank_question_is_rejected PASSED     [ 50%]
+services/ia/tests/test_ia.py::test_health_identifies_service PASSED      [ 56%]
+services/integracoes/tests/test_integracoes.py::test_receiver_deduplicates_after_process_restart PASSED [ 62%]
+services/integracoes/tests/test_integracoes.py::test_concurrent_duplicates_are_processed_once PASSED [ 68%]
+services/integracoes/tests/test_integracoes.py::test_receiver_rejects_invalid_notification_without_persisting PASSED [ 75%]
+services/integracoes/tests/test_integracoes.py::test_gateway_defers_ack_until_core_accepts_and_preserves_failed_event PASSED [ 81%]
+services/integracoes/tests/test_integracoes.py::test_gateway_recovers_pending_after_restart_and_deduplicates_redelivery PASSED [ 87%]
+services/integracoes/tests/test_integracoes.py::test_gateway_connection_error_keeps_durable_pending PASSED [ 93%]
+services/integracoes/tests/test_integracoes.py::test_gateway_status_exposes_failure_then_delivery PASSED [100%]
+
+============================= 16 passed in 5.86s ==============================

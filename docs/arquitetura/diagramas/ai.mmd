@@ -1,0 +1,6 @@
+flowchart LR
+ U[Aluno] -->|HTTP JSON| C[Core Spring Boot :8080]
+ C -->|JPA| DB[(Banco relacional)]
+ C -->|HTTP JSON timeout2s| IA[IA FastAPI :8001
+Recomendação e assistente demonstrativos]
+ IA -. indisponibilidade .-> F[Core retorna fallback explícito]
