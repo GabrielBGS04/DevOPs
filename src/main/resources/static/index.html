@@ -39,6 +39,35 @@
 
       header p { margin: 0; color: #53606d; }
 
+      .navegacao {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+
+      .navegacao a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 8px 12px;
+        border: 1px solid #aeb9b1;
+        border-radius: 6px;
+        background: #fff;
+        color: #1d5f5a;
+        font-weight: 700;
+      }
+
+      .navegacao a:hover { background: #f0f6ef; }
+      .navegacao a:focus-visible, #calculo:focus, .area-reservada:focus {
+        outline: 2px solid #1d5f5a;
+        outline-offset: 3px;
+      }
+
+      .areas-af { margin-top: 18px; }
+      #calculo, .area-reservada { scroll-margin-top: 16px; }
+      .area-reservada p { margin: 0; }
+
       .conteudo {
         display: grid;
         grid-template-columns: 1.15fr 0.85fr;
@@ -157,15 +186,21 @@
     </style>
   </head>
   <body>
-    <main id="app" v-cloak>
+    <main>
       <header>
         <h1>Cadastro e cálculo de nota</h1>
         <p>Informe o aluno, a turma e a nota para registrar a conclusão do curso.</p>
       </header>
 
-      <div class="conteudo">
+      <nav class="navegacao" aria-label="Áreas da plataforma">
+        <a href="#calculo">Cálculo de nota</a>
+        <a href="#skillpath-ia">Recomendações e orientação</a>
+        <a href="#skillpath-ml">Competências e treinamentos</a>
+      </nav>
+
+      <div id="app" class="conteudo" v-cloak>
         <section>
-          <h2>Dados do aluno</h2>
+          <h2 id="calculo" tabindex="-1">Dados do aluno</h2>
           <p class="aviso">A turma é cadastrada como curso na API. O cálculo usa o plano Básico.</p>
 
           <form @submit.prevent="calcular">
@@ -210,6 +245,17 @@
           </div>
           <p v-else class="sem-resultado">O resultado aparecerá aqui depois de salvar os dados.</p>
           <p class="regra">Regra aplicada: aluno do plano Básico com nota maior ou igual a 8,5 recebe 3 cursos adicionais.</p>
+        </section>
+      </div>
+
+      <div class="conteudo areas-af">
+        <section id="skillpath-ia" class="area-reservada" aria-labelledby="titulo-ia" tabindex="-1">
+          <h2 id="titulo-ia">Recomendações e orientação</h2>
+          <p class="sem-resultado">Área em preparação para recomendações de cursos e orientação de estudos.</p>
+        </section>
+        <section id="skillpath-ml" class="area-reservada" aria-labelledby="titulo-ml" tabindex="-1">
+          <h2 id="titulo-ml">Competências e treinamentos</h2>
+          <p class="sem-resultado">Área em preparação para avaliar competências e acompanhar treinamentos de modelos.</p>
         </section>
       </div>
     </main>

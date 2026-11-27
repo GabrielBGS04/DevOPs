@@ -23,9 +23,44 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/devops_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: admin123
+      B1_IA_URL: http://ia:8001
+      B1_NOTIFICACOES_URL: http://integracoes:8002
     depends_on:
       db:
         condition: service_healthy
 
+  gateway:
+    image: nginx:1.28.3-alpine
+    ports:
+      - "127.0.0.1:8088:80"
+    volumes:
+      - ./infra/gateway/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+
+  ia:
+    image: b1-ia:${B1_IMAGE_TAG:-local}
+    build: ./services/ia
+
+  integracoes:
+    image: b1-integracoes:${B1_IMAGE_TAG:-local}
+    build: ./services/integracoes
+    environment:
+      B1_MQTT_ENABLED: "true"
+      MQTT_HOST: mqtt
+      CORE_BASE_URL: http://app:8080
+    depends_on:
+      - mqtt
+    volumes:
+      - integracoes_data:/data
+
+  mqtt:
+    image: eclipse-mosquitto:2.0.22
+    volumes:
+      - ./infra/mqtt/mosquitto.container.conf:/mosquitto/config/mosquitto.conf:ro
+      - mqtt_data:/mosquitto/data
+
 volumes:
   postgres_data:
+  integracoes_data:
+  mqtt_data:

@@ -1,5 +1,4 @@
-.git
-.idea
-target
-docs
-README.md
+**
+!pom.xml
+!src/
+!src/**
