@@ -6,6 +6,12 @@ Projeto acadêmico desenvolvido por **Gabriel Baldi e Higor Aranda**. A implemen
 
 [Entrega B1 em Word](docs/entrega/B1_Architecture_Lab_Final.docx) · [Decisões arquiteturais](docs/arquitetura/README.md) · [Capturas diretas](docs/evidencias/b1/telas-reais/README.md) · [Infraestrutura local](infra/README.md)
 
+## SkillPath AI · Fundação da AF
+
+A Avaliação Final evolui o projeto com classificação de competências, acompanhamento de treinamentos, recomendações com RAG e ações de orientação sob autorização do aluno. A Fase 01 prepara os contratos, a navegação e o gateway HTTP. As rotas `/api/af` respondem `503 AF_EM_PREPARACAO` enquanto as implementações individuais estão em preparação.
+
+[Roteiro e divisão do trabalho](docs/af/ROADMAP.md) · [Requisitos](docs/af/REQUIREMENTS.md) · [Contratos](docs/af/CONTRACTS.md) · [Arquitetura proposta](docs/af/ARCHITECTURE.md) · [Baseline](docs/af/BASELINE.md)
+
 ## Regra de negócio
 
 Um aluno do plano **Básico** recebe **três cursos de bônus** ao concluir um curso com nota **maior ou igual a 8,5**. A conclusão fica no histórico. Notas abaixo desse limite e alunos Premium não recebem esse bônus.
@@ -107,12 +113,14 @@ Para encerrar os componentes iniciados pelos scripts:
 
 ### Alternativa com Docker
 
-Os arquivos Compose fornecem uma alternativa com PostgreSQL. Essa execução não foi comprovada no laboratório B1.
+O Compose raiz configura PostgreSQL, o Core, o gateway e os serviços de IA, notificações e MQTT do B1. Use o gateway em `http://127.0.0.1:8088` e o Swagger em `http://127.0.0.1:8088/swagger-ui.html`.
 
 ```powershell
 docker compose up --build
 docker compose down
 ```
+
+As portas diretas `8080` e `5432` do Compose anterior continuam publicadas para compatibilidade com o laboratório. O MQTT usa rede interna. Para publicar um evento de teste, use o cliente `mosquitto_pub` dentro do contêiner `mqtt`. Consulte a [baseline da AF](docs/af/BASELINE.md) para os limites da validação Docker.
 
 ## API
 
